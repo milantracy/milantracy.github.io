@@ -35,7 +35,7 @@ Regular expressions are a powerful language for matching text patterns. This pag
 - the "group" feature of a regular expression allows you to pick out parts of the matching text.
 - to do this, add parenthesis ( ) around the patterns which are supposed to be in a gtoup
 - in this case, the parenthesis do not change what the pattern will match, instead they establish logical "groups" inside of the match text.
-- group extraction 
+- result of group extraction is *1-based*, however, group 0 will be the whole match
 
 In Python, the '*r*' at the start of the pattern string designates a python "raw" string which passes through backslashes without change which is very handy for regular expressions (Java needs this feature badly!).
  
@@ -50,12 +50,35 @@ In Python, the '*r*' at the start of the pattern string designates a python "raw
 #### _re.search_ (pattern, str)
 The __re.search()__ method takes a regular expression pattern and a string and searches for that pattern within the string. If the search is successful, _search()_ returns a match object or *None* otherwise.
 ```python
-str = 'an example word:cat!!'
+import re
+str = 'an example word:cat'
 match = re.search(r'word:\w\w\w', str)
 # If-statement after search() tests if it succeeded
   if match:                      
     print 'found', match.group() ## 'found word:cat'
   else:
     print 'did not find'
+```
+
+***
+#### _re.match_ (pattern, str)
+The _re.match_() method is similar to _re.search()_, however, it will be forced to match starting from the head of the string.
+```python
+import re
+
+result1 = re.match("c","abcde");
+if(result1):
+    print("result1: "+result1.group());
+else:
+    print("nothing");
+
+result2 = re.search("c","abcde");
+if(result2):
+    print("result2: "+result2.group());
+```
+Output:
+```
+nothing
+result2: c
 ```
 
