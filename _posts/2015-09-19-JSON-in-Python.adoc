@@ -1,11 +1,34 @@
 = JSON in Python
-:hp-tags: Python, JSON, basics
+:hp-tags: Python, JSON
+
+reference: https://docs.python.org/2/library/json.html
 
 The json library can parse JSON from strings or files. The library parses JSON into a Python dictionary or list. It can also convert Python dictionaries or lists into JSON strings.
 
 '''
-#### Parsing JSON to Python object
-
+#### Parsing JSON to Python Objects
+```python
 import json
+json_string = '{"firstname":"Jing","lastname":"Chen"}'
 parsed_json = json.loads(json_string)
+```
+*_parsed_json_* above can be used as Python dictionary. 
 
+In Python, JSON could also be converted into lists objects.
+```
+print(parsed_json['firstname'])
+```
+the console will show:
+```
+Jing
+```
+'''
+#### Parsing Python Objects to JSON
+```python
+import json
+dic = {'firstname':'Jing', 'lastname':'Chen'}
+json_string = json.dumps('')
+```
+
+
+[sdfsdaf](https://www.google.com)
