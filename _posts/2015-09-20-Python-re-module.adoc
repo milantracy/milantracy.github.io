@@ -16,6 +16,13 @@ Regular expressions are a powerful language for matching text patterns. This pag
 In Python, the '*r*' at the start of the pattern string designates a python "raw" string which passes through backslashes without change which is very handy for regular expressions (Java needs this feature badly!).
 
 ***
+#### Basic rule
+* The search proceeds through the string from start to end, stopping at the *first match* found
+* All of the pattern must be matched, but not all of the string
+* *Leftmost & Largest*
+- First the search finds the leftmost match for the pattern, and second it tries to use up as much of the string as possible
+
+***
 #### _re.search_ (pattern, str)
 The __re.search()__ method takes a regular expression pattern and a string and searches for that pattern within the string. If the search is successful, _search()_ returns a match object or *None* otherwise.
 ```python
