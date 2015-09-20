@@ -25,7 +25,7 @@ import json
 dic = {'firstname':'Jing', 'lastname':'Chen'}
 json_string = json.dumps(dic)
 ```
-_json.dumps(obj)_ will parsed python object into JSON string
+_json.dumps(obj)_ will parse python object into JSON string
 ```
 print(json_string)
 ```
@@ -42,5 +42,12 @@ import json
 with open('data.txt', 'w') as outfile:
     json.dump(data, outfile)
 ```
+_json_dump(obj, file_obj)_ will parse obj automatically and write JSON string to specified file.
 
-reference: https://docs.python.org/2/library/json.html
+If you have json string already, use file_obj.write(json_string).
+
+***
+
+Check out the code: https://raw.githubusercontent.com/milantracy/python/master/json_basic.py
+
+Reference: https://docs.python.org/2/library/json.html
