@@ -36,7 +36,11 @@ the output will be:
 
 ***
 
-#### Writing 
-
+#### Writing Python Objects to a file as JSON format
+```python
+import json
+with open('data.txt', 'w') as outfile:
+    json.dump(data, outfile)
+```
 
 reference: https://docs.python.org/2/library/json.html
