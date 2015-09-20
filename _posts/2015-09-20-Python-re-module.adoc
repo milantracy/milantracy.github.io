@@ -53,16 +53,19 @@ The __re.search()__ method takes a regular expression pattern and a string and s
 import re
 str = 'an example word:cat'
 match = re.search(r'word:\w\w\w', str)
-# If-statement after search() tests if it succeeded
   if match:                      
-    print 'found', match.group() ## 'found word:cat'
+    print 'found', match.group() 
   else:
     print 'did not find'
 ```
+Output:
+```
+found word:cat
+```
 
 ***
-#### _re.match_ (pattern, str)
-The _re.match_() method is similar to _re.search()_, however, it will be forced to match starting from the head of the string.
+#### _re.match_ (pattern, str, [start position])
+The _re.match_() method is similar to _re.search()_, however, _re.match()_ checks for a match only at the beginning of the string, while _re.search()_ checks for a match anywhere in the string.
 ```python
 import re
 
@@ -81,4 +84,21 @@ Output:
 nothing
 result2: c
 ```
+
+***
+#### _re.split_ (pattern, string, maxsplit=0)
+Split string by the occurrences of pattern. maxsplit defines the maximum fragment of result. By default, there is no limit.
+```python
+import re
+re.split('\s+', 'chen jing    cj')
+```
+Output:
+```
+['chen', 'jing', 'cj']
+```
+***
+
+#### _re.findall_ (pattern, string, flags=0)
+_findall_() finds *all* the matches and returns them as *a list of strings*, with each string representing one match.
+
 
