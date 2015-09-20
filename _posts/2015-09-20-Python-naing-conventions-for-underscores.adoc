@@ -1,0 +1,56 @@
+= Python naing conventions for underscores
+:hp-tags: Python
+
+
+#### One underline in the beginning
+Python doesn't have real private methods, so one underline in the start of a method or attribute means you shouldn't access this method, because it's not part of the API.
+```python
+class BaseForm(StrAndUnicode):
+  def _get_errors(self):
+    if self._errors is None:
+      self.full_clean()
+    return self._errors
+errors = property(_get_errors)
+```
+Code snippet taken from django source code (django/forms/forms.py). This means errors is a property, and it's part of the module, but the method this property calls, __get_errors()_ is *private, so you shouldn't access it*.
+
+***
+
+#### Two underlines in the beginning
+It makes a lot of confusion. It should not be used to create a private method. It should be used to avoid your method to be *overridden* by a subclass.
+```python
+class A(object):
+    def __test(self):
+        print "I'm test method in class A"
+
+    def test(self):
+        self.__test()
+
+a = A()
+a.test()
+```
+Output:
+```
+I'm test method in class A.
+```
+
+Now create a subclass B and do customization for __test method.
+```python
+class B(A):
+    def __test(self):
+        print "I'm test method in class B"
+
+b = B()
+b.test()
+```
+Output:
+```
+I'm test method in class A.
+```
+As we have seen, A.test() didn't call B.__test() methods, as we could expect. Basically it is the correct behavior for __. So, when you create a method starting with __ it means that *you don't want to anyone can override it, it will be accessible only from inside the own class.
+
+***
+
+#### Two underlines in the beginning and in the end
+When we see a method like __this__, don't call it. Because it means it's *a method which Python calls*
+
