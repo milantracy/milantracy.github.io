@@ -1,0 +1,30 @@
+= Python re module
+:hp-tags: Python, regex
+
+Regular expressions are a powerful language for matching text patterns. This page gives a basic introduction to regular expressions themselves sufficient for our Python exercises and shows how regular expressions work in Python. The Python "_re_" module provides regular expression support.
+
+***
+#### Basic pattern
+* ordinary characters just match themselves exactly, including numbers and characters
+* a period matches any single character except newline '\n'
+* \t, \n, \r -- tab, newline, return
+* ^ = start, $ = end -- match the start or end of the string
+* \w matches a letter or a digit or a underscore
+* \s matches a single whitespace
+* \d matches a digit
+
+In Python, the '*r*' at the start of the pattern string designates a python "raw" string which passes through backslashes without change which is very handy for regular expressions (Java needs this feature badly!).
+
+***
+#### _re.search_ (pattern, str)
+The __re.search()__ method takes a regular expression pattern and a string and searches for that pattern within the string. If the search is successful, _search()_ returns a match object or *None* otherwise.
+```python
+str = 'an example word:cat!!'
+match = re.search(r'word:\w\w\w', str)
+# If-statement after search() tests if it succeeded
+  if match:                      
+    print 'found', match.group() ## 'found word:cat'
+  else:
+    print 'did not find'
+```
+
