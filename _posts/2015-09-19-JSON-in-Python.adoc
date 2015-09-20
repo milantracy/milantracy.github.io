@@ -1,8 +1,6 @@
 = JSON in Python
 :hp-tags: Python, JSON
 
-reference: https://docs.python.org/2/library/json.html
-
 The json library can parse JSON from strings or files. The library parses JSON into a Python dictionary or list. It can also convert Python dictionaries or lists into JSON strings.
 
 '''
@@ -31,4 +29,5 @@ json_string = json.dumps('')
 ```
 
 
-[sdfsdaf](https://www.google.com)
+
+reference: https://docs.python.org/2/library/json.html
