@@ -10,9 +10,13 @@ Regular expressions are a powerful language for matching text patterns. This pag
 * \t, \n, \r -- tab, newline, return
 * ^ = start, $ = end -- match the start or end of the string
 * \b matches the start or the end of the word
+* \B matches the non-start nor non-end of the word
 * \w matches a letter or a digit or a underscore
+* \W matches non-letter nor non-digit nor underscore
 * \s matches a single whitespace
+* \S matches a non-whitespace
 * \d matches a digit
+* \D matches a non-digit
 * repetition
 - + 1 or more occurrences of the pattern to its left
 - * 0 or more occurrences of the pattern to its left
@@ -24,10 +28,17 @@ Regular expressions are a powerful language for matching text patterns. This pag
 * *Square bracket*
 - square brackets can be used to indicate a set of chars
 - a period just means a literal dot
-- You can also use a dash to indicate a range, so [a-z] matches all lowercase letters. 
+- you can also use a dash to indicate a range, so [a-z] matches all lowercase letters.
+* Branch
+- a|b matches pattern a or pattern b
+* *Group*
+- the "group" feature of a regular expression allows you to pick out parts of the matching text.
+- to do this, add parenthesis ( ) around the patterns which are supposed to be in a gtoup
+- in this case, the parenthesis do not change what the pattern will match, instead they establish logical "groups" inside of the match text.
+- group extraction 
 
 In Python, the '*r*' at the start of the pattern string designates a python "raw" string which passes through backslashes without change which is very handy for regular expressions (Java needs this feature badly!).
-
+ 
 ***
 #### Basic rule
 * The search proceeds through the string from start to end, stopping at the *first match* found
