@@ -49,6 +49,8 @@ In Python, the '*r*' at the start of the pattern string designates a python "raw
 ***
 #### _re.search_ (pattern, str)
 The __re.search()__ method takes a regular expression pattern and a string and searches for that pattern within the string. If the search is successful, _search()_ returns a match object or *None* otherwise.
+
+Use _group()_ to return matched string
 ```python
 import re
 str = 'an example word:cat'
@@ -104,12 +106,16 @@ _findall_() finds *all* the matches and returns them as *a list of strings*, wit
 *findall and Groups*, if the pattern includes 2 or more parenthesis groups, then instead of returning a list of strings, findall() returns a list of *tuples*. Each tuple represents one match of the pattern, and inside the tuple is the group(1), group(2) .. data.
 ```python
 import re
-print re.findall("\d","1a2b3c4d")
+print re.findall('\d','1a2b3c4d')
+print re.findall('(\d)(\w)', '1a2b3c4d')
 ```
 Output:
 ```
-[1,2,3,4]
+['1', '2', '3', '4']
+[('1', 'a'), ('2', 'b'), ('3', 'c'), ('4', 'd')]
 ```
+
+
 
 ***
 #### _re.sub_ (pattern, replacement, str)
