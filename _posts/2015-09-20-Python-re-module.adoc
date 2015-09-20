@@ -101,4 +101,41 @@ Output:
 #### _re.findall_ (pattern, string, flags=0)
 _findall_() finds *all* the matches and returns them as *a list of strings*, with each string representing one match.
 
+*findall and Groups*, if the pattern includes 2 or more parenthesis groups, then instead of returning a list of strings, findall() returns a list of *tuples*. Each tuple represents one match of the pattern, and inside the tuple is the group(1), group(2) .. data.
+```python
+import re
+print re.findall("\d","1a2b3c4d")
+```
+Output:
+```
+[1,2,3,4]
+```
 
+***
+#### _re.sub_ (pattern, replacement, str)
+The _re.sub()_ function searches for all the instances of pattern in the given string, and replaces them. The replacement string can include '\1', '\2' which refer to the text from group(1), group(2), and so on from the original matching text.
+```python
+re.sub(r'\sAND\s', ' & ', 'Baked Beans And Spam', flags=re.IGNORECASE)
+```
+Output:
+```
+'Baked Beans & Spam'
+```
+
+```python
+str = 'purple alice@google.com, blah monkey bob@abc.com blah dishwasher'
+## \1 is group(1), \2 group(2) in the replacement
+print re.sub(r'([\w\.-]+)@([\w\.-]+)', r'\1@yo-yo-dyne.com', str)
+```
+Output:
+```
+purple alice@yo-yo-dyne.com, blah monkey bob@yo-yo-dyne.com blah dishwasher
+```
+
+***
+#### _re.purge_()
+Clear the regular expression cache.
+
+***
+#### exception _re.error_
+Exception raised when a string passed to one of the functions here is *not a valid regular expression* or when some other error occurs during compilation or matching. It is never an error if a string contains no match for a pattern.
