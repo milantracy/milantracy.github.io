@@ -1,0 +1,53 @@
+= JSON in Python
+:hp-tags: Python, JSON
+
+The json library can parse JSON from strings or files. The library parses JSON into a Python dictionary or list. It can also convert Python dictionaries or lists into JSON strings.
+
+***
+#### Parsing JSON to Python Objects
+```python
+import json
+json_string = '{"firstname":"Jing","lastname":"Chen"}'
+parsed_json = json.loads(json_string)
+```
+_json_loads(str)_ will parse the json string to json objects, lists or dictionary
+```
+print(parsed_json['firstname'])
+```
+the output will be:
+```
+Jing
+```
+***
+#### Parsing Python Objects to JSON
+```python
+import json
+dic = {'firstname':'Jing', 'lastname':'Chen'}
+json_string = json.dumps(dic)
+```
+_json.dumps(obj)_ will parse python object into JSON string
+```
+print(json_string)
+```
+the output will be:
+```
+'{"firstname": "Jing", "lastname": "Chen"}'
+```
+
+***
+
+#### Writing Python Objects to a file as JSON format
+```python
+import json
+with open('data.txt', 'w') as outfile:
+    json.dump(data, outfile)
+```
+_json_dump(obj, file_obj)_ will parse obj automatically and write JSON string to specified file.
+
+If you have json string already, use file_obj.write(json_string).
+
+***
+
+Check out the code: https://raw.githubusercontent.com/milantracy/python/master/json_basic.py
+
+Reference: https://docs.python.org/2/library/json.html
