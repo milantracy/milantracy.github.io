@@ -1,3 +1,76 @@
 = JSON syntax
+:hp-tags: JSON
 
-*dsss*
+JSON stands for **J**ava**S**cript **O**bject **N**otation. JSON is a syntax for storing and exchanging data. JSON is an easier-to-use alternative to **XML**.
+
+***
+#### What is JSON?
+* JSON is a lightweight data-interchange format
+* JSON is *language independent*
+* JSON is *self-describing* and easy to understand
+* The JSON format is syntactically identical to the code for creating JavaScript objects.
+
+***
+#### Much _Like_ XML Because
+* Both JSON and XML is *self describing*.
+* Both JSON and XML is *hierarchical*
+* Both JSON and XML can be parsed and used by lots of programming languages
+* Both JSON and XML can be fetched with an *_XMLHttpRequest_*
+
+#### Much _Unlike_ XML Because
+* JSON doesn't use end tag
+* JSON is shorter
+* JSON is quicker to read and write
+* JSON can *use arrays*
+* XML has to be parsed with an *XML parser*, JSON can be parsed by a standard JavaScript function.
+
+***
+
+#### Why JSON?
+For AJAX applications, JSON is faster and easier than XML:
+
+Using *XML*
+
+* Fetch an XML document
+* Use the XML DOM to loop through the document
+* Extract values and store in variables
+
+Using *JSON*
+
+* Fetch a JSON string
+* JSON.Parse the JSON string
+
+
+***
+#### JSON Syntax Rules
+JSON syntax is derived from JavaScript object notation syntax:
+
+* Data is in *name/value* pairs
+* JSON names require *double quotes.*
+* Data is separated by commas
+* *Curly braces* hold *objects*
+
+`{"firstName":"Jing", "lastName":"Chen"}`
+
+* *Square brackets* hold *arrays*
+
+`[1,2,3,]`
+
+
+*JSON values* can be:
+
+* A number (integer or floating point)
+* A string (in double quotes)
+* A Boolean (true or false)
+* An array (in square brackets)
+* An object (in curly braces)
+* null
+
+***
+
+#### JSON Files
+* The file type for JSON files is ".json"
+* The MIME type for JSON text is "application/json"
+
+
+
