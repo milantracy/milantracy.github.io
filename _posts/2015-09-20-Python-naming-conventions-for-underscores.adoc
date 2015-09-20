@@ -1,4 +1,4 @@
-= Python naing conventions for underscores
+= Python naming conventions for underscores
 :hp-tags: Python
 
 
