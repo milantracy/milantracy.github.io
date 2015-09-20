@@ -9,9 +9,22 @@ Regular expressions are a powerful language for matching text patterns. This pag
 * a period matches any single character except newline '\n'
 * \t, \n, \r -- tab, newline, return
 * ^ = start, $ = end -- match the start or end of the string
+* \b matches the start or the end of the word
 * \w matches a letter or a digit or a underscore
 * \s matches a single whitespace
 * \d matches a digit
+* repetition
+- + 1 or more occurrences of the pattern to its left
+- * 0 or more occurrences of the pattern to its left
+- ? match 0 or 1 occurrences of the pattern to its left
+- {n} matches exactly n occurrences of the pattern to its left
+- {n,} matches at least n occurences of the pattern to its left
+- {n, m} matches n to m occurences of the pattern to its left
+- *lazy*, if above patterns are followed by ?, it means the pattern matches the string as small as possible.
+* *Square bracket*
+- square brackets can be used to indicate a set of chars
+- a period just means a literal dot
+- You can also use a dash to indicate a range, so [a-z] matches all lowercase letters. 
 
 In Python, the '*r*' at the start of the pattern string designates a python "raw" string which passes through backslashes without change which is very handy for regular expressions (Java needs this feature badly!).
 
