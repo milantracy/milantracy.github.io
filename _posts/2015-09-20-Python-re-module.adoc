@@ -145,3 +145,7 @@ Clear the regular expression cache.
 ***
 #### exception _re.error_
 Exception raised when a string passed to one of the functions here is *not a valid regular expression* or when some other error occurs during compilation or matching. It is never an error if a string contains no match for a pattern.
+
+***
+
+Reference: https://docs.python.org/2/library/re.html
