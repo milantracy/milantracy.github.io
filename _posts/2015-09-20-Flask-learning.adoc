@@ -92,6 +92,35 @@ The following converters exist:
 2. *_float_* accepts floating point value
 3. *_path_* accept values like the default but also accepts slashes
 
+##### Unique URLs / Redirection Behavior
+Flask’s URL rules are based on *Werkzeug’s* routing module. The idea behind that module is to ensure beautiful and unique URLs based on precedents laid down by Apache and earlier HTTP servers.
 
+Look at following code:
+```python
+@app.route('/projects/')
+def projects():
+    return 'The project page'
 
+@app.route('/about')
+def about():
+    return 'The about page'
+```
+1. In the first case, the canonical URL for the projects endpoint has a *trailing slash*. In that sense, it is similar to a folder on a file system. Accessing it without a trailing slash will cause Flask to *redirect* to the canonical URL with the trailing slash.
+
+2. In the second case, however, the URL is defined without a trailing slash, rather like the pathname of a file on UNIX-like systems. Accessing the URL with a trailing slash will produce a *404 “Not Found”* error.
+
+##### URL Building
+
+***
+
+#### HTTP Methods
+By default, a route only answers to *_GET_* requests, but that can be changed by providing the methods argument to the route() decorator. 
+```python
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        do_the_login()
+    else:
+        show_the_login_form()
+```
 
