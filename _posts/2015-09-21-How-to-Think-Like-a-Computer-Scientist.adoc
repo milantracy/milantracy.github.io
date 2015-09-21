@@ -18,3 +18,9 @@ We can describe programming as the process of *breaking a large, complex task* i
 ***
 #### Variables, expressions and statements
 Variable names can be *arbitrarily long*. They can contain both letters and numbers, but they have to begin with a letter.
+
+Every value has an *id*, which is a unique number related to where it is stored in the *memory* of the computer. The id of a variable is the id of the value to which it refers.
+
+***
+#### Functions
+A *module* is a file that contains a collection of related functions grouped together.
