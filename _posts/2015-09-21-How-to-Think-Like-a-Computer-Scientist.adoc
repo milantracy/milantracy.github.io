@@ -1,0 +1,19 @@
+= How to Think Like a Computer Scientist
+:hp-tags: Reading, Python
+
+***
+#### The way of the program
+A *program* is a sequence of instructions that specifies how to perform a com- putation.
+
+We can describe programming as the process of *breaking a large, complex task* into smaller and smaller subtasks until the subtasks are simple enough to be performed with one of these basic instructions.
+
+##### program error
+1. Syntax errors
+* *Syntax* refers to the structure of a program and the rules about that structure.
+2. Runtime errors
+* *Runtime* errors are also called *exceptions* because they usually indicate that something exceptional (and bad) has happened.
+3. Semantic errors
+* The third type of error is the *semantic* error. If there is a semantic error in your program, it will run successfully, in the sense that the computer will not generate any error messages, but it will not do the right thing. It will do something else. Specifically, *it will do what you told it to do*.
+
+***
+#### Variables, expressions and statements
