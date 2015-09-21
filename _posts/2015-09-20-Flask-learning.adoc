@@ -1,0 +1,43 @@
+= Flask learning
+:hp-tags: Python, Flask, Web
+
+The article introduces the basics and my learning process of flask framework.
+
+***
+#### Preparation
+* install _pip_
+- reference: https://pip.pypa.io/en/stable/installing/
+* isntall _virtualenv_
+- The more projects you have, the more likely it is that you will be working with different versions of Python itself, or at least different versions of Python libraries. Virtualenv does provide a clever way to keep different project environments *isolated*.
+- `sudo pip install virtualenv`
+- reference: https://virtualenv.pypa.io/en/latest/installation.html
+* configure virtual environment
+- `mkdir myproject`
+- `cd myproject`
+- `virtualenv venv`
+* activate virtual environment
+- . venv/bin/activate
+* install dependent libraries
+- `pip install falsk`
+
+***
+#### Minimal Flask Application
+```python
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run()
+```
+In above code:
+
+1. First we imported the *Flask* class. An instance of this class will be our *WSGI* (**W**eb **S**erver **G**ateway **I**nterface) application.
+2. Next we create an instance of this class. The first argument is the name of the application’s module or package. If you are using a single module (as in this example), you should use __name__ because depending on if it’s started as application or imported as module the name will be different ('__main__' versus the actual import name). This is needed so that Flask knows where to look for templates, static files, and so on.
+3. We then use the *_route_*() decorator to tell Flask what *URL* should trigger our function.
+4. The function is given a name which is also used to generate URLs for that particular function, and returns the message we want to display in the user’s browser.
+5. Finally we use the *_run_*() function to run the local server with our application. The if __name__ == '__main__': makes sure the server only runs if the script is executed directly from the Python interpreter and not used as an imported module.
+
