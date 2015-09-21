@@ -17,3 +17,4 @@ We can describe programming as the process of *breaking a large, complex task* i
 
 ***
 #### Variables, expressions and statements
+Variable names can be *arbitrarily long*. They can contain both letters and numbers, but they have to begin with a letter.
