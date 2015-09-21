@@ -41,3 +41,19 @@ In above code:
 4. The function is given a name which is also used to generate URLs for that particular function, and returns the message we want to display in the user’s browser.
 5. Finally we use the *_run_*() function to run the local server with our application. The if __name__ == '__main__': makes sure the server only runs if the script is executed directly from the Python interpreter and not used as an imported module.
 
+***
+#### Externally visible Server:
+
+If you have *debug disabled* or *trust the users* on your network, you can make the server publicly available simply by changing the call of the _run_() method to look like this:
+```python
+app.run(host='0.0.0.0')
+```
+
+***
+#### Debug Mode
+The _run_() method is nice to start a local development server, but you would have to restart it manually after each change to your code.
+If you enable debug support the server will reload itself on code changes, and it will also provide you with a helpful debugger if things go wrong. Enable debug by:
+```python
+app.run(debug=True)
+```
+
