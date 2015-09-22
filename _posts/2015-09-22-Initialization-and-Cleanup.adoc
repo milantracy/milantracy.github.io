@@ -1,0 +1,90 @@
+= Initialization & Cleanup
+:hp-tags: Java, Thinking in Java
+
+As the computer revolution progresses, “*unsafe*” programming has become one of the major culprits that makes programming expensive.
+
+Two of these safety issues are _initialization_ and _cleanup_.
+	
+- Cleanup is a special problem because it’s easy to forget about an element when you’re done with it, since it no longer concerns you. Thus, the resources used by that element are retained and you can easily end up running out of resources (most notably, memory).
+
+
+##### Guaranteed initialization with the constructor
+In Java, the class designer can guarantee initialization of every object by providing a constructor. If a class has a constructor, Java automatically calls that constructor when an object is created, before users can even get their hands on it. So initialization is guaranteed.
+
+The name of the constructor is the *same* as the _name of the class_. It makes sense that such a method will be called automatically during initialization.
+
+*Note* that the coding style of making the first letter of all methods lowercase does not apply to constructors, since the name of the constructor must match the name of the class exactly.
+
+The constructor is an unusual type of method because it has *_no return value_*. This is distinctly different from a void return value, in which the method returns nothing 
+
+```java
+class Rock {
+      Rock() { // This is the constructor
+        System.out.print("Rock ");
+      }
+}
+
+public class SimpleConstructor{ 
+     public static void main(String[] args) {
+    	for(int i = 0; i < 10; i++)
+        	new Rock();
+     }
+} /* 
+```
+Output:
+```
+Rock Rock Rock Rock Rock Rock Rock Rock Rock Rock
+```
+
+##### Method overloading
+
+_Method overloading_ is essential to allow the *same method name* to be used with different *argument types*.
+
+Each overloaded method must take a *unique list* of argument types. Even differences in the ordering of arguments are sufficient to distinguish two methods, although you don’t normally want to take this approach because it produces difficult-to-maintain code
+
+The JVM doesn’t consider *return type* when differentiating two method, the *method signature* is the only issue.
+
+* Overloading with primitives
+- A primitive can be automatically promoted from a smaller type to a larger one, and this can be slightly confusing in combination with overloading.
+- If an overloaded method is available that takes an int, it is used. 
+- In all other cases, if you have a data type that is smaller than the argument in the method, that data type is promoted.
+- If it doesn’t find an exact char match, it is promoted to int.
+
+
+##### Default constructors
+A default constructor (a.k.a. a “no-arg” constructor) is one without arguments that is used to create a “default object.” If you create a class that has no constructors, the compiler will *automatically* create a default constructor for you.
+
+##### The _this_ keyword
+The *this* keyword, which can be used only inside a non-static method—produces the reference to the object that the method has been called for.
+
+The this keyword is used only for those special cases in which you need to *explicitly* use the reference to the *current object*. For example, it’s often used in return statements when you want to return the reference to the current object.
+
+The *this* keyword is also useful for passing the current object to another method.
+
+##### Calling constructors from constructors
+
+When you write several constructors for a class, there are times when you’d like to call one constructor from another to avoid duplicating code. You can make such a call by using the *this* keyword.
+
+##### Hiding data field
+In the constructor, if the argument of the constructor hide the data field, you may use this to explicitly refer to the data field of the current object.
+
+
+### The meaning of _static_
+
+You cannot call non-static methods from inside static methods2 (although the reverse is possible), and you can call a static method for the class itself, without any object. 
+
+***
+
+### Cleanup: finalization and garbage collection
+
+Of course, Java has the garbage collector to reclaim the memory of objects that are no longer used. 
+
+Now consider an unusual case: Suppose your object allocates “special” memory without using new. The garbage collector only knows how to release memory allocated with new, so it won’t know how to release the object’s “special” memory. To handle this case, Java provides a method called *_finalize_*( ) that you can define for your class. 
+
+When the garbage collector is ready to release the storage used for your object, it will first call *_finalize_*( ), and only on the next garbage-collection pass will it reclaim the object’s memory.
+
+##### Garbage colletion is different from destructor in C++.
+* Objects may or may not be garbage collected in Java while C++ *always* destroy objects. 
+
+
+Garbage collection would happen when it nears the point of running out of the memory, if it nevers reach that point, the resource would be 
