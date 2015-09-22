@@ -1,1 +1,42 @@
 = Learn Python The Hard Way
+:hp-tags: Python, LPTHW
+
+***
+##### Exercise 1: A Good First Program
+* On the first line of each python script file, specify the python location starting with *#!
+```python
+#!/use/bin/python
+```
+* You may define the coding schema with:
+```python
+# -*- coding: utf-8 -*-
+```
+***
+##### Exercise 2: Comments
+* Use *** to comment one line
+* Three single quotes could comment multiple lines
+```python
+'''
+commnets here
+'''
+```
+***
+##### Exercise 4: Variables And Names
+* variables may contain letters and digits and underscore, but a variable name could only start with letter and unserscore.
+
+***
+##### Exercise 5: Print
+* concatenate a string with formatters like '\s' and '\d' and a set of variables, the variables will replace the corresponding formatter.
+```python
+my_name = 'Jing'
+print "Let's talk about %s." % my_name
+```
+* If you want multiple formats in your string to print multiple variables, you need to put them inside ( ) (parenthesis) separated by , (commas). 
+
+***
+##### Exercise 12: Prompt
+* *_raw_input_* () shows a prompt to a person so he knows what to type. 
+* Difference between _input_() and _raw_input_()
+- The _input_() function will try to convert things you enter as if they were Python code, but it has security problems so you should avoid it.
+
+
