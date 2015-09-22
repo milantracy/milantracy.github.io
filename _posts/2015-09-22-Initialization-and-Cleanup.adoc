@@ -87,4 +87,48 @@ When the garbage collector is ready to release the storage used for your object,
 * Objects may or may not be garbage collected in Java while C++ *always* destroy objects. 
 
 
-Garbage collection would happen when it nears the point of running out of the memory, if it nevers reach that point, the resource would be 
+Garbage collection would happen when it nears the point of running out of the memory, if it nevers reach that point, the resource would be returned to the OS. It is a good thing because garbage collection requires *overhead*.
+
+
+##### Garbage colletion is only about memory
+The garbage collector takes care of the release of all object memory regardless of how the object is created.
+
+It would seem that finalize( ) is in place because of the possibility that you’ll do something Clike by allocating memory using a mechanism other than the normal one in Java. This can happen primarily through native methods, which are a way to call non-Java code from Java.
+
+If you want some kind of cleanup performed other than storage release, you must still explicitly call an appropriate method in Java, which is the equivalent of a C++ destructor without the convenience.
+
+**You won’t use finalize( ) much**
+
+***
+
+### How a garbage collector works
+
+1. *Reference Counting*
+- Each object contains a reference count, every time a reference is attached to the object, increase the reference count, every time the reference goes out of scope or set to be null, decrese the refernece count.
+- Small and constant overhead, but it happens throughout the lifetime of the program.
+- Can't deal with circularly referenced objects.
+
+2. *Stop and copy*
+- This means that—for reasons that will become apparent—the program is first stopped Then, each live object is copied from one heap to another, leaving behind all the garbage. In addition, as the objects are copied into the new heap, they are packed end-to-end, thus compacting the new heap
+- requires two heaps
+- when there is no need to do garbege collection, stop and copy would still waste time and resource switching back and forth
+
+
+3. Swap and age
+
+***
+
+
+### JIT
+
+A JIT compiler partially or fully converts a program into *native machine code* so that it doesn’t need to be interpreted by the JVM and thus runs much faster. 
+
+1. JIT takes a little more time
+2. JIT increases the size of the executable which might cause page, which makes programs slow down.
+
+
+***
+
+
+### Member initialization
+
