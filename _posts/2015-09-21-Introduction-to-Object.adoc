@@ -4,9 +4,9 @@
 ##### The progress of abstraction
 Programming languages like C is an abstraction of assembly language, however,their primary abstraction still requires you to think in terms of the *structure of the computer* rather than the *structure of the problem* you are trying to solve. The mapping is difficult to write and expensive to maintain.
 
-If you model the problem rathen than model the machine. Every problem is algorithmic. In this way, the approach may be a good solution to the problem they are designed to solve, however, if the problem steps outside of the domain, those approaches become awkward.
+If you *model the problem* rathen than model the machine. Every problem is algorithmic. In this way, the approach may be a good solution to the problem they are designed to solve, however, if the problem steps outside of the domain, those approaches become awkward.
 
-The object-oriented approach goes a step further by providing tools for the programmer to represent elements in the problem space. We refer to the elements in the problem space and their representations in the solution space as “objects.”
+The object-oriented approach goes a step further by providing tools for the programmer to represent *elements in the problem space*. We refer to the elements in the problem space and their representations in the solution space as “objects.”
 
 Thus, OOP allows you to describe the problem in terms of the problem, rather than in terms of the computer where the solution will run.
 
@@ -16,5 +16,7 @@ An object has *state*, *behavior* and *identity*.
 
 ##### An object has an interface
 All objects, while being *unique*, are also part of a class of objects that have characteristics and behaviors in common.
+
+A programmer defines a class to fit a problem rather than being forced to use an existing data type that was designed to represent a unit of storage in a machine. 
 
 
