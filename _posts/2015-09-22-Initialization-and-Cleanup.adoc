@@ -140,10 +140,48 @@ A JIT compiler partially or fully converts a program into *native machine code* 
 1. JIT takes a little more time
 2. JIT increases the size of the executable which might cause page, which makes programs slow down.
 
+An alternative approach is *_lazy evaluation_*, which means that the code is not JIT compiled until necessary.
 
 ***
 
 
 ### Member initialization
+1. local variables are guaranted to be initialized by throwing error when compiled for uninitialization
+2. data fields are guaranteed to have an initial value.
 
 
+##### Order of initialization
+* Within a class, the order of initialization is determined by *the order that the variables are defined within the class*.
+* The variables are initialized *before any methods* can be called—even the constructor.
+
+##### static data initialization
+There’s only a single piece of storage for a static, regardless of how many objects are created.
+
+* *static* initialization occurs only if it’s necessary.
+* when the first *static* access occurs, static objects would be initialized
+* The order of initialization is *statics* first, if they haven’t already been initialized by a previous object creation, and then the *non-static* objects
+
+
+
+##### initialization summary
+1. As a class is loaded(creating a Class object,all of its *static* initializers are run. Thus, static initialization takes place only once, as the Class object is loaded for the first time.
+2. When it calls a static method or access a static field, the class would also be loaded which initializes static field first.
+3. Any initializations that occur at the point of field definition are executed.
+4. Constructors are executed.
+
+
+
+##### explicit _static_ initialization
+Java allows you to group other static initializations inside a special “static clause”(sometimes called a static block) in a class. It looks like this:
+
+```java
+//: initialization/Spoon.java
+    public class Spoon {
+      static int i;
+      static {
+i = 47; }
+} ///:~
+```
+It’s just the static keyword followed by a block of code. This code, like other static initializations, is executed *only once*: the first time you make an object of that class or the first time you access a static member of that class.
+
+There is also non-static block to initialize non-static field, that is helpful in inner class.
