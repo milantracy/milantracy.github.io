@@ -28,5 +28,21 @@ To further improve performance, in addition to deleting unreferenced objects, yo
 
 image::http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/gcslides/Slide4.png[]
 
+#### Generational Garbage Collection?
+As stated earlier, having to mark and compact all the objects in a JVM is inefficient. As more and more objects are allocated, the list of objects grows and grows leading to longer and longer garbage collection time. However, empirical analysis of applications has shown that *most objects are short lived*.
+
+The heap is broken up into smaller parts or generations.
+
+1. *Young Generation*
+* The Young Generation is where all *new objects are allocated and aged*. When the young generation fills up, this causes a *minor garbage collection*. Minor collections can be optimized assuming a high object mortality rate. A young generation full of dead objects is collected very quickly. Some surviving objects are aged and eventually move to the old generation.
+2. *Old or Tenured Generation*
+* The *Old Generation* is used to store *long surviving objects*. Typically, a threshold is set for young generation object and when that age is met, the object gets moved to the old generation. Eventually the old generation needs to be collected when the old generation fills up. This event is called a *major garbage collection*.
+3. *Permanent Generation*.
+* The *Permanent generation* contains metadata required by the JVM to describe the classes and methods used in the application. The permanent generation is populated by the JVM at runtime based on classes in use by the application. In addition, Java SE library classes and methods may be stored here.
 
 
+image::http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/gcslides/Slide5.png[]
+
+*Stop the World Event* - All *minor garbage collections* are "Stop the World" events. This means that all application threads are stopped until the operation completes. Minor garbage collections are always Stop the World events.
+
+*Major garbage collection* are also *Stop the World events*. Often a major collection is much slower because it *involves all live objects*. Major garbage collections should be minimized.
