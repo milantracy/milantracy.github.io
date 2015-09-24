@@ -48,7 +48,9 @@ image::http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/image
 
 *Major garbage collection* are also *Stop the World events*. Often a major collection is much slower because it *involves all live objects*. Major garbage collections should be minimized.
 
+ Also note, that the length of the Stop the World event for a major garbage collection is affected by the kind of garbage collector that is used for the old generation space.
 
+***
 
 ### Generational Garbage Collection
 
@@ -74,4 +76,63 @@ image::http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/image
 
 * After a minor GC, when aged objects reach a *certain age threshold* (8 in this example) they are promoted from young generation to old generation.
 
-image::http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/gcslides/Slide7.png
+image::http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/gcslides/Slide7.png[]
+
+* As minor GCs continue to occure objects will continue to be promoted to the old generation space.
+
+image::http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/gcslides/Slide10.png[]
+
+* So that pretty much covers the entire process with the young generation. Eventually, a *major GC* will be performed on the old generation which cleans up and compacts that space.
+
+image::http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/gcslides/Slide11.png[]
+
+
+***
+
+### Java Garbage Collector
+
+- -Xms : Sets the initial heap size for when the JVM starts.
+- -Xmx : Sets the maximum heap size.
+- -Xmn : Sets the size of the Young Generation.
+- -XX:PermSize	Sets the starting size of the Permanent Generation.
+- -XX:MaxPermSize	Sets the maximum size of the Permanent Generation
+
+#### The serial GC
+
+The *serial collector* is the default for client style machines in Java SE 5 and 6. With the serial collector, both minor and major garbage collections are done *serially* (using a single virtual CPU). In addition, it uses a mark-compact collection method. This method moves older memory to the beginning of the heap so that new memory allocations are made into a single continuous chunk of memory at the end of the heap. This compacting of memory makes it faster to allocate new chunks of memory to the heap.
+
+* Use Case
+- Do not have low pause time requirements
+- client-style machines
+
+Another popular use for the Serial GC is in environments where a *high number of JVMs are run on the same machine* (in some cases, more JVMs than available processors!). In such environments when a JVM does a garbage collection it is better to use only one processor to minimize the interference on the remaining JVMs, even if the garbage collection might last longer.
+
+```
+-XX:+UseSerialGC
+```
+
+#### The Parallel GC
+
+The parallel garbage collector uses *multiple threads* to perform the young genertion garbage collection. By default on a host with N CPUs, the parallel garbage collector uses N garbage collector threads in the collection. The number of garbage collector threads can be controlled with command-line options
+
+* Use Case
+- a lot of work need to be done
+- long pauses are acceptable
+
+The Parallel collector is also called a throughput collector. Since it can use multilple CPUs to speed up application throughput.
+
+```
+-XX:+UseParallelGC
+```
+the command only requires parallel GC for the minor GC
+
+#### The Concurrent Mark Sweep (CMS) Collector
+
+The Concurrent Mark Sweep (CMS) collector (also referred to as the concurrent low pause collector) collects the *tenured generation*. It attempts to minimize the pauses due to garbage collection by doing most of the garbage collection work concurrently with the application threads. Normally the concurrent low pause collector *does not copy or compact* the live objects. A garbage collection is done without moving the live objects. If fragmentation becomes a problem, allocate a larger heap.
+
+* Use Case
+- require low pause times
+- can share resources with the garbage collector.
+
+#### The G1 Garbage Collector
+The G1 collector is a *parallel*, *concurrent*, and *incrementally compacting* low-pause garbage collector that has quite a different layout from the other garbage collectors described previously.
