@@ -1,0 +1,12 @@
+= Aceess Control
+:hp-tags: Java, Thinking in Java
+
+Java provides access specifiers to allow the library creator to say what is available to the client programmer and what is not. The levels of access control from “most access” to “least access” are *public*, *protected*, *package access* (which has no keyword), and *private*.
+
+There’s still the question of how the components are bundled together into a cohesive library unit. This is controlled with the *package* keyword in Java, and the access specifiers are affected by whether a class is in the same package or in a separate package.
+
+***
+### package: the library unit
+A *package* contains a group of classes, organized together under a single _namespace_.
+
+When you create a source-code file for Java, it’s commonly called a *_compilation unit_*. Each compilation unit must have a name ending in .java, and inside the compilation unit there can be a public class that must have the same name as the file (including capitalization, but excluding the .java file name extension). There can be *only one public class* in each compilation unit; otherwise, the compiler will complain. If there are additional classes in that compilation unit, *they are hidden from the world outside that package* because they’re not public, and they comprise “support” classes for the main public class.
