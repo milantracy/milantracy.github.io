@@ -1,0 +1,7 @@
+= Spark Learning
+:hp-tags: Spark, Learning
+
+***
+
+### Chapater 1. What is Spark
+Apache Spark is a cluster computing platform designed to be _fast_ and _general-purpose_
