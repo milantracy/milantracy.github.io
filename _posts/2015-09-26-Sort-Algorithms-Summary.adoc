@@ -8,7 +8,7 @@ A sorting algorithm is said to be *stable* if two objects with equal keys appear
 ***
 
 ### Insertion Sort
-1. Basic Idea
+1. Basic idea
 * The array is divided into two parts, the first part is sorted starting with an *empty set*, the second part is identical to the original array
 * Every time choose an element from the unsorted part, inser the element into the sorted part.
 
@@ -35,6 +35,42 @@ public void insertionSort(int[] nums){
     for(;j > 0 && key < nums[j - 1]; j--)
       nums[j] = nums[j - 1];
     nums[j] = key;
+  }
+}
+```
+***
+
+### Shell Sort
+1. Basic idea
+* Choose a gap g  which is less than the length of the array, in this way, the array would be divided into g arrays
+* Perform insert sort on each group
+* After each round, decrease the gap
+* repeatedly run the above process until the gap equals to 1
+
+2. Algorithm Analysis
+* Time Complexity
+- Best case depends on the choice of gap
+- Worst case O(n log n)
+- Average case O(n log n)
+
+3. Stability
+There exitst exchanges of non-neighbor elements, so shell sort algorithm is *unstatble*.
+
+4. Code in Java
+```java
+public void shellSort(int[] nums){
+  if(nums == null || nums.length < 2)
+    return;
+  int gap = nums.length / 2;
+  while(gap > 0){
+     for(int i = gap; i < nums.length; i++){
+       int key = nums[i];
+       int j = i;
+       for(;j >= gap && nums[j - gap] > key; j -= gap)
+         nums[j] = nums[j - gap];
+       nums[j] = key;
+     }
+     gap /= 2;
   }
 }
 ```
