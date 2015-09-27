@@ -68,6 +68,24 @@ isinstance(n, int)
 
 
 
+#### Class Definition
+1. \___init___(self):
+* initializion method, like constructor in Java
+
+2. \___str___(self):
+* return the string representation of the object, like toString() method in Java
+
+3. operator overloading:
+* \___add(self, other)___:
+overload the add operator to change the definition of add operator to apply to object type
+
+Also, \___sub(self, other)___, \___mul(self, other)___, \___rmul(self, other)___, \___cmp___(self, other)
+
+#### Polymorphism
+
+A function can take arguments with different types is called *polymorphic*.
+
+If all of the operations inside the function can be applied to the type, the function can be applied to the type.
 
 
  
