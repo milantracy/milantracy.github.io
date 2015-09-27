@@ -47,3 +47,35 @@ If some files are in the _same directory_ and have _no explicit package name_. J
 * When you use the public keyword, it means that the member declaration that immediately follows *public* is available to everyone, in particular to the client programmer who uses the library. 
 
 3. Private access
+* The private keyword means that *no one* can access that member except the class that contains that member, inside methods of that class. Other classes in the same package cannot access private members, so it’s as if you’re even insulating the class against yourself. 
+* On the other hand, it’s not unlikely that a package might be created by several people collaborating together, so private allows you to freely change that member without concern that it will affect another class in the same package.
+* The *consistent use* of private is very important, especially where multithreading is concerned. 
+
+* Any method that you’re certain is only a “helper” method for that class can be made *private*, to ensure that you don’t accidentally use it elsewhere in the package and thus prohibit yourself from changing or removing the method. Making a method private guarantees that you retain this option.
+
+
+4. protected access
+* If you create a new package and inherit from a class in another package, the only members you have access to are the public members of the original package. (Of course, if you perform the inheritance in the same package, you can manipulate all the members that have package access.) Sometimes the creator of the base class would like to take a particular member and grant access to derived classes but not the world in general. That’s what protected does. protected also gives package access—that is, other classes in the same package may access protected elements.
+
+
+***
+
+### Interface and implementation
+
+Wrapping data and methods within classes in combination with implementation hiding is often called *encapsulation*.
+
+Access control puts boundaries within a data type for two important reasons:
+
+1. To establish what the client programmers can and can’t use without worrying users of the library would modify the internal mechanism.
+
+2. To *separate* the interface from the implementation. If the structure is used in a set of programs, but client programmers can’t do anything but send messages to the public interface, then you are free to change anything that’s not public (e.g., package access, protected, or private) without breaking client code.
+
+***
+
+### Class access
+
+1. Therecanbeonlyonepublicclasspercompilationunit(file).Theideaisthateach compilation unit has a single public interface represented by that public class. 
+
+2. The name of the *public* class must exactly match the name of the file containing the compilation unit, including capitalization.
+
+3. It is possible,though not typical,to have a compilation unit with no public class at all.  
