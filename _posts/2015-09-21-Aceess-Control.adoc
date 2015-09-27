@@ -10,3 +10,40 @@ There’s still the question of how the components are bundled together into a c
 A *package* contains a group of classes, organized together under a single _namespace_.
 
 When you create a source-code file for Java, it’s commonly called a *_compilation unit_*. Each compilation unit must have a name ending in .java, and inside the compilation unit there can be a public class that must have the same name as the file (including capitalization, but excluding the .java file name extension). There can be *only one public class* in each compilation unit; otherwise, the compiler will complain. If there are additional classes in that compilation unit, *they are hidden from the world outside that package* because they’re not public, and they comprise “support” classes for the main public class.
+
+When you compile a *.java* file, you get an output file for *_each class_* in the .java file.
+
+
+A _library_ is a group of these class files. Each source file usually has a public class and any number of non-public classes, so there’s one public component for each source file. If you want to say that all these components (each in its own separate .java and .class files) belong together, that’s where the package keyword comes in.
+
+If you use a package statement, it must appear as the *first non-comment* in the file. 
+
+By convention, the first part of the package name is the *reversed Internet domain name of the creator of the class*. Since Internet domain names are guaranteed to be unique, if you follow this convention, your package name will be unique and you’ll never have a name clash. 
+
+
+##### Collisions
+What happens if two libraries are imported via ‘*’ and they include the same names? 
+The compiler complains and forces you to be explicit.
+
+
+##### package caveat
+You implicitly specify a directory structure when you give the package a name. The package *_must_* live in the directory indicated by its name, which must be a directory that is searchable starting from the CLASSPATH.
+
+##### The default package
+If some files are in the _same directory_ and have _no explicit package name_. Java treats files like this as implicitly part of the “*default package*” for that directory, and thus they provide package access to all the other files in that directory.
+
+
+***
+### Java Access Specifier
+
+1. Package access
+* The default access has *no keyword*, but it is commonly referred to as *package access*.
+* It means that all the other classes in *the current package* have access to that member, but to all the classes *outside of this package*, the member appears to be *private*.
+* all the classes within a single compilation unit are automatically available to each other via package access.
+* Package access allows you to group *related classes* together in a package so that they can easily interact with each other. When you put classes together in a package, thus granting mutual access to their package-access members, you “own” the code in that package.
+
+
+2. Pubblic acess
+* When you use the public keyword, it means that the member declaration that immediately follows *public* is available to everyone, in particular to the client programmer who uses the library. 
+
+3. Private access
