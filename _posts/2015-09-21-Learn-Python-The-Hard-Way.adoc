@@ -19,6 +19,14 @@
 Every value has an *id*, which is a unique number related to where it is stored in the memory. The *id* of a variable is the id of the value the variable refers to.
 
 ***
+
+##### Flow of execution
+
+Execution always begins at the first statement of the program. Statements are executed one at a time in order from top to bottom.
+
+ Statements inside the function are not executed until the function is called. Is is like a detour in the flow of execution. Instead of going to the next statement, the flow jumps to the first line of the called function, executeds all statements there, and then comes back to pick up where it left off.
+ 
+***
 ##### Print
 * concatenate a string with formatters like '\s' and '\d' and a set of variables, the variables will replace the corresponding formatter.
 ```python
@@ -47,12 +55,21 @@ Reason for functions:
 
 2. Make program short by reducing repetitive code.
 
+* Variables and parameters are local
+- when you create a *local variable* inside a function, it only exists inside the function, and you cannot use it outside the function
 
-##### Flow of execution
+A function that returns value is called *fruitful function*
 
-Execution always begins at the first statement of the program. Statements are executed one at a time in order from top to bottom.
+* Before executes a function, we often to use build in function _isinstance_() to check type.
+```python
+isinstance(n, int)
+# the function returns true if n is an integer
+```
 
- Statements inside the function are not executed until the function is called. Is is like a detour in the flow of execution. Instead of going to the next statement, the flow jumps to the first line of the called function, executeds all statements there, and then comes back to pick up where it left off.
+
+
+
+
  
 
 
