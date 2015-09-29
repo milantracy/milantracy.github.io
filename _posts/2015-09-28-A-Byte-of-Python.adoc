@@ -11,23 +11,60 @@ We can specify a string using either _single quotes_ or _double quotes_, single 
 1. use _format()_ method in string
 * `'My name is {0}'.format('Jing')`
 - number is optional
-* `'My name is {name}'.format(name = 'Jing')`
+* `'My name is {name}, {gender}'.format(gender = 'male', name = 'Jing')`
+- the arguments should hava the same number, but not have to in the same order.
 
 2. use the format way like _print_ in C
 * 'My name is %s %s' % ('Jing', 'Chen')
 
 ##### Raw String
 
-If you need to specify some strings where no special processing such as escape sequences are handled, then what you need is to specify a raw string by prefixing r or R to the string.
+If you need to specify some strings where no special processing such as escape sequences are handled, then what you need is to specify a raw string by prefixing *r* or *R* to the string.
 
 Raw way is often used in describing the features of a regular expression.
 
 
 ##### Variables
 Naming rules:
-* Thefirstcharacteroftheidentifiermustbealetterofthealphabet(uppercaseASCII or lowercase ASCII or Unicode character) or an underscore ( _ ).
-* Therestoftheidentifiernamecanconsistofletters(uppercaseASCIIorlowercase ASCII or Unicode character), underscores ( _ ) or digits (0-9).
-* Case sensitive
+
+1. Thefirstcharacteroftheidentifiermustbealetterofthealphabet(uppercaseASCII or lowercase ASCII or Unicode character) or an underscore ( _ ).
+2. Therestoftheidentifiernamecanconsistofletters(uppercaseASCIIorlowercase ASCII or Unicode character), underscores ( _ ) or digits (0-9).
+3. Case sensitive
+
+##### local and global variable
+* local variable
+- When you declare variables inside a function definition, they are not related in any way to other variables with the same names used outside the function, which is a *local* variable.
+* global variable
+- It is impossible to assign a value to a variable defined outside a function without the *global* statement.
+- If you want to assign a value to a name defined at the top level of the program, you have to tell Python that the name is not local, but it is global.
+```python
+x = 50
+def func(): 
+  global x
+  print 'x is', x
+
+  x= 2
+  print 'Changed global x to', x
+
+func()
+print 'Value of x is', x
+```
+The output will be:
+```python
+x is 50
+Changed global x to 2
+Value of x is 2
+```
+
+##### Default Argument Values
+For some functions, you may want to make some parameters *optional* and use *default values* in case the user does not want to provide values for them. This is done with the help of default argument values. You can specify default argument values for parameters by appending to the parameter name in the function definition the assignment operator ( = ) followed by the default value.
+
+* Arguments must be assigned a value when being called if the parameters are not given a default value.
+* Only those parameters which are at the *end of the parameter list* can be given default argument values.
+* If you want to assign values to the variables, you don't have to specify them in the same order of the parameters list of the function definition
+* Variables without default values could also be assigned in the same way as the variables with default value.
+
 
 ##### Indentation
 Statements which go together must have the same *indentation*. Each such set of statements is called a *block*.
+
