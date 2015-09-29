@@ -59,11 +59,17 @@ Value of x is 2
 ##### Default Argument Values
 For some functions, you may want to make some parameters *optional* and use *default values* in case the user does not want to provide values for them. This is done with the help of default argument values. You can specify default argument values for parameters by appending to the parameter name in the function definition the assignment operator ( = ) followed by the default value.
 
-* Arguments must be assigned a value when being called if the parameters are not given a default value.
+* Argument must be assigned a value of it is given a default value in the function definition, which is *required* instead of *optional*.
 * Only those parameters which are at the *end of the parameter list* can be given default argument values.
-* If you want to assign values to the variables, you don't have to specify them in the same order of the parameters list of the function definition
-* Variables without default values could also be assigned in the same way as the variables with default value.
 
+##### Keyword argument
+If you have some functions with many parameters and you want to specify only some of them, then you can give values for such parameters by naming them - this is called *keyword arguments*
+
+We use the name (keyword) instead of the position to specify the arguments to the function.
+
+_advantages_:
+* we do not need to worry about the *order of the arguments*
+* we can give values to only those parameters to which we want to, provided that the other parameters have *default argument values*.
 
 ##### Indentation
 Statements which go together must have the same *indentation*. Each such set of statements is called a *block*.
