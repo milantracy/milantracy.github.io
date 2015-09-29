@@ -71,6 +71,28 @@ _advantages_:
 * we do not need to worry about the *order of the arguments*
 * we can give values to only those parameters to which we want to, provided that the other parameters have *default argument values*.
 
+##### variable length parameter
+Sometimes you might want to define a function that can take any number of parameters, i.e. variable number of arguments, this can be achieved by using the stars.
+```python
+def total(initial=5, *numbers, **keywords): 
+  count = initial
+  for number in numbers: 
+    count += number
+  for key in keywords: count += keywords[key]
+    return count
+
+print total(10, 1, 2, 3, vegetables=50, fruits=100)
+```
+When we declare a *_starred parameter_* such as *param , then all the positional arguments from that point till the end are collected as a tuple called 'param'.
+ 
+Similarly, when we declare a *double-starred parameter* such as **param, then all the _keyword arguments_ from that point till the end are collected as a dictionary called 'param'.
+
 ##### Indentation
 Statements which go together must have the same *indentation*. Each such set of statements is called a *block*.
+
+##### docstring
+A string on the first logical line of a function is the *docstring* for that function.
+
+
+The *convention* followed for a docstring is a multi-line string where the first line starts with a capital letter and ends with a dot. Then the second line is blank followed by any detailed explanation starting from the third line.
 
