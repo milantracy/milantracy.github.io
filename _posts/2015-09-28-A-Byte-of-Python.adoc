@@ -1,0 +1,33 @@
+= A Byte of Python
+:hp-tags: Python, basics
+
+##### Numbers
+Numbers are maily of two types, _int_ and _float_, there is no long type in Python, the integer can be an integer of any size
+
+##### String
+We can specify a string using either _single quotes_ or _double quotes_, single quotes and double quotes are the same in Python, we can specify multiple lines string using _triple quotes_. There is no *char* type in Python. And the string is also immutable in Python as Java.
+
+##### String format
+1. use _format()_ method in string
+* `'My name is {0}'.format('Jing')`
+- number is optional
+* `'My name is {name}'.format(name = 'Jing')`
+
+2. use the format way like _print_ in C
+* 'My name is %s %s' % ('Jing', 'Chen')
+
+##### Raw String
+
+If you need to specify some strings where no special processing such as escape sequences are handled, then what you need is to specify a raw string by prefixing r or R to the string.
+
+Raw way is often used in describing the features of a regular expression.
+
+
+##### Variables
+Naming rules:
+* Thefirstcharacteroftheidentifiermustbealetterofthealphabet(uppercaseASCII or lowercase ASCII or Unicode character) or an underscore ( _ ).
+* Therestoftheidentifiernamecanconsistofletters(uppercaseASCIIorlowercase ASCII or Unicode character), underscores ( _ ) or digits (0-9).
+* Case sensitive
+
+##### Indentation
+Statements which go together must have the same *indentation*. Each such set of statements is called a *block*.
