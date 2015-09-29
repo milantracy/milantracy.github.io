@@ -1,94 +1,18 @@
-= Learn Python The Hard Way
-:hp-tags: Python, LPTHW
+= Data Structures in Python
+:hp-tags: python, data structure
+
+There are four built-in data structures in Python - list, tuple, dictionary and set.
 
 ***
-##### A Good First Program
-* On the first line of each python script file, specify the python location starting with *#!
-```python
-#!/use/bin/python
-```
-* You may define the coding schema with:
-```python
-# -*- coding: utf-8 -*-
-```
-***
-
-##### Variables And Names
-* variables may contain letters and digits and underscore, but a variable name could only start with letter and unserscore.
-
-Every value has an *id*, which is a unique number related to where it is stored in the memory. The *id* of a variable is the id of the value the variable refers to.
-
-***
-
-##### Flow of execution
-
-Execution always begins at the first statement of the program. Statements are executed one at a time in order from top to bottom.
-
- Statements inside the function are not executed until the function is called. Is is like a detour in the flow of execution. Instead of going to the next statement, the flow jumps to the first line of the called function, executeds all statements there, and then comes back to pick up where it left off.
- 
-***
-##### Print
-* concatenate a string with formatters like '\s' and '\d' and a set of variables, the variables will replace the corresponding formatter.
-```python
-my_name = 'Jing'
-print "Let's talk about %s." % my_name
-```
-* If you want multiple formats in your string to print multiple variables, you need to put them inside ( ) (parenthesis) separated by , (commas). 
-
-***
-##### Prompt
-* *_raw_input_* () shows a prompt to a person so he knows what to type. 
-* Difference between _input_() and _raw_input_()
-- The _input_() function will try to convert things you enter as if they were Python code, but it has security problems so you should avoid it.
+### List
+A _list_ is a data structure that holds an ordered collection of items
 
 
-##### Function
+### Sequence
+Lists, tuples and strings are examples of *sequences*, but what are sequences and what is so special about them?
 
-The syntax for a function definition is
-```python
-def NAME(List of PARAMETERS):
-  STATEMENTS
-```
-Reason for functions:
-
-1. Creating a function gives you an opportunity to name a group of statements. Functions can simplify a program by hiding a complex computation behind a single command.
-
-2. Make program short by reducing repetitive code.
-
-* Variables and parameters are local
-- when you create a *local variable* inside a function, it only exists inside the function, and you cannot use it outside the function
-
-A function that returns value is called *fruitful function*
-
-* Before executes a function, we often to use build in function _isinstance_() to check type.
-```python
-isinstance(n, int)
-# the function returns true if n is an integer
-```
+The major features are *membership tests*, (i.e. the in and not in expressions) and *indexing operations*, which allow us to fetch a particular item in the sequence directly.
 
 
-
-#### Class Definition
-1. \___init___(self):
-* initializion method, like constructor in Java
-
-2. \___str___(self):
-* return the string representation of the object, like toString() method in Java
-
-3. operator overloading:
-* \___add(self, other)___:
-overload the add operator to change the definition of add operator to apply to object type
-
-Also, \___sub(self, other)___, \___mul(self, other)___, \___rmul(self, other)___, \___cmp___(self, other)
-
-#### Polymorphism
-
-A function can take arguments with different types is called *polymorphic*.
-
-If all of the operations inside the function can be applied to the type, the function can be applied to the type.
-
-
- 
-
-
-
+### Set
+*Sets* are *unordered collections of simple objects*. These are used when the existence of an object in a collection is more important than the order or how many times it occurs.
