@@ -1,0 +1,19 @@
+= Multithreading and Parallel Programming
+:hp-tags: Java, Multithread
+
+Multithreading enables multiple tasks in a program to be executed concurrently.
+One of the powerful features of Java is its built-in support for _multithreading_—the concurrent running of multiple tasks within a program.
+
+### Concept
+A program may consist of many tasks that can run concurrently. 
+A thread is the _flow of execution_, from beginning to end, of a task.
+
+In _single-processor_ systems, the multiple threads share CPU time, known as _time sharing_, and the operating system is responsible for scheduling and allocating resources to them.
+
+
+When your program executes as an application, the Java interpreter starts a thread for the *main* method. You can create additional threads to run concurrent tasks in the program. 
+
+In Java, each task is an instance of the *Runnable* interface, also called a runnable object. A *thread* is essentially an object that facilitates the execution of a task.
+
+### Creating Tasks and Threads
+A task class must implement the *Runnable* interface. A task must be run from a thread.
