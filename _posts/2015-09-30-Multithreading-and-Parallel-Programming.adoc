@@ -20,10 +20,12 @@ A task class must implement the *Runnable* interface. A task must be run from a 
 
 Runnalble interface only contains a method, *public abstract _run_()*.
 A task must be executed in a thread. The *Thread* class contains the constructors for creating threads and many useful methods for controlling threads. 
-Invoke the start() method to tell the JVM that the thread is ready to run
-The JVM will execute the task by invoking the task’s run() method.
+Invoke the *_start_*() method to tell the JVM that the thread is ready to run
+The JVM will execute the task by invoking the task’s *_run_*() method.
 
 
 ### The Thread Class
 The *Thread* class contains the constructors for creating threads for tasks and the
 methods for controlling threads.
+
+Since the *_Thread_* class implements _Runnable_, you could define a class that extends Thread and implements the run method, and then create an object from the class and invoke its start method in a client program to start the thread
