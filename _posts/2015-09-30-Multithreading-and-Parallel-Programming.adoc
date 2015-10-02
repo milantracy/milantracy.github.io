@@ -28,4 +28,35 @@ The JVM will execute the task by invoking the task’s *_run_*() method.
 The *Thread* class contains the constructors for creating threads for tasks and the
 methods for controlling threads.
 
-Since the *_Thread_* class implements _Runnable_, you could define a class that extends Thread and implements the run method, and then create an object from the class and invoke its start method in a client program to start the thread
+ Since the *_Thread_* class implements _Runnable_, you could define a class that extends Thread and implements the run method, and then create an object from the class and invoke its start method in a client program to start the thread
+ 
+* *_yield_* () will release CPU time to other thread.
+* *_sleep_* (long millis) method puts the thread to sleep for the specified time in mil- liseconds to allow other threads to execute. The method may throw a checked excetpion named *InterruptedException*
+
+* *_join_* () method to force one thread to wait for another thread to finish
+```java
+Thread threa4 = new Thread(new Task());
+for(int i = 0; i < 100; i++){
+	if(i == 50) thread4.join();
+    System.out.print(i);
+}
+```
+In this case, number 50 to 99 will be printed *after thread 4 is finished*.
+	
+
+
+### Priority
+
+Java assigns every thread a priority. By default, a thread inherits the priority of the thread that spawned it.
+
+* *Priorities* are numbers ranging from 1 to 10. 
+* The Thread class has the int constants *MIN_PRIORITY*, *NORM_PRIORITY*, and *MAX_PRIORITY*, representing 1, 5, and 10, respectively. 
+* The priority of the *main* thread is *Thread.NORM_PRIORITY*.
+* The JVM always picks the currently runnable thread with the *highest priority*.
+
+You can increase or decrease the priority of any thread by using the *_setPriority_* method
+
+you can get the thread’s priority by using the *_getPriority_* method.
+
+
+A *lower- priority* thread can run only when no *higher-priority* threads are running. If all runnable threads have equal priorities, each is assigned an equal portion of the CPU time in a *circular queue*. This is called *_round-robin_* scheduling.
