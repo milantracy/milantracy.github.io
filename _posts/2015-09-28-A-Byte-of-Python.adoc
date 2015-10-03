@@ -144,6 +144,13 @@ Packages are just folders of modules with a special init.py file that indicates 
 ***
 ### Class
 
+* Field
+- instacne variables belongs to each instance of the calss
+- class variable belongs to the class
+
+* Method
+- Class methods have only one specific difference from ordinary functions - they must have an extra first name that has to be added to the beginning of the parameter list, but you do not give a value for this parameter when you call the method, Python will provide it. This particular variable refers to the object itself, and by convention, it is given the name *self* .
+
 ##### Class Definition
 1. \___init___(self):
 * initializion method, like constructor in Java
