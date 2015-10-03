@@ -1,0 +1,24 @@
+= Install VirtualBox Guest Additions Command Line
+:hp-tags: virtualbox, guest additions
+
+First downloaded the vbox guest addition. Replace X.X.X with your version. You can find that by going to the about within your virtual box install.
+```
+wget http://download.virtualbox.org/virtualbox/X.X.X/VBoxGuestAdditions_X.X.X.iso
+```
+
+Then install the packages that is requires.
+
+```
+sudo apt-get install dkms gcc
+```
+
+Then mount.
+```
+sudo mount -o loop VBoxGuestAdditions_4.2.16.iso /mnt
+cd /mnt 
+```
+and Install
+```
+sudo ./VBoxLinuxAdditions.run
+```
+Finnaly restart your vm.
