@@ -66,3 +66,11 @@ you can get the thread’s priority by using the *_getPriority_* method.
 
 
 A *lower- priority* thread can run only when no *higher-priority* threads are running. If all runnable threads have equal priorities, each is assigned an equal portion of the CPU time in a *circular queue*. This is called *_round-robin_* scheduling.
+
+***
+### Thraad Pool
+A *thread pool* can be used to execute tasks efficiently.
+
+Starting a new thread for each task could limit _throughput_ and cause _poor performance_. Using a thread pool is an ideal way to manage the number of tasks executing concurrently. Java provides the *Executor* interface for executing tasks in a thread pool and the *ExecutorService* interface for managing and controlling tasks. ExecutorService is a subinterface of Executor.
+
+
