@@ -23,6 +23,9 @@ A task must be executed in a thread. The *Thread* class contains the constructor
 Invoke the *_start_*() method to tell the JVM that the thread is ready to run
 The JVM will execute the task by invoking the task’s *_run_*() method.
 
+### Thread schedule
+
+However, call *_start_* () doesn't mean that *_run_* () method would be called immeadiately, it means that the thread is available to *thread scheduler*, the order of execution depends on scheduler when the scheduler choose the thread to run among threads with the same priority. Only when the thread is choosen to run would the *_run_* () function be called.
 
 ### The Thread Class
 The *Thread* class contains the constructors for creating threads for tasks and the
@@ -34,6 +37,9 @@ methods for controlling threads.
 * *_sleep_* (long millis) method puts the thread to sleep for the specified time in mil- liseconds to allow other threads to execute. The method may throw a checked excetpion named *InterruptedException*
 
 * *_join_* () method to force one thread to wait for another thread to finish
+- _join_ () just forces the thread that start threads to wait until all threads that call join finish.
+- the parent thread would stop at the line that calls _join_ (), waiting for the thread that calls join to finish, resume the parent thread.
+- in one thread, all threads start in the thread would run in parallel, calling the join only blocks the thread that started them.
 ```java
 Thread threa4 = new Thread(new Task());
 for(int i = 0; i < 100; i++){
