@@ -145,15 +145,25 @@ Packages are just folders of modules with a special init.py file that indicates 
 ### Class
 
 * Field
-- instacne variables belongs to each instance of the calss
-- class variable belongs to the class
 
+The data part, i.e. _fields_, are nothing but ordinary variables that are bound to the *namespaces* of the classes and objects.
+
+1. instacne variables belongs to each instance of the calss
+2. class variable belongs to the class
+- are shared - they can be accessed by all instances of that class. There is only one copy of the class variable and when any one object makes a change to a class variable, that change will be seen by all the other instances.
+ 
+
+
+***
 * Method
-- Class methods have only one specific difference from ordinary functions - they must have an extra first name that has to be added to the beginning of the parameter list, but you do not give a value for this parameter when you call the method, Python will provide it. This particular variable refers to the object itself, and by convention, it is given the name *self* .
+- Class methods have only one specific difference from ordinary functions - they must have an extra first name that has to be added to the beginning of the parameter list, but you do not give a value for this parameter when you call the method, Python will provide it. This particular variable refers to the object itself, and by convention, it is given the name *self* (You can give *any name* for this parameter, it is strongly recommended that you use the name *self*).
+
+ The *self* in Python is equivalent to the *this* pointer in C++ and the *this* reference in Java.
 
 ##### Class Definition
 1. \___init___(self):
 * initializion method, like constructor in Java
+* The init method is run as soon as an object of a class is *instantiated*. The method is useful to do any *initialization* you want to do with your object.
 
 2. \___str___(self):
 * return the string representation of the object, like toString() method in Java
