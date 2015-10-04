@@ -149,8 +149,9 @@ Packages are just folders of modules with a special init.py file that indicates 
 The data part, i.e. _fields_, are nothing but ordinary variables that are bound to the *namespaces* of the classes and objects.
 
 1. instacne variables belongs to each instance of the calss
+- are owned by each *individual object/instance* of the class. In this case, each object has its *own copy* of the field
 2. class variable belongs to the class
-- are shared - they can be accessed by all instances of that class. There is only one copy of the class variable and when any one object makes a change to a class variable, that change will be seen by all the other instances.
+- class variables are shared - they can be accessed by all instances of that class. There is *only one copy* of the class variable and when any one object makes a change to a class variable, that change will be seen by all the other instances.
  
 
 
@@ -159,6 +160,11 @@ The data part, i.e. _fields_, are nothing but ordinary variables that are bound 
 - Class methods have only one specific difference from ordinary functions - they must have an extra first name that has to be added to the beginning of the parameter list, but you do not give a value for this parameter when you call the method, Python will provide it. This particular variable refers to the object itself, and by convention, it is given the name *self* (You can give *any name* for this parameter, it is strongly recommended that you use the name *self*).
 
  The *self* in Python is equivalent to the *this* pointer in C++ and the *this* reference in Java.
+ 
+***
+
+All class members (including the field members) are *public* and all the methods are *virtual* in Python.
+
 
 ##### Class Definition
 1. \___init___(self):
@@ -174,8 +180,28 @@ overload the add operator to change the definition of add operator to apply to o
 
 Also, \___sub(self, other)___, \___mul(self, other)___, \___rmul(self, other)___, \___cmp___(self, other)
 
+### Inheritance
+The derived class could reuse the code of the base class.
+Python does not automatically call the constructor of the base class, you have to explicitly call it yourself.
+
+ Python allows multiple inheritance.
+
+Inside your class constructor:
+```python
+super(derive_class, self).__init__()
+```
+or
+```python
+derive_class.__init__()
+```
+
+
+
 #### Polymorphism
 
-A function can take arguments with different types is called *polymorphic*.
+A function can take arguments with different types is called *polymorphic*. Polymorphism also means that derived classes could be used by anywhere base class is used.
 
 If all of the operations inside the function can be applied to the type, the function can be applied to the type.
+
+### Method Binding
+Python always starts looking for methods in the *actual type*, if it couldn't  find the method, it starts looking for the methods in its base classes one by one in the order they are specified in the tuple of the class definition.
