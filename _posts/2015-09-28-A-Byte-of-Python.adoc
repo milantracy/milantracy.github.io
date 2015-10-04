@@ -209,6 +209,28 @@ Python always starts looking for methods in the *actual type*, if it couldn't  f
 
 ***
 
+### Errors
+* Customer errors should inheritate *Exception* class
+* throw a exception by keyword *raise*
+```python
+raise Errors
+```
+* use *try...except* to detect exception, you can also have an *else* clause associated with a try..except block. The
+else clause is executed if no exception occurs.
+```
+try:
+  text = raw_input('Enter something --> ')
+except EOFError:
+  print 'Why did you do an EOF on me?'
+except KeyboardInterrupt:
+  print 'You cancelled the operation.'
+else:
+  print 'You entered {}'.format(text)
+```
+* statements under keyword *finally* will always run no matter whether an error happens or not.
+
+***
+
 ## Libraries
 
 ### pickle
@@ -217,4 +239,5 @@ Python provides a standard module called *pickle* using which you can store any 
 
 1. pickle.dump(file, python_object)
 * The statement would store python_object into file.
-2. pickle.loads
+2. pickle.loads(file)
+* The statement would read the file and transfer the content to python object.
