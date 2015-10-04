@@ -203,5 +203,18 @@ A function can take arguments with different types is called *polymorphic*. Poly
 
 If all of the operations inside the function can be applied to the type, the function can be applied to the type.
 
-### Method Binding
+#### Method Binding
 Python always starts looking for methods in the *actual type*, if it couldn't  find the method, it starts looking for the methods in its base classes one by one in the order they are specified in the tuple of the class definition.
+
+
+***
+
+## Libraries
+
+### pickle
+
+Python provides a standard module called *pickle* using which you can store any plain Python object in a file and then get it back later. This is called storing the object *persistently*.
+
+1. pickle.dump(file, python_object)
+* The statement would store python_object into file.
+2. pickle.loads
