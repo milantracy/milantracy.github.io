@@ -180,6 +180,9 @@ overload the add operator to change the definition of add operator to apply to o
 
 Also, \___sub(self, other)___, \___mul(self, other)___, \___rmul(self, other)___, \___cmp___(self, other)
 
+
+https://docs.python.org/2/reference/datamodel.html#special-method-names
+
 ### Inheritance
 The derived class could reuse the code of the base class.
 Python does not automatically call the constructor of the base class, you have to explicitly call it yourself.
