@@ -28,15 +28,56 @@ result shouldBe 3       // cannot customize equality, so fastest to compile, no 
 ***
 #### Val and Var
 
-_Immutable_ variables are declared with the keyword `*val*`:
+* _Immutable_ variables are declared with the keyword `*val*`.
 ```scala
 val age:Int = 22
 ```
 As it has been declared as a val, age cannot be reassigned to a new value, However, age can be declared age as a `val`. Any attempt to do will result in a _reassignment to val_ *error*.
 
-Mutable variables are declared with the keyword `*var*`. 
+* Mutable variables are declared with the keyword `*var*`. 
 ```scala
 var age:Int = 22
 age = 35
 ```
 Unlike val, `*var*` can be reassigned to different values or point to different objects. But they have to be initialised at the time of declaration.
+
+
+* Scala’s ability to figure out types you leave off, which is *_type inference_*
+```scala
+val msg = "Hello, world!"
+```
+In this case, because you initialized msg with a string literal, Scala inferred the type of msg to be _String_.
+
+When the Scala interpreter (or compiler) can infer types, it is often best to let it do so rather than fill the code with unnecessary, explicit type annotations. 
+
+In contrast to Java, where you specify a variable’s type *before its name*, in Scala you specify a variable’s type *after its name, separated by a colon*. For example:
+
+
+#### Function
+```scala
+def max(x: Int, y: Int): Int = {
+  if (x > y) 
+  	x
+  else 
+  	y 
+}
+```
+* Function definitions start with *_def_*.
+* The function’s name, in this case max, is followed by a *comma-separated* list of parameters in parentheses.
+* A type annotation must follow every function parameter, preceded by a colon, because the Scala compiler does not infer function parameter types.
+
+
+#### Class
+*Classes* in Scala are _static_ templates that can be instantiated into many objects at runtime.
+
+```scala
+class Point(xc: Int, yc: Int) {
+  var x: Int = xc
+  var y: Int = yc
+  def move(dx: Int, dy: Int) {
+    x = x + dx
+    y = y + dy
+  }
+  override def toString(): String = "(" + x + ", " + y + ")";
+}
+```
