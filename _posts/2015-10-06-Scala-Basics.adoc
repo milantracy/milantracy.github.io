@@ -1,0 +1,42 @@
+= Scala Basics
+:hp-tags: Scala
+
+***
+#### Assert
+ScalaTest makes three *assertions* available by default in any style trait. You can use:
+
+* `*assert*` for general assertions;
+- If the passed expression is *true*, assert will return normally. If *false*, Scala's assert will complete abruptly with an *AssertionError*.
+```scala
+val left = 2
+val right = 1
+assert(left == right)
+```
+* assertResult to differentiate expected from actual values;
+* intercept to ensure a bit of code throws an expected exception.
+
+
+ScalaTest provides a domain specific language (DSL) for expressing assertions in tests using the word `*should*`. ScalaTest matchers provides five different ways to check _equality_, each designed to address a different need.
+```scala
+result should equal (3) // can customize equality
+result should === (3)   // can customize equality and enforce type constraints
+result should be (3)    // cannot customize equality, so fastest to compile
+result shouldEqual 3    // can customize equality, no parentheses required
+result shouldBe 3       // cannot customize equality, so fastest to compile, no parentheses required
+```
+
+***
+#### Val and Var
+
+_Immutable_ variables are declared with the keyword `*val*`:
+```scala
+val age:Int = 22
+```
+As it has been declared as a val, age cannot be reassigned to a new value, However, age can be declared age as a `val`. Any attempt to do will result in a _reassignment to val_ *error*.
+
+Mutable variables are declared with the keyword `*var*`. 
+```scala
+var age:Int = 22
+age = 35
+```
+Unlike val, `*var*` can be reassigned to different values or point to different objects. But they have to be initialised at the time of declaration.
