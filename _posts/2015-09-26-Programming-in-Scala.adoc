@@ -71,3 +71,10 @@ def max(x: Int, y: Int): Int = {
 * The function’s name, in this case max, is followed by a *comma-separated* list of parameters in parentheses.
 * A type annotation must follow every function *parameter*, preceded by a colon, because the Scala compiler does not infer function parameter types.
 * Following the function’s result type is an *equals sign* and pair of *curly braces* that contain the body of the function.
+* The *return type* of a method can be inferred, unless the method is *_recursive_*, in which case it must be specified explicitly.
+* You can leave off parens on functions with _no arguments_.
+```scala
+def three() = 1 + 2
+three()
+three
+```
