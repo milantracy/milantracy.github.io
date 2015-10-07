@@ -9,7 +9,7 @@ In addition to being a pure object-oriented language, Scala is also a full-blown
 
 Functional programming is guided by two main ideas.
 
-1. The first idea is that functions are *first-class values*. 
+1. The first idea is that *functions* are *first-class values*. 
 * In a functional language, a function is a value of the same status as an integer or a string. 
 * You can pass functions as arguments to other functions, return them as results from functions, or store them in variables.
 * You can also define a function inside another function, just as you can define an integer value inside a function. 
@@ -23,21 +23,51 @@ Functional programming is guided by two main ideas.
 #### Why Scala
 In fact, almost all Scala code makes heavy use of Java libraries, often without programmers being aware of this fact.
 
-* Scala’s _Ints_ are represented as Java primitive integers of type _int_ 
-* _Floats_ are represented as _float_
-* _Booleans_ as _boolean_
-* Scala arrays are mapped to Java _arrays_. 
+* primitive type would refer to its corresponding wrapper type
+* Scala arrays are mapped to Java _Arrays_. 
 * Scala also re-uses many of the standard Java library types including _String_ and _Throwable_
 
 Scala programs compile to *JVM bytecodes*. Their run-time performance is usually on par with Java programs.
 Scala code can all Java methods, access Java field, Inherit from Java classes, and implement Java interface.
 
+
+*Expressive*
+
+* First-class functions
+* Closures
+
+*Concise*
+
+* Type inference
+* Literal syntax for function creation
+
+*Java interoperability*
+
+* Can reuse java libraries
+* Can reuse java tools
+* No performance penalty
+
 ***
 
 ### First Step in Scala
 
-##### variables
+#### Variables
 Scala has two kinds of variables, vals and vars.
-1. A *val* is similar to a final variable in Java. Once initialized, a val can never be reassigned.
+
+1. A *val* is similar to a final variable in Java. Once initialized, a val can *never* be _reassigned_.
 2. A *var*, by contrast, is similar to a non-final variable in Java. A var can be reassigned throughout its lifetime. 
 
+
+#### Function
+```scala
+def max(x: Int, y: Int): Int = {
+  if (x > y) 
+  	x
+  else 
+  	y 
+}
+```
+* Function definitions start with *_def_*.
+* The function’s name, in this case max, is followed by a *comma-separated* list of parameters in parentheses.
+* A type annotation must follow every function *parameter*, preceded by a colon, because the Scala compiler does not infer function parameter types.
+* Following the function’s result type is an *equals sign* and pair of *curly braces* that contain the body of the function.
