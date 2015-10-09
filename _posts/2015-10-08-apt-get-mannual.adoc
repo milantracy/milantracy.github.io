@@ -1,0 +1,77 @@
+= apt-get mannual
+:hp-tags: Ubuntu, APT
+
+***
+#### Synopsis
+apt-get [options] [-o config=string] [-c=cfgfile] command [pkg]
+
+***
+#### Commands
+Unless the *-h*, or *--help* option is given, one of the commands below must be present.
+
+* *update*
+
+Used to resynchronize the package index files from their sources. The indexes of available packages are fetched from the location(s) specified in */etc/apt/sources.list*. An update should always be performed before an upgrade or dist-upgrade.
+
+The index files would be stored at */var/lib/apt/lists*. Every time we try to install a package, the local index file would be compared with source to indicate whether it is installed or upgradable.
+
+* *upgrade*
+
+Used to install the newest versions of all packages currently installed on the system from the sources enumerated in */etc/apt/sources.list*.
+
+* *dist-upgrade*
+
+In addition to performing the function of upgrade, this option also intelligently handles changing *dependencies* with new versions of packages; apt-get has a "smart" conflict resolution system, and it will attempt to upgrade the most important packages at the expense of less important ones, if necessary.
+
+* *remove* _pkg_(s)
+
+Identical to install except that packages are removed instead of installed. If a plus sign (+) is appended to the package name (with no intervening space), the identified package will be installed instead of removed.
+
+* *check*
+
+Diagnostic tool; it updates the package cache and checks for broken dependencies.
+
+* *clean*
+
+Clears out the *local* repository of retrieved package files. It removes everything but the lock file from /var/cache/apt/archives/ and /var/cache/apt/archives/partial/.
+
+* *source* _source_pkg_
+
+Causes apt-get to fetch source packages. APT will examine the available packages to decide which source package to fetch. It will then find and download into the current directory the newest available version of that source package. 
+
+
+
+#### Options
+All command-line options may be set using the configuration file, the descriptions indicate the *configuration* option to set. For boolean options you can override the config file by using something like -f-, --no-f, -f=no or several other variations.
+
+
+
+* -*d*, --download-only
+Download only; package files are only retrieved, not unpacked or installed.
+
+
+#### Files
+
+* /etc/apt/sources.list
+- Locations to fetch packages from.
+
+* /etc/apt/apt.conf
+- APT configuration file.
+
+* /etc/apt/apt.conf.d/
+- APT configuration file fragments.
+
+* /etc/apt/preferences
+- Version preferences file. This is where you would specify "pinning", i.e. a preference to get certain packages from a separate source or from a different version of a distribution.
+
+* /var/cache/apt/archives/
+- Storage area for retrieved package files.
+
+* /var/cache/apt/archives/partial/
+- Storage area for package files in transit.
+
+* /var/lib/apt/lists/
+- Storage area for state information for each package resource specified in sources.list(5).
+
+* /var/lib/apt/lists/partial/
+- Storage area for state information in transit.
