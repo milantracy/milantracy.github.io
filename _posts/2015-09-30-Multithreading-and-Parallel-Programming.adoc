@@ -33,6 +33,8 @@ methods for controlling threads.
 
  Since the *_Thread_* class implements _Runnable_, you could define a class that extends Thread and implements the run method, and then create an object from the class and invoke its start method in a client program to start the thread
  
+It mixes the task and the mechanism of running the task. Separating the task from the thread is a preferred design.
+ 
 * *_yield_* () will release CPU time to other thread.
 * *_sleep_* (long millis) method puts the thread to sleep for the specified time in mil- liseconds to allow other threads to execute. The method may throw a checked excetpion named *InterruptedException*
 
@@ -65,10 +67,10 @@ You can increase or decrease the priority of any thread by using the *_setPriori
 you can get the thread’s priority by using the *_getPriority_* method.
 
 
-A *lower- priority* thread can run only when no *higher-priority* threads are running. If all runnable threads have equal priorities, each is assigned an equal portion of the CPU time in a *circular queue*. This is called *_round-robin_* scheduling.
+A *lower-priority* thread can run only when no *higher-priority* threads are running. If all runnable threads have equal priorities, each is assigned an equal portion of the CPU time in a *circular queue*. This is called *_round-robin_* scheduling.
 
 ***
-### Thraad Pool
+### Thread Pool
 A *thread pool* can be used to execute tasks efficiently.
 
 Starting a new thread for each task could limit _throughput_ and cause _poor performance_. Using a thread pool is an ideal way to manage the number of tasks executing concurrently. Java provides the *Executor* interface for executing tasks in a thread pool and the *ExecutorService* interface for managing and controlling tasks. ExecutorService is a subinterface of Executor.
