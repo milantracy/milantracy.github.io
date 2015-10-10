@@ -1,7 +1,31 @@
-= Spark Learning
-:hp-tags: Spark, Learning
+= OS review
+:hp-tags: Operating System, Reviews
+
+In any multiprogramming system, the *CPU* switches from process to process quickly, running each for tens or hundreds of milliseconds. While, strictly speaking, at any one instant the CPU is running only one process, in the course of 1 second it may work on several of them, giving the _illusion_ of *parallelism*.
 
 ***
 
-### Chapater 1. What is Spark
-Apache Spark is a cluster computing platform designed to be _fast_ and _general-purpose_
+### Process
+
+A process is just an *instance of an executing program*, including program code and the current values of the program counter, registers, and variables. Conceptually, each process has its own *virtual CPU*.
+
+There is only one *physical program counter*, so when each process runs, its *logical program counter* is loaded into the real program counter. When it is finished (for the time being), the physical program counter is saved in the process’ stored logical program counter in memory.
+
+In most processors, the *program counter* is incremented after fetching an instruction, and holds the memory address of ("points to") the next instruction that would be executed. It is a *register* physically.
+
+* Difference between *process* and *program*
+- *Program* is like a set of instruction to instruct the process what to do at a time.
+- *Process* is a activity including input, output and its status.
+- *Procesor* is the entity which actually handles the instruction and schedules multiple process. 
+
+Processes that stay in the background to handle some activity are called *daemons*. A OS always has multiple deamons that run in the backgroud.
+
+##### Process Generate
+
+Often a running process will issue system calls to create one or more new processes to help it do its job. *Creating new processes* is particularly useful when the work to be done can easily be formulated in terms of several related, but otherwise independent interacting processes.
+
+A new process is created by having an existing process execute a process creation system call. What that process does is execute a *system call* to create the new process. This system call tells the operating system to create a new process and in- dicates, directly or indirectly, which program to run in it.
+
+In UNIX, the *child*’s initial address space is a *copy* of the parent’s, but there are definitely two distinct address spaces involved; no writable memory is shared.
+
+### Thread
