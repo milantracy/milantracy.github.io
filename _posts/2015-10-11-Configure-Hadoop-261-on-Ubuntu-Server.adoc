@@ -1,0 +1,22 @@
+= Configure Hadoop 2.6.1 on Ubuntu Server
+:hp-tags: Hadoop, Configuration
+
+#### SSH setup and Key generate
+*SSH* setup is required to do different operations on a cluster such as starting, stopping, distributed daemon shell operations. To authenticate different users of Hadoop, it is required to provide public/private key pair for a Hadoop user and share it with different users.
+
+The following commands are used for generating a key value pair using SSH. Copy the public keys form id_rsa.pub to authorized_keys, and provide the owner with read and write permissions to authorized_keys file respectively.
+```
+$ ssh-keygen -t rsa 
+$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys 
+$ chmod 0600 ~/.ssh/authorized_keys 
+```
+
+#### Install Java
+pass
+
+#### Download Hadoop
+```
+# cd /usr/local 
+# sudo wget http://www.us.apache.org/dist/hadoop/common/hadoop-2.6.1/hadoop-2.6.1.tar.gz 
+# sudo tar xzf hadoop-2.6.1.tar.gz 
+```
