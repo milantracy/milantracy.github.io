@@ -14,9 +14,29 @@ $ chmod 0600 ~/.ssh/authorized_keys
 #### Install Java
 pass
 
+Must set JAVA_HOME
+
 #### Download Hadoop
 ```
 # cd /usr/local 
 # sudo wget http://www.us.apache.org/dist/hadoop/common/hadoop-2.6.1/hadoop-2.6.1.tar.gz 
-# sudo tar xzf hadoop-2.6.1.tar.gz 
+# sudo tar -txzf hadoop-2.6.1.tar.gz
+```
+#### Hadoop Operation Modes
+Once you have downloaded Hadoop, you can operate your Hadoop cluster in one of the three supported modes:
+
+* *Standalone Mode* : After downloading Hadoop in your system, *by default*, it is configured in a standalone mode and can be run as a single java process.
+
+* *Pseudo Distributed Mode* : It is a distributed simulation on single machine. Each Hadoop daemon such as hdfs, yarn, MapReduce etc., will run as a separate java process. This mode is useful for development.
+
+* Fully Distributed Mode : This mode is fully distributed with minimum two or more machines as a cluster. We will come across this mode in detail in the coming chapters.
+
+#### Installing Hadoop in Standalone Mode
+
+There are no daemons running and everything runs in a single JVM. Standalone mode is suitable for running *MapReduce programs during development*, since it is easy to test and debug them.
+
+* Setting Up Hadoop
+You can set Hadoop environment variables by appending the following commands to ~/.*bashrc* file.
+```
+export HADOOP_HOME=/usr/local/hadoop 
 ```
