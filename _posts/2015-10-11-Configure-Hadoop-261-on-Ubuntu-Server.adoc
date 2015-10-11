@@ -40,3 +40,8 @@ You can set Hadoop environment variables by appending the following commands to 
 ```
 export HADOOP_HOME=/usr/local/hadoop 
 ```
+
+Verify your configuration by:
+```
+hadoop version
+```
