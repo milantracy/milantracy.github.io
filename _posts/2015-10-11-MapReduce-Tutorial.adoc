@@ -1,0 +1,19 @@
+= MapReduce Tutorial
+:hp-tags: MapReaduce, Java, Data Science
+
+#### Overview
+A MapReduce job usually splits the input data-set into independent chunks which are processed by the *_map_* tasks in a *completely parallel* manner. The framework *sorts* the outputs of the maps, which are then input to the *_reduce_* tasks. Typically both the input and the output of the job are stored in a file-system. The framework takes care of _scheduling_ tasks, _monitoring_ them and _re-executes_ the failed tasks.
+
+
+Typically the compute nodes and the storage nodes are the same, that is, the MapReduce framework and the Hadoop Distributed File System (see HDFS Architecture Guide) are running on the same set of nodes. This configuration allows the framework to effectively schedule *tasks on the nodes where data is already present*, resulting in very high aggregate bandwidth across the cluster.
+
+The MapReduce framework consists of a single master *_JobTracker_* and one slave *_TaskTracker_* per cluster-node. The master is responsible for scheduling the jobs' component tasks on the slaves, monitoring them and re-executing the failed tasks. The slaves execute the tasks as directed by the master.
+
+
+#### Input and Output
+The MapReduce framework operates _exclusively_ on <*key*, *value*> pairs, that is, the framework views the input to the job as a set of <key, value> pairs and produces a set of <key, value> pairs as the output of the job
+
+The _key_ and _value_ classes have to be serializable by the framework and hence need to implement the _Writable_ interface. Additionally, the key classes have to implement the _WritableComparable_ interface to facilitate sorting by the framework.
+
+
+(input) <k1, v1> -> *map* -> <k2, v2> -> *sort and combine* -> <k2, v2> -> *reduce* -> <k3, v3> (output)
