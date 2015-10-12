@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Maven in 5 Minutes - Jing Chen</title>
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Maven in 5 Minutes">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Maven in 5 Minutes">
+    <meta property="og:description" content="">
+
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="/apple-touch-icon-precomposed.png" rel="apple-touch-icon">
+
+    <link rel="stylesheet" type="text/css" href="//milantracy.github.io/themes/uno/assets/css/uno.css?v=1.0.0" />
+
+    <link rel="canonical" href="https://milantracy.github.io/2015/10/11/Maven-in-5-Minutes.html" />
+    
+    <meta property="og:site_name" content="Jing Chen" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Maven in 5 Minutes" />
+    <meta property="og:description" content="Installation Install by homebrew on Mac OS or apt-get on Ubuntu Make sure I install maven correctly by: mvn --version Creating a Project You will need somewhere for your project to reside, create a directory somewhere and start a shell..." />
+    <meta property="og:url" content="https://milantracy.github.io/2015/10/11/Maven-in-5-Minutes.html" />
+    <meta property="article:published_time" content="2015-10-11T07:00:00.000Z" />
+    <meta property="article:modified_time" content="2015-10-12T05:41:48.730Z" />
+    <meta property="article:tag" content="Maven" />
+    <meta property="article:tag" content="Java" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Maven in 5 Minutes" />
+    <meta name="twitter:description" content="Installation Install by homebrew on Mac OS or apt-get on Ubuntu Make sure I install maven correctly by: mvn --version Creating a Project You will need somewhere for your project to reside, create a directory somewhere and start a shell..." />
+    <meta name="twitter:url" content="https://milantracy.github.io/2015/10/11/Maven-in-5-Minutes.html" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Jing Chen",
+    "author": {
+        "@type": "Person",
+        "name": "Jing Chen",
+        "image": "https://avatars.githubusercontent.com/u/6878258?v=3",
+        "url": "undefined/author/undefined",
+        "sameAs": null
+    },
+    "headline": "Maven in 5 Minutes",
+    "url": "https://milantracy.github.io/2015/10/11/Maven-in-5-Minutes.html",
+    "datePublished": "2015-10-11T07:00:00.000Z",
+    "dateModified": "2015-10-12T05:41:48.730Z",
+    "keywords": "Maven,  Java",
+    "description": "Installation Install by homebrew on Mac OS or apt-get on Ubuntu Make sure I install maven correctly by: mvn --version Creating a Project You will need somewhere for your project to reside, create a directory somewhere and start a shell..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost ?" />
+    <link rel="alternate" type="application/rss+xml" title="Jing Chen" href="https://milantracy.github.io/rss" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+
+</head>
+<body class="post-template tag-Maven tag-Java no-js">
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    <header class="panel-cover panel-cover--collapsed " style="background-image: url(http://wallpapershome.com/images/pages/pic_h/184.jpg)">
+      <div class="panel-main">
+    
+        <div class="panel-main__inner panel-inverted">
+        <div class="panel-main__content">
+    
+            <h1 class="panel-cover__title panel-title"><a href="https://milantracy.github.io" title="link to homepage for Jing Chen">Jing Chen</a></h1>
+            <hr class="panel-cover__divider" />
+            <p class="panel-cover__description">Algorithms, Java &amp; Python, Backend Development</p>
+            <hr class="panel-cover__divider panel-cover__divider--secondary" />
+    
+            <div class="navigation-wrapper">
+    
+              <nav class="cover-navigation cover-navigation--primary">
+                <ul class="navigation">
+                  <li class="navigation__item"><a href="https://milantracy.github.io/#blog" title="link to Jing Chen blog" class="blog-button">Blog</a></li>
+                </ul>
+              </nav>
+    
+              
+              
+              <nav class="cover-navigation navigation--social">
+                <ul class="navigation">
+              
+                  <!-- Twitter -->
+                  <li class="navigation__item">
+                    <a href="https://www.facebook.com/profile.php?id=100006454394797" title="Facebook account">
+                      <i class='icon icon-social-facebook'></i>
+                      <span class="label">Facebook</span>
+                    </a>
+                  </li>
+              
+                  <!-- Twitter -->
+                  <li class="navigation__item">
+                    <a href="https://twitter.com/ChenCristiano?lang=en" title="Twitter account">
+                      <i class='icon icon-social-twitter'></i>
+                      <span class="label">Twitter</span>
+                    </a>
+                  </li>
+              
+              
+                  <!-- Github -->
+                  <li class="navigation__item">
+                    <a href="https://github.com/milantracy" title="Github account">
+                      <i class='icon icon-social-github'></i>
+                      <span class="label">Github</span>
+                    </a>
+                  </li>
+                  </li>
+              
+              
+              
+              
+                  <!-- LinkedIn -->
+                  <li class="navigation__item">
+                    <a href="https://www.linkedin.com/pub/jing-chen/71/b60/363" title="LinkedIn account">
+                      <i class='icon icon-social-linkedin'></i>
+                      <span class="label">LinkedIn</span>
+                    </a>
+                  </li>
+              
+                  <!-- Email -->
+                  <li class="navigation__item">
+                    <a href="mailto:milantracy@gmail.com" title="Email milantracy@gmail.com">
+                      <i class='icon icon-mail'></i>
+                      <span class="label">Email</span>
+                    </a>
+                  </li>
+              
+                </ul>
+              </nav>
+              
+    
+            </div>
+    
+          </div>
+    
+        </div>
+    
+        <div class="panel-cover--overlay"></div>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            
+
+  <article class="post-container post-container--single">
+
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime="11 Oct 2015" class="post-meta__date date">11 Oct 2015</time> &#8226; <span class="post-meta__tags tags">on <a href="https://milantracy.github.io/tag/Maven">Maven</a>, <a href="https://milantracy.github.io/tag/Java"> Java</a></span>
+        <span class="post-meta__author author"><img src="https://avatars.githubusercontent.com/u/6878258?v=3" alt="profile image for Jing Chen" class="avatar post-meta__avatar" /> by Jing Chen</span>
+      </div>
+      <h1 class="post-title">Maven in 5 Minutes</h1>
+    </header>
+
+    <section class="post tag-Maven tag-Java">
+      <div class="sect3">
+<h4 id="_installation">Installation</h4>
+<div class="paragraph">
+<p>Install by <strong>homebrew</strong> on Mac OS or <strong>apt-get</strong> on Ubuntu</p>
+</div>
+<div class="paragraph">
+<p>Make sure I install maven correctly by:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>mvn --version</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_a_project">Creating a Project</h4>
+<div class="paragraph">
+<p>You will need somewhere for your project to reside, create a directory somewhere and start a shell in that directory. On your command line, execute the following Maven goal:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>mvn archetype:generate -DgroupId=io.github.milantracy -DartifactId=my_app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>mvn would generate a folder named <em>my_app</em>, inside the directory, the structure would be maven [standard project structure] (<a href="https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html" class="bare">https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>my-app
+|-- pom.xml
+`-- src
+    |-- main
+    |   `-- java
+    |       `-- io
+    |           `-- github
+    |               `-- milantracy
+    |                   `-- App.java
+    `-- test
+        `-- java
+            `-- io
+                `-- github
+                    `-- milantracy
+                        `-- AppTest.java</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <strong>src/main/java</strong> directory contains the project source code, the <strong>src/test/java</strong> directory contains the test source, and the <strong>pom.xml</strong> file is the project&#8217;s <strong>Project Object Model</strong>, or POM.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_pom">The POM</h4>
+<div class="paragraph">
+<p>The pom.xml file is the core of a project&#8217;s configuration in Maven. It is a single configuration file that contains the majority of information required to build a project in just the way you want.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_build_the_project">Build the Project</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>mvn package</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Unlike the first command executed (archetype:generate) you may notice the second is simply a single word - <strong>package</strong>. Rather than a goal, this is a <em>phase</em>. A phase is a step in the build lifecycle, which is an ordered sequence of phases. When a phase is given, Maven will execute every phase in the sequence up to and including the one defined. For example, if we execute the compile phase, the phases that actually get executed are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>validate</p>
+</li>
+<li>
+<p>generate-sources</p>
+</li>
+<li>
+<p>process-sources</p>
+</li>
+<li>
+<p>generate-resources</p>
+</li>
+<li>
+<p>process-resources</p>
+</li>
+<li>
+<p>compile</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>mvn would generate a directory named target in the project directory, run the code by</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>java -cp target/my_app-1.0-SNAPSHOT.jar io.github.milantracy.App</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_maven_phases">Maven Phases</h4>
+<div class="paragraph">
+<p>These are the most common <em>default lifecycle phases</em> executed.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>validate</strong>: validate the project is correct and all necessary information is available</p>
+</li>
+<li>
+<p><strong>compile</strong>: compile the source code of the project</p>
+</li>
+<li>
+<p><strong>test</strong>: test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed</p>
+</li>
+<li>
+<p><strong>package</strong>: take the compiled code and package it in its distributable format, such as a <em>JAR</em>.</p>
+</li>
+<li>
+<p><strong>integration-test</strong>: process and deploy the package if necessary into an environment where integration tests can be run</p>
+</li>
+<li>
+<p><strong>verify</strong>: run any checks to verify the package is valid and meets quality criteria</p>
+</li>
+<li>
+<p><strong>install</strong>: install the package into the local repository, for use as a dependency in other projects locally</p>
+</li>
+<li>
+<p><strong>deploy</strong>: done in an integration or release environment, copies the final package to the remote repository for sharing with other developers and projects.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>There are two other Maven lifecycles of note beyond the default list above. They are</p>
+</div>
+<div class="paragraph">
+<p><strong>clean</strong>: cleans up artifacts created by prior builds
+<strong>site</strong>: generates site documentation for this project</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_further_reading">Further Reading</h4>
+<div class="paragraph">
+<p><a href="https://maven.apache.org/guides/getting-started/index.html" class="bare">https://maven.apache.org/guides/getting-started/index.html</a></p>
+</div>
+</div>
+    </section>
+
+  </article>
+
+
+
+
+            <footer class="footer">
+                <span class="footer__copyright">&copy; 2015. All rights reserved.</span>
+                <span class="footer__copyright"><a href="http://uno.daleanthony.com" title="link to page for Uno Ghost theme">Uno theme</a> by <a href="http://daleanthony.com" title="link to website for Dale-Anthony">Dale-Anthony</a></span>
+                <span class="footer__copyright">Proudly published with <a href="http://hubpress.io" title="link to Hubpress website">Hubpress</a></span>
+            </footer>
+        </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();      
+      </script>
+
+    <script type="text/javascript" src="//milantracy.github.io/themes/uno/assets/js/main.js?v=1.0.0"></script>
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-67853404-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+
+</body>
+</html>
