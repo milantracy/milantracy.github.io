@@ -17,3 +17,41 @@ The _key_ and _value_ classes have to be serializable by the framework and hence
 
 
 (input) <k1, v1> -> *map* -> <k2, v2> -> *sort and combine* -> <k2, v2> -> *reduce* -> <k3, v3> (output)
+
+For example, I have two files
+file1: Jing Chen
+file2: Jing CHEN Jing
+
+* *Map*
+
+The first map emits:
+
+<Jing, 1>
+<Chen, 1>
+
+The second map emits:
+
+<Jing, 1>
+<Chen, 1>
+<Jing, 1>
+
+* *Sort and Combine*
+
+The first map:
+
+<Jing, 1>
+<Chen, 1>
+
+The second map emits:
+
+<Jing, 2>
+<Chen, 1>
+
+* *Reduce*
+
+The output would be:
+
+The second map emits:
+
+<Jing, 3>
+<Chen, 2>
