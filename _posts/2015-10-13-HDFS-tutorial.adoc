@@ -3,7 +3,11 @@
 
 Hadoop File System was developed using distributed file system design. It is run on commodity hardware. Unlike other distributed systems, HDFS is highly *fault-tolerant* and designed using low-cost hardware.
 
+Files are stored in a _redundant_ fashion across multiple machines to ensure their *durability* to failure and high availability to very _parallel_ applications
+
 HDFS follows the *master-slave* architecture
+
+HDFS follows write once read multiple manner.
 
 ##### Namenode
 The *namenode* is the commodity hardware that contains the GNU/Linux operating system and the namenode software. It is a software that can be run on commodity hardware. The system having the namenode acts as the *master server* and it does the following tasks:
@@ -13,15 +17,39 @@ The *namenode* is the commodity hardware that contains the GNU/Linux operating s
 * It also executes file system operations such as renaming, closing, and opening files and directories.
 
 
+namenode *maps* the file name to block ids which is assigned to blocks of a file. There are several copis of a single blocks across the cluster of datanodes.
+
+The *NameNode* stores all the metadata for the file system. Because of the relatively low amount of metadata per file (it only tracks file names, permissions, and the locations of each block of each file), all of this information can be stored in the main memory of the NameNode machine, allowing fast access to the metadata.
+
+Of course, NameNode information must be preserved even if the NameNode machine fails; there are multiple redundant systems that allow the NameNode to preserve the file system's metadata even if the NameNode itself crashes irrecoverably. NameNode failure is more severe for the cluster than DataNode failure. While individual DataNodes may crash and the entire cluster will continue to operate, the loss of the NameNode will render the cluster inaccessible until it is manually restored. Fortunately, as the NameNode's involvement is relatively minimal, the odds of it failing are considerably lower than the odds of an arbitrary DataNode failing at any given point in time.
+
+
 ##### Datanode
 The *datanode* is a commodity hardware having the GNU/Linux operating system and datanode software. For every node in a cluster, there will be a datanode. These nodes manage the data storage of their system.
 
 * Datanodes perform read-write operations on the file systems, as per client request.
 * They also perform operations such as block creation, deletion, and replication according to the instructions of the namenode.
 
+HDFS runs in a separate namespace, isolated from the contents of your local files. The files inside HDFS (or more accurately: the blocks that make them up) are stored in a particular directory managed by the *DataNode service*, but the files will named only with *block ids*. You cannot interact with HDFS-stored files using ordinary Linux file modification tools
 
 ##### Block
 Generally the user data is stored in the files of HDFS. The file in a file system will be divided into *one or more segments* and/or stored in individual data nodes. These file segments are called as *blocks*. In other words, the minimum amount of data that HDFS can read or write is called a Block. The default block size is *64MB*, but it can be increased as per the need to change in HDFS configuration.
+
+Large block size allows HDFS to decrease the amount of *metadata* storage required per file (the list of blocks per file will be smaller as the size of individual blocks increases). Furthermore, it allows for *fast streaming* reads of data, by keeping large amounts of data sequentially laid out on the disk. The consequence of this decision is that *HDFS expects to have very large files, and expects them to be read sequentially*.
+
+HDFS is a _block-structured_ file system: individual files are broken into blocks of a fixed size. These blocks are stored across a cluster of one or more machines with data storage capacity. Individual machines in the cluster are referred to as *DataNodes*. A file can be made of several blocks, and they are not necessarily stored on the same machine; the target machines which hold each block are chosen randomly on a block-by-block basis. Thus access to a file may require the cooperation of multiple machines, but supports file sizes far larger than a single-machine DFS; individual files can require more space than a single hard drive could hold.
+
+##### File Read
+
+To open a file, a client contacts the *NameNode* and retrieves a list of locations for the blocks that comprise the file. These locations identify the DataNodes which hold each block. Clients then read file data directly from the *DataNode* servers, possibly in *parallel*. 
+
+The NameNode is not directly involved in this bulk data transfer, keeping its overhead to a minimum.
+
+##### Fault Tolerace
+
+If several machines must be involved in the serving of a file, then a file could be rendered unavailable by the loss of any one of those machines. HDFS combats this problem by *replicating* each block across a number of machines.
+
+image::https://farm3.static.flickr.com/2050/3529146393_5c2e2c8065_o.png[]
 
 ##### Features
 
