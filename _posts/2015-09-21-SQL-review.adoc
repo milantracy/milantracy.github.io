@@ -1,18 +1,3 @@
-= Data Structures in Python
-:hp-tags: python, data structure
+= SQL review
+:hp-tags: Database, SQL
 
-There are four built-in data structures in Python - list, tuple, dictionary and set.
-
-***
-### List
-A _list_ is a data structure that holds an ordered collection of items
-
-
-### Sequence
-Lists, tuples and strings are examples of *sequences*, but what are sequences and what is so special about them?
-
-The major features are *membership tests*, (i.e. the in and not in expressions) and *indexing operations*, which allow us to fetch a particular item in the sequence directly.
-
-
-### Set
-*Sets* are *unordered collections of simple objects*. These are used when the existence of an object in a collection is more important than the order or how many times it occurs.
