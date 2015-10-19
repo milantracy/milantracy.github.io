@@ -44,6 +44,34 @@ SQL requires single quotes around _text_ values (most database systems will also
 
 However, _numeric_ fields should not be enclosed in quotes:
 
+##### AS
+SQL aliases are used to temporarily rename a _table_ or a _column heading_.
+
+* For column
+```sql
+SELECT column_name AS alias_name
+FROM table_name;
+```
+
+* For tables
+```sql
+SELECT column_name(s)
+FROM table_name AS alias_name;
+```
+
+Aliases can be useful when:
+
+* There are more than one table involved in a query
+* Functions are used in the query
+* Column names are big or not very readable
+* Two or more columns are combined together
+
+For example
+```sql
+SELECT CustomerName, CONCAT(Address,', ',City,', ',PostalCode,', ',Country) AS Address
+FROM Customers;
+```
+
 
 ##### AND & OR
 The *AND* operator displays a record if both the first condition AND the second condition are true.
@@ -101,6 +129,136 @@ DELETE FROM table_name
 WHERE some_column=some_value;
 ```
 
+##### IN
+The *IN* operator allows you to specify multiple values in a WHERE clause. 
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1,value2,...);
+```
+
+##### BETWEEN
+The *BETWEEN* operator is used to select values within a range.
+
+To exclude a range, use *NOT BETWEEN*
+
+The values can be numbers, text, or dates.
+```SQL
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+```
+
+##### UNION
+The SQL *UNION* operator combines the result of two or more *SELECT* statements.
+
+Notice that each SELECT statement within the UNION must have the same number of columns. The columns must also have similar data types. Also, the columns in each SELECT statement must be in the same order.
+```sql
+SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2;
+```
+UNION would remove duplicates by default. To allow duplicate, use *UNION ALL*
+
+```SQL
+SELECT column_name(s) FROM table1
+UNION ALL
+SELECT column_name(s) FROM table2;
+```
+
+##### SELECT ... INTO
+The SELECT INTO statement copies data from one table and inserts it into a new table.
+
+The SELECT INTO statement selects data from one table and inserts it into a new table.
+
+```sql
+SELECT *
+INTO newtable [IN externaldb]
+FROM table1;
+[WHERE]
+```
+
+##### CREATE DATABASE
+```SQL
+CREATE DATABASE dbname;
+```
+
+##### CREATE TABLE
+The CREATE TABLE statement is used to create a table in a database.
+
+Tables are organized into rows and columns; and each table must have a name.
+```SQL
+CREATE TABLE table_name
+(
+column_name1 data_type(size),
+column_name2 data_type(size),
+column_name3 data_type(size),
+....
+);
+```
+The column_name parameters specify the names of the columns of the table.
+
+The data_type parameter specifies what type of data the column can hold (e.g. varchar, integer, decimal, date, etc.).
+
+The size parameter specifies the maximum length of the column of the table.
+
+##### SQL views
+In SQL, a view is a virtual table based on the result-set of an SQL statement.
+
+A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
+
+You can add SQL functions, WHERE, and JOIN statements to a view and present the data as if the data were coming from one single table.
+
+```sql
+CREATE VIEW view_name AS
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+```
+A view always shows *up-to-date* data! The database engine recreates the data, using the view's SQL statement, every time a user queries a view.
+
+##### SQL Joins
+
+* *INNER JOIN*: Returns all rows when there is at least one match in BOTH tables
+- The *INNER JOIN* keyword selects all rows from both tables as long as there is a match between the columns in both tables.
+```sql
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name=table2.column_name;
+```
+
+* *LEFT JOIN*: Return all rows from the left table, and the matched rows from the right table
+- The LEFT JOIN keyword returns all rows from the left table (table1), with the matching rows in the right table (table2). 
+- The result is *NULL* in the right side when there is no match.
+
+```SQL
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name=table2.column_name;
+```
+
+* *RIGHT JOIN*: Return all rows from the right table, and the matched rows from the left table
+- The RIGHT JOIN keyword returns all rows from the right table (table2), with the matching rows in the left table (table1).
+- The result is *NULL* in the left side when there is no match.
+```sql
+SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name=table2.column_name;
+```
+* *FULL JOIN*(disabled in MySQL): Return all rows when there is a match in ONE of the tables
+- The FULL OUTER JOIN keyword returns all rows from the left table (table1) and from the right table (table2).
+- if there are rows that do not have matches in the other table, those rows will be listed as well.
+```sql
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+FULL OUTER JOIN Orders
+ON Customers.CustomerID=Orders.CustomerID
+ORDER BY Customers.CustomerName;
+```
+
 ##### SQL injection
 SQL injection is a technique where malicious users can inject SQL commands into an SQL statement, via *web page input*.
 
@@ -127,6 +285,7 @@ SQL parameters are values that are added to an SQL query at execution time, in a
 *Advantage of prepared statements*
 
 * Better performance
+
 The DBMS will parse, compile, and perform query optimization on the *template*.
 
 Because of the fact that a prepared statement does not have to be compiled and optimized each and every time the values in the query change, it offers a distinct performance advantage.
