@@ -1,3 +1,141 @@
 = SQL review
 :hp-tags: Database, SQL
 
+SQL is a standard language for accessing and manipulating databases.
+
+SQL stands for **S**tructured **Q**uery **L**anguage
+
+A database most often contains one or more **table**s. Each table is identified by a name (e.g. "Customers" or "Orders"). Tables contain *records* (rows) with data.
+
+
+* SQL is NOT case sensitive: select is the same as SELECT
+
+##### SELECT
+The *SELECT* statement is used to select data from a database.
+```SQL
+SELECT * FROM table_name;
+```
+
+##### SELECT DISTINCT
+The *SELECT DISTINCT* statement is used to return only distinct (different) values.
+```SQL
+SELECT DISTINCT column_name,column_name
+FROM table_name;
+```
+
+##### LIMIT
+The *LIMIT* clause is used to specify the number of records to return.
+
+The clause can be very useful on large tables with thousands of records. Returning a large number of records can impact on performance.
+```sql
+SELECT column_name(s)
+FROM table_name
+LIMIT number;
+```
+
+##### WHERE
+The *WHERE* clause is used to filter records.
+```SQL
+SELECT column_name,column_name
+FROM table_name
+WHERE column_name operator value;
+```
+SQL requires single quotes around _text_ values (most database systems will also allow double quotes).
+
+However, _numeric_ fields should not be enclosed in quotes:
+
+
+##### AND & OR
+The *AND* operator displays a record if both the first condition AND the second condition are true.
+
+The *OR* operator displays a record if either the first condition OR the second condition is true.
+
+
+##### ORDER BY
+The *ORDER BY* keyword is used to sort the result-set by one or more columns.
+
+The *ORDER BY* keyword sorts the records in *_ASC_* order by default. To sort the records in a descending order, you can use the *_DESC_* keyword.
+
+```SQL
+SELECT column_name, column_name
+FROM table_name
+ORDER BY column_name ASC|DESC, column_name ASC|DESC;
+```
+
+##### INSERT INTO ... VALUES
+The *INSERT INTO* statement is used to insert new records in a table.
+
+It is possible to write the INSERT INTO statement in two forms.
+
+* The first form does not specify the column names where the data will be inserted, only their values:
+
+```SQL
+INSERT INTO table_name
+VALUES (value1,value2,value3,...);
+```
+
+* The second form specifies both the column names and the values to be inserted:
+```SQL
+INSERT INTO table_name (column1,column2,column3,...)
+VALUES (value1,value2,value3,...);
+```
+
+In the second method, the unspecified column would be filled with *null*.
+
+
+##### UPDATE ... SET
+The *UPDATE* statement is used to update existing records in a table.
+```SQL
+UPDATE table_name
+SET column1=value1,column2=value2,...
+WHERE some_column=some_value;
+```
+
+The *WHERE* clause specifies which record or records that should be updated. If you omit the WHERE clause, all records will be updated!
+
+
+##### DELETE FROM
+The *DELETE* statement is used to delete records in a table.
+```SQL
+DELETE FROM table_name
+WHERE some_column=some_value;
+```
+
+##### SQL injection
+SQL injection is a technique where malicious users can inject SQL commands into an SQL statement, via *web page input*.
+
+Injected SQL commands can alter SQL statement and compromise the security of a web application.
+
+The only proven way to protect a web site from SQL injection attacks, is to use *SQL parameters* also known as *prepared statment*.
+```java
+java.sql.PreparedStatement stmt = 
+connection.prepareStatement(
+"SELECT * FROM table WHERE EMAIL = ?");
+
+/* The statement below sets "?" to an actual value that
+is stored in the email variable, we are also assuming
+that the email variable is set beforehand: */
+
+stmt.setString(1, email);
+
+stmt.executeQuery();
+```
+The key feature of a prepared statement is the fact that values can be plugged into the query after the query is “*prepared*”, and ready to be executed.
+
+SQL parameters are values that are added to an SQL query at execution time, in a controlled manner.
+
+*Advantage of prepared statements*
+
+* Better performance
+The DBMS will parse, compile, and perform query optimization on the *template*.
+
+Because of the fact that a prepared statement does not have to be compiled and optimized each and every time the values in the query change, it offers a distinct performance advantage.
+
+* Prevent SQL injection
+
+There is absolutely no way that the data input by a hacker can be interpreted as SQL, and there’s no way that the hacker could run his own SQL on your application. 
+
+Any input that comes in is only interpreted as *data*, and can not be interpreted as part of your own application’s SQL code
+
+
+
