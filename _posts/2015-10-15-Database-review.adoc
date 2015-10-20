@@ -1,0 +1,77 @@
+= Database review
+:hp-tags: Interview, Database
+
+
+
+#### Entity, Attribute and Entity set
+An *entity* is an object in the real world that is distinguishable from other objects.
+
+Ex. USC
+
+An *Entity Set* is a set of similiar entities.
+
+Ex. Universities in US
+
+An entity is described using a set of *attributes*. All entities in a given entity set have the same attributes.
+
+Ex. Unversity name, Logo
+
+
+For each attribute associated with an entity set, we must identify a *domain* of possible values.
+
+Ex. Univerity name must be string.
+
+
+#### Key
+
+A *key*, also called a *primary ket* is a *minimal set of attributes* that uniquely identifies the entity in a entity set.
+
+Ex. ssn identifies a person uniquely
+
+*Candindate key* is a key in which no subset of attrbutes could identify an entity uniquely. There might be several candidates key for a entity set, we could choose one candidate key, it becomes *primary key*.
+
+
+#### Relationship
+A *relationship* is an association among two or more entities.
+
+*Relational set* is collection of similar relationship. An n-ary relationship set relates n entity sets.
+
+#### Key Constraint
+
+For example, in a department and employees relationship set, each department has at most one manager, we say that manager-department is a one to many relationship set. Besides, we have many to one, one to one and many to many.
+
+* Many to many relationship
+
+* One to many or many to one relationship, there will be an arrow line from ‘many’ entity points to relationship set.
+
+* One to one.
+
+#### Participation constraints
+
+For example, in a department and manager relationship, each department has a manager, we say that the participation of department in managers is *total*. Otherwise, the participation is *partial*.
+
+The total participation means every entity of that entity set must appear in the relationship set.
+
+
+#### Weak entity
+
+A *weak entity* can be identified uniquely by considering the primary key of another entity which is called *owner entity*.
+
+* Owner entity set and weak entity set must participate in a one-to-many relationship set. One owner entity set and many weak entity.
+
+* Weak entity set must have total participation in the identifying relationship set.
+
+For example, a user have a login name, however, a login name cannot identify a user uniquely because there would be two user with a same login name on different host. The login names are a weak entity.
+
+1. One-to-many relationship. Each login name has at most host for the relationship set.
+
+2. Total participation. Each login name must have a host, which means that participation of login name in host is total.
+
+
+
+### Relational Model
+A *relation consists* of a *relation schema* and a *relation instance*. 
+
+The *relation instance* is a table
+
+the *relation schema* describes the column heads for the table.
