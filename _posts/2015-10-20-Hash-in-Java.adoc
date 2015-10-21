@@ -1,0 +1,15 @@
+= Hash in Java
+:hp-tags: Java, Hashmap, Hash
+
+
+
+### hashCode and equals()
+By default, the _hashCode()_ function returns a *integer* wihch is converted from the internal address of the object.
+This is typically implemented by converting the internal address of the object into an integer
+
+_equals_ () method only returns true when two objects are the same object in the memeoty regardless of their content.
+
+
+
+### HashMap implemtation
+HashMap maintains an array of *buckets*. Each bucket is a linkedlist of key/value pairs encapsulated as Entry objects
