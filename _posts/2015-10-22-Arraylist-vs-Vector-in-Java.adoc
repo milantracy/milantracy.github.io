@@ -1,22 +1,26 @@
 = Arraylist vs Vector in Java
 :hp-tags: Java, Collections
 
-1. Thread Safe
+* Thread Safe
 Vector is  synchronized while ArrayList is not synchronized. 
 Synchronization and thread safe means at a time only one thread can access the code .In *Vector* class all the methods are synchronized .Thats why the Vector object is already synchronized when it is created.
 
-2. Performance
+* Performance
 Vector is slow as it is thread safe. In comparison ArrayList is fast as it is non synchronized.
 
-3. Automatic Increasement
+* Automatic Increasement
+
 Java would check whether there is enough array to hold the new element, if not, java wouls create a new array whose capacity increases, and copy the elements from the old array to the new one.
-* *Vector* doubles its size.
-* *ArrayList* increases by 50% plus one.
+
+*Vector* doubles its size.
+
+*ArrayList* increases by 50% plus one.
 
 
-4. Set size
+* Set size
+
 *Vector* has _setSize_ () method to set the size of the current array while *ArrayList* doesn't.
 
-5. Travesal
+* Travesal
 Other than Hashtable ,*Vector* is the only other class which uses both *Enumeration* and *Iterator* .
 While *ArrayList* can only use Iterator for traversing an ArrayList .
