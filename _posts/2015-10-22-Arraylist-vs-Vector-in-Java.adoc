@@ -22,5 +22,6 @@ Java would check whether there is enough array to hold the new element, if not, 
 *Vector* has _setSize_ () method to set the size of the current array while *ArrayList* doesn't.
 
 * Travesal
+
 Other than Hashtable ,*Vector* is the only other class which uses both *Enumeration* and *Iterator* .
 While *ArrayList* can only use Iterator for traversing an ArrayList .
