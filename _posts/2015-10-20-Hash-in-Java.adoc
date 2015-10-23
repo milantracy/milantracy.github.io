@@ -14,4 +14,20 @@ You must override hashCode() in every class that overrides equals(). Failure to 
 
 
 ### HashMap implemtation
-HashMap maintains an array of *buckets*. Each bucket is a linkedlist of key/value pairs encapsulated as Entry objects
+HashMap maintains an array of *buckets*. Each bucket is a linkedlist of key/value pairs encapsulated as *Entry* objects
+
+This array of buckets is called table. Each node of the linked list is an instance of a private class called *Entry*
+
+```java
+transient Entry[] table;
+```
+An entry is a private static class inside HashMap which implements Map.Entry
+```java
+private static class Entry<K,V> implements Map.Entry<K,V> {
+     final K key;
+     final int hash;
+     V value;
+     Entry<K,V> next;
+}
+```
+
