@@ -66,4 +66,4 @@ HashMap specifications need that iterators should throw _ConcurrentMoodification
 
 This done by keeping track of number of modifications. HashMap has a member int variable named *_modCount_* which is incremented everytime the map is altered (any invocation of put(), remove(), putAll() or clear() methods).
 
-There would be a variable in iterator whihc stores the number of modification when the iterator is created. It is initialized to be the same as *_modCount_*, every time _next_ (), _hasNext_(), 
+There would be a variable in iterator whihc stores the number of modification when the iterator is created. It is initialized to be the same as *_modCount_*, every time _next_ (), _hasNext_() or _remove_ () in the iterator, 
