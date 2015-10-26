@@ -55,4 +55,15 @@ If capacity provided by client is a power of 2, then real capacity will be same 
 
 maximum capacity is 1<<30 (ie 2 ^30) if capacity provided is greater than that, then real capacity = 2^30
 
- capacity indicates the size of the table array (the array of buckets) and not the number of key-value pairs the HashMap can support
+ capacity indicates the size of the table array (the array of buckets) and not the number of key-value pairs the HashMap can support.
+ 
+ 
+* *Fail Fast:*
+
+Fail-fast iterator :
+ 
+HashMap specifications need that iterators should throw _ConcurrentMoodificationException_ if the map contents are changed while a client is iterating over an iterator
+
+This done by keeping track of number of modifications. HashMap has a member int variable named *_modCount_* which is incremented everytime the map is altered (any invocation of put(), remove(), putAll() or clear() methods).
+
+There would be a variable in iterator whihc stores the number of modification when the iterator is created. It is initialized to be the same as *_modCount_*, every time _next_ (), _hasNext_(), 
