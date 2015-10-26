@@ -29,7 +29,7 @@ Once you have downloaded Hadoop, you can operate your Hadoop cluster in one of t
 
 * *Pseudo Distributed Mode* : It is a distributed simulation on single machine. Each Hadoop daemon such as hdfs, yarn, MapReduce etc., will run as a separate java process. This mode is useful for development.
 
-* Fully Distributed Mode : This mode is fully distributed with minimum two or more machines as a cluster. We will come across this mode in detail in the coming chapters.
+* *Fully Distributed Mode* : This mode is fully distributed with minimum two or more machines as a cluster. We will come across this mode in detail in the coming chapters.
 
 #### Installing Hadoop in Standalone Mode
 
@@ -44,4 +44,97 @@ export HADOOP_HOME=/usr/local/hadoop
 Verify your configuration by:
 ```
 hadoop version
+```
+
+##### Configure environment variable
+```
+export HADOOP_HOME=/usr/local/hadoop-2.6.1
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export YARN_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib"
+export HADOOP_INSTALL=$HADOOP_HOME
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+```
+
+Apply all changes by:
+```
+source .bashrc
+```
+
+#### Configure Pseudo Distributed Mode
+All hadoop configuration files are in the file *$HADOOP_HOME/etc/hadoop*, It is required to make changes in those configuration files according to your Hadoop infrastructure.
+
+* *hadoop-env.sh*
+
+In order to *develop Hadoop programs in java*, you have to reset the java environment variables in *hadoop-env.sh* file by replacing JAVA_HOME value with the location of java in your system.
+```
+export JAVA_HOME=YOUR_JAVA_DIRECTORY
+```
+
+* *core-site.xml*
+
+The *core-site.xml* file contains information such as the port number used for Hadoop instance, memory allocated for the file system, memory limit for storing the data, and size of Read/Write buffers.
+
+Open the core-site.xml and add the following properties in between <configuration>, </configuration> tags.
+
+```
+<configuration>
+  <property>
+    <name>fs.default.name</name>
+    <value>hdfs://localhost:8020</value>
+  </property>
+</configuration>
+```
+
+* *hdfs-site.xml*
+
+The *hdfs-site.xml* file contains information such as the value of replication data, *namenode path*, and *datanode paths* of your local file systems. It means the place where you want to store the Hadoop infrastructure.
+```
+<configuration>
+  <property>
+    <name>dfs.replication</name>
+    <value>1</value>
+  </property>
+  <property>
+    <name>dfs.name.dir</name>
+    <value>file:///home/jing/hadoop/hdfs/namenode</value>
+  </property>
+  <property>
+    <name>dfs.data.dir</name>
+    <value>file:///home/jing/hadoop/hdfs/datanode</value>
+  </property>
+</configuration>
+```
+
+* *yarn-site.xml*
+
+This file is used to configure yarn into Hadoop.
+```
+<configuration>
+ 
+   <property>
+      <name>yarn.nodemanager.aux-services</name>
+      <value>mapreduce_shuffle</value> 
+   </property>
+  
+</configuration>
+```
+
+* *mapred-core.xml*
+
+This file is used to specify which MapReduce framework we are using.
+
+```
+<configuration>
+ 
+   <property> 
+      <name>mapreduce.framework.name</name>
+      <value>yarn</value>
+   </property>
+   
+</configuration>
 ```
