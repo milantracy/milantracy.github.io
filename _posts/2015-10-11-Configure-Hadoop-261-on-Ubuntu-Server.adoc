@@ -164,3 +164,10 @@ http://localhost:50070/
 Aceess status of datanode by:
 
 http://localhost:50075/
+
+
+#### Configuration files
+
+Check my configuration files at
+
+https://github.com/milantracy/hadoop-configuration
