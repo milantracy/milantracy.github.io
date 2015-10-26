@@ -138,3 +138,29 @@ This file is used to specify which MapReduce framework we are using.
    
 </configuration>
 ```
+
+
+#### Namenode setup
+```
+hdfs namenode -format 
+```
+
+start dfs by:
+```
+start-dfs.sh
+```
+
+start yarn by:
+```
+start-yarn.sh
+```
+
+#### Status
+
+Access status of namenode by :
+
+http://localhost:50070/
+
+Aceess status of datanode by:
+
+http://localhost:50075/
