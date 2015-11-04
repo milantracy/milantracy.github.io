@@ -1,0 +1,3 @@
+= Google Big Table
+:hp-tags: Big Data, Google
+*Bigtable* is
