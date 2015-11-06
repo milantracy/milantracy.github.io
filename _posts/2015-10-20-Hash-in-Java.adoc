@@ -1,7 +1,5 @@
 = Hash in Java
 :hp-tags: Java, Hashmap, Hash
-   
-
 
 ### hashCode and equals()
 By default, the _hashCode()_ function returns a *integer* wihch is converted from the internal address of the object.
