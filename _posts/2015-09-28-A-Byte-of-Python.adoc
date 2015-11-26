@@ -1,11 +1,19 @@
 = A Byte of Python
 :hp-tags: Python, basics
 
+##### Comments
+Comments in python are any text to the right of *#*
+
+This is useful for readers of your program so that they can easily understand what the program is doing.
+
+
 ##### Numbers
-Numbers are maily of two types, _int_ and _float_, there is no long type in Python, the integer can be an integer of any size
+Numbers are maily of two types, _int_ and _float_, there is no long type in Python, the integer can be an *integer of any size*
 
 ##### String
-We can specify a string using either _single quotes_ or _double quotes_, single quotes and double quotes are the same in Python, we can specify multiple lines string using _triple quotes_. There is no *char* type in Python. And the string is also immutable in Python as Java.
+We can specify a string using either _single quotes_ or _double quotes_, single quotes and double quotes are the same in Python, we can specify multiple lines string using _triple quotes_. 
+
+There is *no char* type in Python. And the string is also immutable in Python as Java.
 
 ##### String format
 1. use _format()_ method in string
@@ -27,14 +35,15 @@ Raw way is often used in describing the features of a regular expression.
 ##### Variables
 Naming rules:
 
-1. Thefirstcharacteroftheidentifiermustbealetterofthealphabet(uppercaseASCII or lowercase ASCII or Unicode character) or an underscore ( _ ).
-2. Therestoftheidentifiernamecanconsistofletters(uppercaseASCIIorlowercase ASCII or Unicode character), underscores ( _ ) or digits (0-9).
-3. Case sensitive
+1. The first character of the identifier must be a letter of the alphabet(uppercase ASCII or lowercase ASCII or Unicode character) or an underscore ( _ ).
+2. The rest of the identifier name can consist of letters(uppercase ASCII or lowercase ASCII or Unicode character), underscores ( _ ) or digits (0-9).
+3. Case *sensitive*
 
 ##### Prompt
 * *_raw_input_* () shows a prompt to a person so he knows what to type. 
 * Difference between _input_() and _raw_input_()
 - The _input_() function will try to convert things you enter as if they were Python code, but it has security problems so you should avoid it.
+* Python 3 rewrite input() to run as _raw_input()_
 
 
 ##### Functions
