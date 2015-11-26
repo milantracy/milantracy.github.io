@@ -1,24 +1,36 @@
 = A Byte of Python
 :hp-tags: Python, basics
 
-##### Comments
+#### Comments
 Comments in python are any text to the right of *#*
 
 This is useful for readers of your program so that they can easily understand what the program is doing.
 
 
-##### Numbers
-Numbers are maily of two types, _int_ and _float_, there is no long type in Python, the integer can be an *integer of any size*
+#### Numbers
+Numbers are maily of two types, _integer_ and _float_, there is no long type in Python, the integer can be an *integer of any size*
 
-##### String
-We can specify a string using either _single quotes_ or _double quotes_, single quotes and double quotes are the same in Python, we can specify multiple lines string using _triple quotes_. 
+#### String
+We can specify a string using either _single quotes_ or _double quotes_, single quotes and double quotes are the same in Python, we can specify multiple lines string using _triple quotes_.
 
-There is *no char* type in Python. And the string is also immutable in Python as Java.
+Single quotes and double quotes are used freely within the triple quotes.
+```python
+'''This is a multi-line string. This is the first line
+This is the second line.
+"What's your name?," I asked.
+He said "Bond, James Bond."
+'''
+```
 
-##### String format
+
+1. There is *no char* type in Python. 
+2. The string is *immutable* in Python as Java.
+
+###### String format
 1. use _format()_ method in string
 * `'My name is {0}'.format('Jing')`
-- number is optional
+- number is optional, if the number is omitted, the index starts from 0 by default
+- index starts from 0
 * `'My name is {name}, {gender}'.format(gender = 'male', name = 'Jing')`
 - the arguments should hava the same number, but not have to in the same order.
 
