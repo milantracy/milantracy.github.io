@@ -23,19 +23,33 @@ He said "Bond, James Bond."
 ```
 
 
-1. There is *no char* type in Python. 
-2. The string is *immutable* in Python as Java.
+* There is *no char* type in Python. 
+* The string is *immutable* in Python as Java.
 
 ###### String format
 1. use _format()_ method in string
 * `'My name is {0}'.format('Jing')`
 - number is optional, if the number is omitted, the index starts from 0 by default
-- index starts from 0
+- index starts from 0 to the length of parameter list(exclude) in _format()_ method.
 * `'My name is {name}, {gender}'.format(gender = 'male', name = 'Jing')`
 - the arguments should hava the same number, but not have to in the same order.
 
 2. use the format way like _print_ in C
 * 'My name is %s %s' % ('Jing', 'Chen')
+
+##### print
+```python
+print 'a'
+```
+print method would add new line to the end of string, to prevnet, add comma to the end of print statement.
+```python
+print 'a',
+print 'b'
+```
+output
+```
+a b
+```
 
 ##### Raw String
 
