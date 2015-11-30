@@ -1,5 +1,5 @@
 = WildFly(JBoss) vs. Tomcat
-:hp-tags: J2EE, Server, Java
+:hp-tags: Java EE, Server, Java
 
 #### Introduction
 Both WildFly and Tomcat are _Java application servers_, but they have difference strength. Making the wrong choice can result in more work than necessary.
