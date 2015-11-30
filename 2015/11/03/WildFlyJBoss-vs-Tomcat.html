@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>WildFly(JBoss) vs. Tomcat - Jing Chen</title>
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="WildFly(JBoss) vs. Tomcat">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="WildFly(JBoss) vs. Tomcat">
+    <meta property="og:description" content="">
+
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="/apple-touch-icon-precomposed.png" rel="apple-touch-icon">
+
+    <link rel="stylesheet" type="text/css" href="//milantracy.github.io/themes/uno/assets/css/uno.css?v=1.0.0" />
+
+    <link rel="canonical" href="https://milantracy.github.io/2015/11/03/WildFlyJBoss-vs-Tomcat.html" />
+    
+    <meta property="og:site_name" content="Jing Chen" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="WildFly(JBoss) vs. Tomcat" />
+    <meta property="og:description" content="Introduction Both WildFly and Tomcat are Java application servers, but they have difference strength. Making the wrong choice can result in more work than necessary. The JBoss application server (aka JBoss AS) is an application server based on Java. It..." />
+    <meta property="og:url" content="https://milantracy.github.io/2015/11/03/WildFlyJBoss-vs-Tomcat.html" />
+    <meta property="article:published_time" content="2015-11-03T08:00:00.000Z" />
+    <meta property="article:modified_time" content="2015-11-30T09:23:10.817Z" />
+    <meta property="article:tag" content="J2EE" />
+    <meta property="article:tag" content="Server" />
+    <meta property="article:tag" content="Java" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="WildFly(JBoss) vs. Tomcat" />
+    <meta name="twitter:description" content="Introduction Both WildFly and Tomcat are Java application servers, but they have difference strength. Making the wrong choice can result in more work than necessary. The JBoss application server (aka JBoss AS) is an application server based on Java. It..." />
+    <meta name="twitter:url" content="https://milantracy.github.io/2015/11/03/WildFlyJBoss-vs-Tomcat.html" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Jing Chen",
+    "author": {
+        "@type": "Person",
+        "name": "Jing Chen",
+        "image": "https://avatars.githubusercontent.com/u/6878258?v=3",
+        "url": "undefined/author/undefined",
+        "sameAs": null
+    },
+    "headline": "WildFly(JBoss) vs. Tomcat",
+    "url": "https://milantracy.github.io/2015/11/03/WildFlyJBoss-vs-Tomcat.html",
+    "datePublished": "2015-11-03T08:00:00.000Z",
+    "dateModified": "2015-11-30T09:23:10.817Z",
+    "keywords": "J2EE,  Server,  Java",
+    "description": "Introduction Both WildFly and Tomcat are Java application servers, but they have difference strength. Making the wrong choice can result in more work than necessary. The JBoss application server (aka JBoss AS) is an application server based on Java. It..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost ?" />
+    <link rel="alternate" type="application/rss+xml" title="Jing Chen" href="https://milantracy.github.io/rss" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+
+</head>
+<body class="post-template tag-J2EE tag-Server tag-Java no-js">
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    <header class="panel-cover panel-cover--collapsed " style="background-image: url(http://s1.thcdn.com/design-assets/products/10780752/b.jpg)">
+      <div class="panel-main">
+    
+        <div class="panel-main__inner panel-inverted">
+        <div class="panel-main__content">
+    
+            <h1 class="panel-cover__title panel-title"><a href="https://milantracy.github.io" title="link to homepage for Jing Chen">Jing Chen</a></h1>
+            <hr class="panel-cover__divider" />
+            <p class="panel-cover__description">Software Developer</p>
+            <hr class="panel-cover__divider panel-cover__divider--secondary" />
+    
+            <div class="navigation-wrapper">
+    
+              <nav class="cover-navigation cover-navigation--primary">
+                <ul class="navigation">
+                  <li class="navigation__item"><a href="https://milantracy.github.io/#blog" title="link to Jing Chen blog" class="blog-button">Blog</a></li>
+                </ul>
+              </nav>
+    
+              
+              
+              <nav class="cover-navigation navigation--social">
+                <ul class="navigation">
+              
+                  <!-- Twitter -->
+                  <li class="navigation__item">
+                    <a href="https://www.facebook.com/profile.php?id=100006454394797" title="Facebook account">
+                      <i class='icon icon-social-facebook'></i>
+                      <span class="label">Facebook</span>
+                    </a>
+                  </li>
+              
+                  <!-- Twitter -->
+                  <li class="navigation__item">
+                    <a href="https://twitter.com/ChenCristiano?lang=en" title="Twitter account">
+                      <i class='icon icon-social-twitter'></i>
+                      <span class="label">Twitter</span>
+                    </a>
+                  </li>
+              
+              
+                  <!-- Github -->
+                  <li class="navigation__item">
+                    <a href="https://github.com/milantracy" title="Github account">
+                      <i class='icon icon-social-github'></i>
+                      <span class="label">Github</span>
+                    </a>
+                  </li>
+                  </li>
+              
+              
+              
+              
+                  <!-- LinkedIn -->
+                  <li class="navigation__item">
+                    <a href="https://www.linkedin.com/pub/jing-chen/71/b60/363" title="LinkedIn account">
+                      <i class='icon icon-social-linkedin'></i>
+                      <span class="label">LinkedIn</span>
+                    </a>
+                  </li>
+              
+                  <!-- Email -->
+                  <li class="navigation__item">
+                    <a href="mailto:milantracy@gmail.com" title="Email milantracy@gmail.com">
+                      <i class='icon icon-mail'></i>
+                      <span class="label">Email</span>
+                    </a>
+                  </li>
+              
+                </ul>
+              </nav>
+              
+    
+            </div>
+    
+          </div>
+    
+        </div>
+    
+        <div class="panel-cover--overlay"></div>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            
+
+  <article class="post-container post-container--single">
+
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime="03 Nov 2015" class="post-meta__date date">03 Nov 2015</time> &#8226; <span class="post-meta__tags tags">on <a href="https://milantracy.github.io/tag/J2EE">J2EE</a>, <a href="https://milantracy.github.io/tag/Server"> Server</a>, <a href="https://milantracy.github.io/tag/Java"> Java</a></span>
+        <span class="post-meta__author author"><img src="https://avatars.githubusercontent.com/u/6878258?v=3" alt="profile image for Jing Chen" class="avatar post-meta__avatar" /> by Jing Chen</span>
+      </div>
+      <h1 class="post-title">WildFly(JBoss) vs. Tomcat</h1>
+    </header>
+
+    <section class="post tag-J2EE tag-Server tag-Java">
+      <div class="sect3">
+<h4 id="_introduction">Introduction</h4>
+<div class="paragraph">
+<p>Both WildFly and Tomcat are <em>Java application servers</em>, but they have difference strength. Making the wrong choice can result in more work than necessary.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>JBoss</strong> application server (aka <em>JBoss AS</em>) is an <strong>application server</strong> based on Java. It is an open source software server and is usable in any operating system supported Java (because the server is Java based).</p>
+</div>
+<div class="paragraph">
+<p>Apache Tomcat  is a <strong>servlet container</strong> (meaning it is a Java class that operates under the strictures of the Java Servlet API – a protocol by which a Java class responds to an http request). This is an open source server, providing a ‘pure Java’ HTTP web server environment in which code written in Java is capable of running.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_major_difference_between_wildfly_and_tomcat">The major difference between Wildfly and Tomcat</h4>
+<div class="paragraph">
+<p>Both JBoss and Tomcat are Java servlet application servers, but JBoss is a whole lot more. The substantial difference between the two is that JBoss provides a full Java Enterprise Edition (JEE) stack, including Enterprise <em>JavaBeans</em> and many other technologies that are useful for developers working on enterprise Java applications.</p>
+</div>
+<div class="paragraph">
+<p>Tomcat is much more limited. One way to think of it is that JBoss is a <strong>JEE stack</strong> that includes a servlet container and web server, whereas Tomcat, for the most part, is a <strong>servlet container</strong> and web server.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, Tomcat has a lighter memory footprint (~60-70 MB), while those Java EE servers weigh in at hundreds of megs. Tomcat is very popular for simple web applications, or applications using frameworks such as Spring that do not require a full Java EE server. Administration of a Tomcat server is arguably easier, as there are fewer moving parts.</p>
+</div>
+<div class="sect5">
+<h6 id="_when_wildfly">When WildFly</h6>
+<div class="paragraph">
+<p>JBoss is the best choice for applications where developers need full access to the functionality that the Java Enterprise Edition provides and are happy with the default implementations of that functionality that ship with it. If you don’t need the full range of JEE features, then choosing JBoss will add a lot of complexity to deployment and resource overhead that will go unused. For example, the JBoss installation files are around an order of magnitude larger than Tomcat’s.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_when_tomcat">When Tomcat</h6>
+<div class="paragraph">
+<p>Tomcat is a Java servlet container and web server, and, because it doesn’t come with an implementation of the full JEE stack, it is significantly lighter weight out of the box. For developers who don’t need the full JEE stack that has two main advantages.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Significantly less complexity and resource use.</p>
+</li>
+<li>
+<p>Modularity.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For those who need add-ons that work with Tomcat, there are some lightweight alternative to JEE like EJB.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_summary">Summary</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>WildFly is a application servers with access to the whole JEE stack while Tomcat is servelet server</p>
+</li>
+<li>
+<p>Developers of complex Java enterprise applications should choose JBoss (or GlassFish), while those who don’t need the full JEE stack are better off with Tomcat plus any extensions they need.</p>
+</li>
+<li>
+<p>JBoss makes use of the Java EE specification; Tomcat makes use of Sun Microsystems specific specifications.</p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="_referece">Referece</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="http://stackoverflow.com/questions/3821640/what-is-difference-between-tomcat-and-jboss-and-glassfish" class="bare">http://stackoverflow.com/questions/3821640/what-is-difference-between-tomcat-and-jboss-and-glassfish</a></p>
+</li>
+<li>
+<p><a href="https://www.futurehosting.com/blog/jboss-vs-tomcat-choosing-a-java-application-server/" class="bare">https://www.futurehosting.com/blog/jboss-vs-tomcat-choosing-a-java-application-server/</a></p>
+</li>
+<li>
+<p><a href="http://www.differencebetween.net/technology/difference-between-jboss-and-tomcat/" class="bare">http://www.differencebetween.net/technology/difference-between-jboss-and-tomcat/</a></p>
+</li>
+</ol>
+</div>
+</div>
+    </section>
+
+  </article>
+
+
+
+
+            <footer class="footer">
+                <span class="footer__copyright">&copy; 2015. All rights reserved.</span>
+                <span class="footer__copyright"><a href="http://uno.daleanthony.com" title="link to page for Uno Ghost theme">Uno theme</a> by <a href="http://daleanthony.com" title="link to website for Dale-Anthony">Dale-Anthony</a></span>
+                <span class="footer__copyright">Proudly published with <a href="http://hubpress.io" title="link to Hubpress website">Hubpress</a></span>
+            </footer>
+        </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();      
+      </script>
+
+    <script type="text/javascript" src="//milantracy.github.io/themes/uno/assets/js/main.js?v=1.0.0"></script>
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-67853404-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+
+</body>
+</html>
