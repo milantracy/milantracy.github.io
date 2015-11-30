@@ -1,2 +1,43 @@
-= Google Big Table
-:hp-tags: Big Data
+= WildFly(JBoss) vs. Tomcat
+:hp-tags: J2EE, Server, Java
+
+#### Introduction
+Both WildFly and Tomcat are _Java application servers_, but they have difference strength. Making the wrong choice can result in more work than necessary.
+
+The *JBoss* application server (aka _JBoss AS_) is an *application server* based on Java. It is an open source software server and is usable in any operating system supported Java (because the server is Java based).
+
+Apache Tomcat  is a *servlet container* (meaning it is a Java class that operates under the strictures of the Java Servlet API – a protocol by which a Java class responds to an http request). This is an open source server, providing a ‘pure Java’ HTTP web server environment in which code written in Java is capable of running.
+
+
+
+#### The major difference between Wildfly and Tomcat
+
+Both JBoss and Tomcat are Java servlet application servers, but JBoss is a whole lot more. The substantial difference between the two is that JBoss provides a full Java Enterprise Edition (JEE) stack, including Enterprise _JavaBeans_ and many other technologies that are useful for developers working on enterprise Java applications.
+
+Tomcat is much more limited. One way to think of it is that JBoss is a *JEE stack* that includes a servlet container and web server, whereas Tomcat, for the most part, is a *servlet container* and web server.
+
+On the other hand, Tomcat has a lighter memory footprint (~60-70 MB), while those Java EE servers weigh in at hundreds of megs. Tomcat is very popular for simple web applications, or applications using frameworks such as Spring that do not require a full Java EE server. Administration of a Tomcat server is arguably easier, as there are fewer moving parts.
+
+###### When WildFly
+JBoss is the best choice for applications where developers need full access to the functionality that the Java Enterprise Edition provides and are happy with the default implementations of that functionality that ship with it. If you don’t need the full range of JEE features, then choosing JBoss will add a lot of complexity to deployment and resource overhead that will go unused. For example, the JBoss installation files are around an order of magnitude larger than Tomcat’s.
+
+###### When Tomcat
+Tomcat is a Java servlet container and web server, and, because it doesn’t come with an implementation of the full JEE stack, it is significantly lighter weight out of the box. For developers who don’t need the full JEE stack that has two main advantages.
+
+* Significantly less complexity and resource use.
+
+* Modularity.
+
+For those who need add-ons that work with Tomcat, there are some lightweight alternative to JEE like EJB.
+
+#### Summary
+1. WildFly is a application servers with access to the whole JEE stack while Tomcat is servelet server
+2. Developers of complex Java enterprise applications should choose JBoss (or GlassFish), while those who don’t need the full JEE stack are better off with Tomcat plus any extensions they need.
+3. JBoss makes use of the Java EE specification; Tomcat makes use of Sun Microsystems specific specifications.
+
+
+'''
+#### Referece
+1. http://stackoverflow.com/questions/3821640/what-is-difference-between-tomcat-and-jboss-and-glassfish
+2. https://www.futurehosting.com/blog/jboss-vs-tomcat-choosing-a-java-application-server/
+3. http://www.differencebetween.net/technology/difference-between-jboss-and-tomcat/
