@@ -1,3 +1,15 @@
-= Google Big Table
-:hp-tags: Big Data, Google
-*Bigtable* is
+= Effective Java: Principles and Objects
+:hp-tags: Java, Effective Java
+
+### Chapter 1 Introduction
+*_Clarity_* and *_simplity_* is the most important fundamental principles. 
+
+* The user of a module shold never be surprised by its behaviour 
+* Module should be as *small* as possible, which refers to any resuable software componenet.
+* Code should be *reused* rather than copied.
+* The *dependencies* between modules shoule be kept to a minimal.
+* *Errors* should be detected ASAP after they are made, idelly at compile time.
+
+### Chapter 2 Creating and Destroying Objects
+
+1. Consider static factory methods instead of constructor
