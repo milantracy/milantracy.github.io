@@ -12,4 +12,21 @@
 
 ### Chapter 2 Creating and Destroying Objects
 
-1. Consider static factory methods instead of constructor
+##### Consider *static factory* methods instead of constructor
+
+Besides constructor, A class can provide a public *_static factory method_*, whcih is a static method that returns a instance of the class. 
+
+It is not the same as the *Factory* pattern from design pattern.
+
+For example, in Boolean class,
+```java
+public static Boolean valueOf(boolean b){
+	return b ? Boolean.True : Boolean.False;
+}
+// The method translate primitive boolean value to Boolean object referece.
+```
+
+* Advantage
+- Unlike contructor, static factory methods have names which can be invoked explicitly, well-chosen name can result code *easier to read*.
+- A class can have only a single constructor with a given signature. Sometimes, programers have to differ constructors only in the order of the parameter list, which is confusing. In case where a aclass seems to require *multiple constructors* with the same signature, it is beeter to use static factory methods and carefully choose method names to *highlight their differences*.
+- A static factory method, unlike constructors, is not required to *create a new object each time they are invoked*. It allows *immutable classes* to use preconstructed instance, to cache instances as ther are constrcuted, to avoid creating unnecessary duplicate objects. For example, _Boolean.valueof_(boolean) nevers creates an object. It can greatly improve preformance if equivalent objects are requested often especially if ther are expensive to create.
