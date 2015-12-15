@@ -1,12 +1,17 @@
 = A/B testing
 :hp-tags: test
 
-
-Every business website wants visitors converting from just visitors to something else. The rate at which a website is able to do this is its "conversion rate". Measuring the performance of a variation (A or B) means measuring the rate at which it converts visitors to goal achievers.
+Every business website wants visitors convering from just visitors to something else, the rate which a website is able to do this is its *conversion rate*. Measuring the performance of a variable in testing means measuring the rate at which it converts visitors to goal achivers.
 
 The scientific method applied to the testing of websites is known as A/B testing (also called _split testing_). A/B testing finds out how people actually act rather than gambling on what you think they will do.
+
+
 
 #### What is A/B testing
 A/B testing compares two web pages to see which one is better.
 
 To compare two versions, A/B testing propeses to randomly split the traffic to the site in two groups, so that 50% of the users see the A version while the other 50% see the B version. By monitoring how users in each group, we can claculate the conversion rate of each group, in case there is statistically significant difference between the two, declare a winner.
+
+
+#### Why A/B testing
+A/B testing allows you to make more out of your existing traffic. While the cost of *acquiring paid traffic* is huge, the cost of *increasing conversion rate* might be minimal.
