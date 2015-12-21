@@ -1,0 +1,35 @@
+= Flask Template
+:hp-tags: Python, Flask, Web
+
+For the minimal flask project, the application just returns a string. If we want the page to have a heading and other HTML features, there is an easy option that we build the string  that is wrapper in HTML syntax. But the output is not that good, the code will become so complex that you are not able to change the layout of the web site.
+
+#### Template
+Tempalte is used to separate the logic of the application from the layout of the pages. 
+
+To implement templates in Flask, we usually create a folder *templates* inside applicaiton folder, then we can create as many as possible templates inside the directory.
+
+Inside templates, they are mostly standard HTML page, with the only difference that there are some placeholders for the dynamic content enclose in *{{ ... }}* section. We could repalce the placeholders from views by _reder_template_ provided by Flask. For example:
+
+File *_app/templates/index.html_*.
+```python
+<html>
+  <head>
+    <title>{{ title }} - blog</title>
+  </head>
+  <body>
+     <h1>Hello, {{ user.name }}!</h1>
+  </body>
+</html>
+```
+
+File *_app/views.py_*.
+```python
+from flask import render_template
+from app import app
+
+@app.route('/')
+def index():
+	user = {'name':'jing'}
+    return render_template('index.html', user=user, title='Home')
+```
+The _render_template_ takes a template filename and a list of template 
