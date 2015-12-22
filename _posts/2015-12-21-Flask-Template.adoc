@@ -65,4 +65,15 @@ In this example, keyword *block* defines the place where the derived templates c
 
 
 In the derived template, we use keyword *extend* and *"file name"* to declare parent template, followed by keyword *extend* and blcok name. The content must be enclosed insided the {% block block name%} and {% endblock %}
+
+```
+{% extends "base.html" %}
+{% block content %}
+    <h1>Hi, {{ user.nickname }}!</h1>
+    {% for post in posts %}
+    <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
+    {% endfor %}
+{% endblock %}
+```
+
  
