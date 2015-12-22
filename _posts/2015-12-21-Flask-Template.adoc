@@ -32,4 +32,36 @@ def index():
 	user = {'name':'jing'}
     return render_template('index.html', user=user, title='Home')
 ```
-The _render_template_ takes a template filename and a list of template 
+The _render_template_ takes a template filename and a list of template arguments and returns the rendered template with all the arguments replaced. The _render_template_ invokes the _Jinja2_ which is part of flask framework, Jinja2 substitutes the corresponding values provided as template arguments.
+
+
+#### Template control
+Control statements is given inside *{%...%}*. For example:
+```python
+{% if title %}
+<title>{{ title }} - microblog</title>
+{% else %}
+<title>Welcome to microblog</title>
+{% endif %}
+```
+
+#### Template Loop
+If the page needs to display a list of elements, it will up to view function how many elements need to be displayed, the template cannot make any assumptions about the number of elements. What the template does is display all the elements that views ask the template to display.
+```python
+{% for post in posts %}
+<div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
+{% endfor %}
+```
+
+
+#### Template inheritance
+Tempalte inheritance allows us to move the parts of the apge layout that are common to all templates and put them in a base tempalte from which all other tempaltes are derved. For example:
+```
+<div>Microblog: <a href="/index">Home</a></div>
+<hr>
+{% block content %}{% endblock %}
+```
+In this example, keyword *block* defines the place where the derived templates can insert themselves. Blocks are all gien a unique name, like _content_ in this example, their content can be replaced or enhaced in derived tempaltes.
+
+
+In the derived template, we use keyword extend and file name to declare parent template.
