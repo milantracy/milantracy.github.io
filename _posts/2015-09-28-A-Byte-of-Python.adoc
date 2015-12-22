@@ -164,7 +164,7 @@ When you import a module, the Python would look for the module you import.
 2. if it was not a compiled module, python searchs the *directories* listed in the *sys.path*, if the module is found, the statements in the body of that module are run. The initialization is done by the first time we import the module.
 When you import a modult, PVM would create a *byte-compile* file with extension *.pyc*. It will boost the process of importing a module because a portion of processing required in importing a module is already done.
 
-However, if the module is modified after we imported, the next we imported the module, python creates a new byte-compile file.
+However, if the module is modified after we imported, the next time we imported the module, python creates a new byte-compile file.
 
 We should avoid importing module by star.
 In python, remember 
