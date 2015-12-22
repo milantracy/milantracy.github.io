@@ -29,8 +29,9 @@ He said "Bond, James Bond."
 ###### String format
 1. use _format()_ method in string
 * `'My name is {0}'.format('Jing')`
-- number is optional, if the number is omitted, the index starts from 0 by default
-- index starts from 0 to the length of parameter list(exclude) in _format()_ method.
+- number is optional, if the number is omitted, the index starts from 0 by default and increases by 1. 
+- If one number is filled, all numbers must be filled as well.
+- index starts from 0 to the length of parameter list(exclude) in _format()_ method. The placeholder will be replaced with the value 
 * `'My name is {name}, {gender}'.format(gender = 'male', name = 'Jing')`
 - the arguments should hava the same number, but not have to in the same order.
 
@@ -113,9 +114,10 @@ For some functions, you may want to make some parameters *optional* and use *def
 ##### Keyword argument
 If you have some functions with many parameters and you want to specify only some of them, then you can give values for such parameters by naming them - this is called *keyword arguments*
 
-We use the name (keyword) instead of the position to specify the arguments to the function.
+We use the name (keyword) instead of the position to specify the arguments to the function. However, any positional augument must be assigned before any keyword argument when you call the function.
 
-_advantages_:
+*_advantages_*:
+
 * we do not need to worry about the *order of the arguments*
 * we can give values to only those parameters to which we want to, provided that the other parameters have *default argument values*.
 
@@ -131,7 +133,7 @@ def total(initial=5, *numbers, **keywords):
 
 print total(10, 1, 2, 3, vegetables=50, fruits=100)
 ```
-When we declare a *_starred parameter_* such as *param , then all the positional arguments from that point till the end are collected as a tuple called 'param'.
+When we declare a *_starred parameter_* such as *param , then all the _positional arguments_ from that point till the end are collected as a tuple called 'param'.
  
 Similarly, when we declare a *double-starred parameter* such as **param, then all the _keyword arguments_ from that point till the end are collected as a dictionary called 'param'.
 
