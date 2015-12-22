@@ -1,0 +1,4 @@
+= Flask Form and Login
+:hp-tags: Flask, Python, Web
+
+Web forms are one of the most basic blocks in web application, it allows users to wrote blog and also logging to the application.
