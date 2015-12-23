@@ -2,3 +2,18 @@
 :hp-tags: Flask, Python, Web
 
 Web forms are one of the most basic blocks in web application, it allows users to wrote blog and also logging to the application.
+
+To support web forms, we need *Flask-WTF* extension, which wraps the WTForms project in a way that integrates nicely with Flask application.
+
+Besides, the extension requires a configuration file named *_config.py_*.
+```
+WTF_CSRF_ENABLED = True
+SECRET_KEY = 'xxxxx'
+```
+
+* The *WTF_CSRF_ENABLED* setting activates the cross site request forgery prevention which is enabled by default. It makes the applications more secure.
+* The *SECRET_KEY* is needed only if CSRF is enabled, and is used to create a cryptographic token that is used to valdate a form.
+
+
+#### Flask Form
+Web forms are represented in Flask-WTF as classes, subclassed from base class *Form*, a form subclass simply defines the fields of the form as class variable.
