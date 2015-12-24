@@ -1,0 +1,28 @@
+= Python Static, Instance and Class
+:hp-tags: Python
+
+#### Static variable and Instance variable
+Generally speaking, *instance variables* are unique to each instance and *class variables* are attributes and methods shared by instances of the class.
+```
+class Dog(object):
+	
+    kind = 'canine'		# class variable
+    
+    def __init__(self, name):
+    	self.name = name		# instance variable
+
+a = Dog('Ben')
+b = Dod('Cam')
+```
+
+In the above code, vairiable _kind_ is class variable, it is shared by all instances of Dog class. a and b both have kind which is canine. Variable _name_ is instance variable, each instance of Dog keeps its own instance variable, unique to each other, for example, a's name is Ben and b's name is Cam.
+
+
+Shared data like class variable can have possibly surprising effects with involving mutable objects such as lists and dictionaries.
+
+
+#### Value change of class variable and instance variable
+
+
+#### Static method and instance method
+We 
