@@ -1,0 +1,13 @@
+= Java 8
+:hp-tags: Java, Java8
+
+
+With the Java 8 relaese, Java provided support for functional programming, new Javascript engine, new APTs for data time manipulation, new streaming API.
+
+There are lots of features added to Java 8, the most significant ones are mentioned below:
+
+* *Lambda expression* adds functional processing capability to Java
+
+* *Method references* references functions by their names instead of invoking them directly, we can also use function as parameter.
+
+*
