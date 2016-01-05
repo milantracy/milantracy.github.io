@@ -1,16 +1,23 @@
 = A Byte of Python
 :hp-tags: Python, basics
 
-#### Comments
+### Comments
 Comments in python are any text to the right of *#*
 
 This is useful for readers of your program so that they can easily understand what the program is doing.
 
+Sometimes, if we need multiple lines commnet, we can use truple quote to comment multiples lines.
+```
+'''
+comment here
+'''
+```
 
-#### Numbers
+
+### Numbers
 Numbers are maily of two types, _integer_ and _float_, there is no long type in Python, the integer can be an *integer of any size*
 
-#### String
+### String
 We can specify a string using either _single quotes_ or _double quotes_, single quotes and double quotes are the same in Python, we can specify multiple lines string using _triple quotes_.
 
 Single quotes and double quotes are used freely within the triple quotes.
@@ -26,12 +33,16 @@ He said "Bond, James Bond."
 * There is *no char* type in Python. 
 * The string is *immutable* in Python as Java.
 
+Each character in a string is assigned a number, the number is called *index*.
+* tHE       
+
+
+
 ###### String format
 1. use _format()_ method in string
 * `'My name is {0}'.format('Jing')`
-- number is optional, if the number is omitted, the index starts from 0 by default and increases by 1. 
-- If one number is filled, all numbers must be filled as well.
-- index starts from 0 to the length of parameter list(exclude) in _format()_ method. The placeholder will be replaced with the value 
+- number is optional, if the number is omitted, the index starts from 0 by default
+- index starts from 0 to the length of parameter list(exclude) in _format()_ method.
 * `'My name is {name}, {gender}'.format(gender = 'male', name = 'Jing')`
 - the arguments should hava the same number, but not have to in the same order.
 
@@ -114,10 +125,9 @@ For some functions, you may want to make some parameters *optional* and use *def
 ##### Keyword argument
 If you have some functions with many parameters and you want to specify only some of them, then you can give values for such parameters by naming them - this is called *keyword arguments*
 
-We use the name (keyword) instead of the position to specify the arguments to the function. However, any positional augument must be assigned before any keyword argument when you call the function.
+We use the name (keyword) instead of the position to specify the arguments to the function.
 
-*_advantages_*:
-
+_advantages_:
 * we do not need to worry about the *order of the arguments*
 * we can give values to only those parameters to which we want to, provided that the other parameters have *default argument values*.
 
@@ -133,7 +143,7 @@ def total(initial=5, *numbers, **keywords):
 
 print total(10, 1, 2, 3, vegetables=50, fruits=100)
 ```
-When we declare a *_starred parameter_* such as *param , then all the _positional arguments_ from that point till the end are collected as a tuple called 'param'.
+When we declare a *_starred parameter_* such as *param , then all the positional arguments from that point till the end are collected as a tuple called 'param'.
  
 Similarly, when we declare a *double-starred parameter* such as **param, then all the _keyword arguments_ from that point till the end are collected as a dictionary called 'param'.
 
@@ -159,12 +169,11 @@ def print_max(x, y):
 
 ### Module
 When you import a module, the Python would look for the module you import.
-
 1. if the module is built-in, python knows where to find it.
 2. if it was not a compiled module, python searchs the *directories* listed in the *sys.path*, if the module is found, the statements in the body of that module are run. The initialization is done by the first time we import the module.
 When you import a modult, PVM would create a *byte-compile* file with extension *.pyc*. It will boost the process of importing a module because a portion of processing required in importing a module is already done.
 
-However, if the module is modified after we imported, the next time we imported the module, python creates a new byte-compile file.
+However, if the module is modified after we imported, the next we imported the module, python creates a new byte-compile file.
 
 We should avoid importing module by star.
 In python, remember 
