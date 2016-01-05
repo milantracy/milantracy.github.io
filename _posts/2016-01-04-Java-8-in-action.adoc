@@ -38,7 +38,7 @@ A lambda expression is characterized by the syntax:
 - *Optional return keyword*. The compiler automatically returns the vale if the body has a single expression to return the value. Curly braces are required to indicate that expression returns a value.
 
 
-Lambda expressions are used prmarily to define *inline implementation* of a functional interface, such as an interface with a single method only.
+Lambda expressions are used prmarily to define *inline implementation* of a *functional interface*, such as an interface with a single method only.
 
 Lambda expression eliminates the need of_anonymous class_ and gives a very simple yet powerful functional programming capacity to Java.
 
@@ -96,6 +96,21 @@ Using keyword *default* before method signature
 public interface xxx{
 	default void defaultMethod(){
     	/* implement here */
+    }
+}
+```
+
+
+With default functions in interfaces, there is a possibility that a interface is implementing two interfaces with same default methods, there are two solutions that explain how this ambiguity can be resolved.
+
+1. The first solution is to create a default method in the subinterface that overrides two default implementation in two parent interfaces.
+2. The Second solution is to call the default method of one parent interface by *super* keyword.
+
+From Java 8, an interface can also have *static* methods.
+```java
+public interface xxx{
+	static void staticMethod(){
+    	/* implement heer */
     }
 }
 ```
