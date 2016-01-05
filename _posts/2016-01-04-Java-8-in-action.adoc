@@ -1,0 +1,66 @@
+= Java 8 in action
+:hp-tags: Java, Java8
+
+
+With the Java 8 relaese, Java provided support for functional programming, new Javascript engine, new APTs for data time manipulation, new streaming API.
+
+There are lots of features added to Java 8, the most significant ones are mentioned below:
+
+* *Lambda expression* adds functional processing capability to Java
+
+* *Method references* references functions by their names instead of invoking them directly, we can also use function as parameter.
+
+* *Default method* enables interface to provide non-abstract method, which includes default implementation.
+
+* *New tools* like new compiler tools and utilities are added.
+
+* *Stream API* facilitates pipeline processing
+
+* *Nashorn*, a new Java based engine to execute JavaScript code
+
+#### Lambda Expression
+Lambda expressions are introduced in Java 8 and are touted to be the biggest feature of Java 8. It facilitates *functional programming*, and simplfies the development a lot.
+
+* Syntax
+
+A lambda expression is characterized by the syntax:
+
+ parameter -> expression body
+
+* Characteristics
+
+- *Optional type declaration*. No need to declare the type of a parameter. The compiler can inference the same from the value of the parameter
+
+- *Optional parenthesis around parameter*. No need to declare a sngle parameter in parenthesis. For multiple parameters, parentheses are required.
+
+- *Optimal curly braces*. No need to use curly braces in expression body if the body contains a single statement.
+
+- *Optimal return keyword*. The compiler automatically returns the vale if the body has a single expression to return the value. Curly braces are required to indicate that expression returns a value.
+
+
+Lambda expressions are used prmarily to define *inline implementation* of a functional interface, such as an interface with a single method only.
+
+Lambda expression eliminates the need of_anonymous class_ and gives a very simple yet powerful functional programming capacity to Java.
+
+```java
+public class Test{
+	public static void main(String[] args){
+    	Messager messager = message -> System.out.println("Received: " + message);
+    }
+    
+    Interface Messager{
+    	void showMessage(String message);
+    }
+}
+```
+
+
+#### Method References
+
+Method references help to point to methods by their names. A method reference is described using double colon symble (::).
+
+A method reference can be used to point the following types of methods
+
+- Static methods
+- Instance methods
+- Constructor using new operator operator
