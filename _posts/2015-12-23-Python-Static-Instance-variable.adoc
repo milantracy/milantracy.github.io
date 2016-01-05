@@ -42,7 +42,3 @@ In the above example, if we modify the static variable by instance, the instance
 If you want to change the value of a static variable, you must change it within the scope where it was originally defined.
 
 For the same reason, when we modify the value of the class variable via the class name, it doesn't affect the value of instance variable even though they share the same variable name.
-
-
-#### Static method and instance method
-We 
