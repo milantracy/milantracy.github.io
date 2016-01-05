@@ -55,6 +55,8 @@ public class Test{
 ```
 
 
+
+
 #### Method References
 
 Method references help to point to methods by their names. A method reference is described using *double colon symble* (::).
@@ -74,3 +76,26 @@ For example, we can passed _System.out::println_ as a static method reference.
 Java 8 provides a lot of functional interfaces to be used extensively in lambda expression.
 
 _java.util.Function_ defines a list of functional interfaces.
+
+
+*IMPORTANT*
+
+A functional interface is an interface that has only one abstract method, and represents a single function contract.
+
+Lambda expressions require these functional interfaces are restricted to single method, *anonymous interfaces* still need to be used for implementing multiple method interfaces.
+
+
+#### Default Methods in interfaces
+Java 8 introduces a new concept of default method implementation in interfaces. This capability is added for backward compatibility so that old interfaces can be used to leverage the lambda expression.
+
+For example, there is no _forEach_ method declaration in _List_ before Java 8, adding the method woud break the legacy code implementation. Default method could provide the implementation for the method, in this way, the class implementation does not have to implement the method.
+
+* Syntax
+Using keyword *default* before method signature
+```java
+public interface xxx{
+	default void defaultMethod(){
+    	/* implement here */
+    }
+}
+```
