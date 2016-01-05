@@ -1,4 +1,4 @@
-= Python Static, Instance and Class
+= Python Static, Instance variable
 :hp-tags: Python
 
 #### Static variable and Instance variable
@@ -22,6 +22,26 @@ Shared data like class variable can have possibly surprising effects with involv
 
 
 #### Value change of class variable and instance variable
+Python dosen't really have static variable in the sense that C++ and Java do. We have to notice the difference on value change when we modify the static value by instance or by class. For example:
+```python
+class Test():
+	i = 2
+t = Test()
+print t.i	# 2
+t.i = 5
+print t.i	# 5
+print Test.i	# 2
+
+Test.i = 6
+print t.i	# 5
+print Test.i	#6
+```
+
+In the above example, if we modify the static variable by instance, the instance variable got out of the satatic variable, since it re-bound with the instance namespace, which is distinct from Test namespace.
+
+If you want to change the value of a static variable, you must change it within the scope where it was originally defined.
+
+For the same reason, when we modify the value of the class variable via the class name, it doesn't affect the value of instance variable even though they share the same variable name.
 
 
 #### Static method and instance method
