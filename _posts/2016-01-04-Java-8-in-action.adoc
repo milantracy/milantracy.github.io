@@ -25,7 +25,7 @@ Lambda expressions are introduced in Java 8 and are touted to be the biggest fea
 
 A lambda expression is characterized by the syntax:
 
- parameter -> expression body
+ (parameter) -> {expression body}
 
 * Characteristics
 
@@ -33,9 +33,9 @@ A lambda expression is characterized by the syntax:
 
 - *Optional parenthesis around parameter*. No need to declare a sngle parameter in parenthesis. For multiple parameters, parentheses are required.
 
-- *Optimal curly braces*. No need to use curly braces in expression body if the body contains a single statement.
+- *Optional curly braces*. No need to use curly braces in expression body if the body contains a single statement.
 
-- *Optimal return keyword*. The compiler automatically returns the vale if the body has a single expression to return the value. Curly braces are required to indicate that expression returns a value.
+- *Optional return keyword*. The compiler automatically returns the vale if the body has a single expression to return the value. Curly braces are required to indicate that expression returns a value.
 
 
 Lambda expressions are used prmarily to define *inline implementation* of a functional interface, such as an interface with a single method only.
@@ -57,10 +57,20 @@ public class Test{
 
 #### Method References
 
-Method references help to point to methods by their names. A method reference is described using double colon symble (::).
+Method references help to point to methods by their names. A method reference is described using *double colon symble* (::).
 
 A method reference can be used to point the following types of methods
 
 - Static methods
 - Instance methods
 - Constructor using new operator operator
+
+For example, we can passed _System.out::println_ as a static method reference.
+
+
+#### Functional Interfaces
+*Functional interfaces* have a single functionality to exhibit. For example, interface _Comparable_ provides only one single method _compareTo_ which is used for comparison.
+
+Java 8 provides a lot of functional interfaces to be used extensively in lambda expression.
+
+_java.util.Function_ defines a list of functional interfaces.
