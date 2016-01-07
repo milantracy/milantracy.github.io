@@ -31,7 +31,7 @@ A lambda expression is characterized by the syntax:
 
 - *Optional type declaration*. No need to declare the type of a parameter. The compiler can inference the same from the value of the parameter
 
-- *Optional parenthesis around parameter*. No need to declare a sngle parameter in parenthesis. For multiple parameters, parentheses are required.
+- *Optional parenthesis around parameter*. No need to declare a single parameter in parenthesis. For multiple parameters, parentheses are required.
 
 - *Optional curly braces*. No need to use curly braces in expression body if the body contains a single statement.
 
@@ -53,8 +53,6 @@ public class Test{
     }
 }
 ```
-
-
 
 
 #### Method References
@@ -88,7 +86,7 @@ Lambda expressions require these functional interfaces are restricted to single 
 #### Default Methods in interfaces
 Java 8 introduces a new concept of default method implementation in interfaces. This capability is added for backward compatibility so that old interfaces can be used to leverage the lambda expression.
 
-For example, there is no _forEach_ method declaration in _List_ before Java 8, adding the method woud break the legacy code implementation. Default method could provide the implementation for the method, in this way, the class implementation does not have to implement the method.
+For example, there is no _forEach_ method declaration in _List_ before Java 8, adding the method woud break the legacy code implementation because subclass would contain abstract method which is just added. Default method could provide the implementation for the method, in this way, the class implementation does not have to implement the method, suclassed would inherit the implementation of the default method.
 
 * Syntax
 Using keyword *default* before method signature
@@ -114,3 +112,23 @@ public interface xxx{
     }
 }
 ```
+
+#### Stream
+Stream is introduced in Java 8, it enables developer t process data in a way similar to SQL statements, it also leverage multicore architecture wthout the need to write any specific code fot it.
+
+Stream is a sequence of objects, it supports *aggregate operations*.
+
+* A stream provides a set of elements of a type in a sequential manner, it gets elements on demand, it never stores the elements.
+
+* *Source*, stream takes Collections, Arrays and I/O resources as input source.
+* Stream support *aggregate operations* like filter, map, limit, reduce, find, match, and so on.
+* Most of the stram operations return stream itself so that their result can be *pipelined*.
+* *Automatic iterations*, Stream operations do the iterations internally onver the source elements provided, in contrast to Collections where explicit iterations is required.
+
+*Generating Streams*
+In Java 8, _Collection_ interface has two methods to generate a Stream
+- *_stream_* retuens a sequential stram considering collection as its source.
+- *_parallelStream_* retuens a parallel Stream considering collection as its source
+
+
+
