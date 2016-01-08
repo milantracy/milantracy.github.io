@@ -42,3 +42,14 @@ In the above example, if we modify the static variable by instance, the instance
 If you want to change the value of a static variable, you must change it within the scope where it was originally defined.
 
 For the same reason, when we modify the value of the class variable via the class name, it doesn't affect the value of instance variable even though they share the same variable name.
+
+
+#### Python lookup order
+
+When we use a variable via instance, like self.xxx, search order is:
+
+1. instance
+2. class
+3. base class
+
+It also works for method lookup.
