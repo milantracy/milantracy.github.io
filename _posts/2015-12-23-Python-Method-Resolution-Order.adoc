@@ -1,0 +1,2 @@
+= Python Method Resolution Order
+:hp-tags: Python, Inherirance
