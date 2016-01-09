@@ -1,2 +1,32 @@
 = Python Method Resolution Order
 :hp-tags: Python, Inherirance
+
+In languages that use multiple inheritance, the order in which base classes are searched when looking for a method is often called the *Method Resolution Order* or *MRO*, in Python, it also applies to other attributes.
+
+Python has known at least three different MRO algorithms, classic, Python 2.2 style, C3 and Python3.
+
+### Classic
+Classic classes used a simple MRO scheme: when Python looks for a method or a attribute, base classes wewe searched using a simple *depth-first* and *left-to-right*(defined in the subclass) scheme. The first matching obejct found during this search would be returned.
+
+For example, we have following code:
+```python
+class A:
+  def test(self): pass
+
+
+class B(A):
+  pass
+  
+class C:
+  def test(self):
+    pass
+    
+class D(B, C): pass
+```
+
+If we create an instance of class D, the classic method resolution order would be D, B, A, C. Thus, a search for the method _test_ () would produce A.test().
+
+### New Style
+All new style classes would be defined by inheriting from a base class *object*. Thus, any use of multiple inheritance in new style classes would always create the diamond realtionship. Since object defined a number of methods that are sometimes extended by subtypes, the resolution order is critical. 
+
+In Python 2.2, a MRO scheme is that the MRO would be *pre-computed* when a class was defined and *stored as an attribute* of eah class object.
