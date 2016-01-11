@@ -24,7 +24,7 @@ class C:
 class D(B, C): pass
 ```
 
-If we create an instance of class D, the classic method resolution order would be D, B, A, C. Thus, a search for the method _test_ () would produce A.test().
+If we create an instance of class D, the classic method resolution order would be D, B, A, C. Thus, a search for the method _test_ () would produce A.test(). In this example, C won't be searched since once they find _test_ () function in class A, the method is returned and run immediately.
 
 ### New Style
 All new style classes would be defined by inheriting from a base class *object*. Thus, any use of multiple inheritance in new style classes would always create the diamond realtionship. Since object defined a number of methods that are sometimes extended by subtypes, the resolution order is critical. 
