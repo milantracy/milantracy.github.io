@@ -24,26 +24,25 @@ class C:
 class D(B, C): pass
 ```
 
-If we create an instance of class D, the classic method resolution order would be D, B, A, C. Thus, a search for the method _test_ () would produce A.test(). In this example, C won't be searched since once they find _test_ () function in class A, the method defined in class A is returned and run immediately.
+If we create an instance of class D, the classic method resolution order would be D, B, A, C. Thus, a search for the method _test_ () would produce A.test(). In this example, when python find method _test_ () in the class A, it will be retuened and run immeadiately, class C won't be searched.
 
 ### New Style
 All new style classes would be defined by inheriting from a base class *object*. Thus, any use of multiple inheritance in new style classes would always create the diamond realtionship. Since object defined a number of methods that are sometimes extended by subtypes, the resolution order is critical. 
 
 In Python 2.2, a MRO scheme is that the MRO would be *pre-computed* when a class was defined and *stored as an attribute* of eah class object.
 
-The computation of the MRO was officially socumented as using a *depth-first, left to right* traversal of the classes as before. If an y class was *duplicated* in the dearch, all but the last occurence would be deleted from the MRO list. For example,
+In Python 2.2, the basic MRO would be *depth first, left to right* traversal of the classes as before, if any clas was duplicated in the search, all but the last occurence would be deleted from the MRO list. For exampe,
 ```python
-class A(obejct):
-	def test(): pass
-    
+class A(object):
+  def test(): pass
+  
 class B(A):
-	pass
-    
+  pass
+  
 class C(A):
-	def test(): pass
-
+  def test(): pass
+  
+  
 class D(B, C):
-	pass
+  pass
 ```
-
-With the above code, if we adopt classic classes, the seach order would be D, B, A, C, A, with new style, dupliated class will be deleted except the last occurrence, the actual MRO goes to D, B, C, A.
