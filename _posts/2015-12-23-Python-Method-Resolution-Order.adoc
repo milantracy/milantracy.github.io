@@ -27,7 +27,9 @@ class D(B, C): pass
 If we create an instance of class D, the classic method resolution order would be D, B, A, C. Thus, a search for the method _test_ () would produce A.test(). In this example, when python find method _test_ () in the class A, it will be retuened and run immeadiately, class C won't be searched.
 
 ### New Style
-All new style classes would be defined by inheriting from a base class *object*. Thus, any use of multiple inheritance in new style classes would always create the diamond realtionship. Since object defined a number of methods that are sometimes extended by subtypes, the resolution order is critical. 
+All new style classes would be defined by inheriting from a base class *object*.
+
+Thus, any use of *multiple inheritance* in new style classes would always create the diamond realtionship. Since object defined a number of methods that are sometimes extended by subtypes, the resolution order is critical. 
 
 In Python 2.2, a MRO scheme is that the MRO would be *pre-computed* when a class was defined and *stored as an attribute* of eah class object.
 
@@ -67,6 +69,8 @@ Specifically, if a class A inherits from class B, then the MRO should obviously 
 
 
 #### C3
+
+C3 MRO is all about _new style_ classes, it folliws the old method resolution ordre, depth first and left to right. Therefore, there is no breaking of old code for classic classes.
 
 With a complex inheritance hierarchy, you want to be able to satisfy all of these possible rules in a way that is monotonic, that is, if you have already determinied that class A should be checked before class B, then you should never encounter a situation that requires class B to be checked before class A, otherwise, the resule is undefined and the inheritance hierachy should be rejected.
 
