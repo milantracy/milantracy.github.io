@@ -46,3 +46,42 @@ class C(A):
 class D(B, C):
   pass
 ```
+In the above code, the MRO was supposed to be D, B, A, C, A, however, with new style MRO, all duplcates would be removed except the last one, the actual resolution order is D, B, C, A.
+
+In reality, the computation of the MRO was more complex than the previous two examples.
+
+For more complex situation, the MRO algorithm tried to preserve the order of classes fro bases that appeard first in the search process. For example,
+```python
+class A(object): pass
+class B(object): pass
+class C(A, B): pass
+class D(B, A): pass
+class E(C, D): pass
+```
+In the above code, with MRO in python 2.2, the order is E, C, D, B, A after removing dupcates from ECABDBA.
+
+The algorithm tried to preserve the order of classes for bases that appeared first in the search process because it was first in the inheritance list. In this example, sicne A is first in the inheritance list, the MRO algorithm would try to preserve that orderin. Thus, the final ordering of the MRO algorithm goes to E, C, D, A, B.
+
+
+Specifically, if a class A inherits from class B, then the MRO should obviously check A before B. Likewise, if a class B uses multiple inheritance to inherit from C and D. then B should be checked before C and ould be checked before D.
+
+
+#### C3
+
+With a complex inheritance hierarchy, you want to be able to satisfy all of these possible rules in a way that is monotonic, that is, if you have already determinied that class A should be checked before class B, then you should never encounter a situation that requires class B to be checked before class A, otherwise, the resule is undefined and the inheritance hierachy should be rejected.
+
+
+Basically, the idea behind C3 is that if you write down all of the ordering rules imposed by inheritance relationships in a complex class hierarchy, the algorithm will determine a monotonic ordering of the classes that satisfies all of them.
+
+
+MRO algorithm in Pythonn 2.2 was abandon in 2.3, one outcome of this is that python will now reject any inheritance hierarchy that has an inconsistent ordering of base classes.
+
+
+In the last example, there is an ordering conflict between class C and class D. For class C, there is a rule that says class A should be checked before class B, however, for class D, the rule says that class B should be checked before class A. 
+
+In isolation, this discrepancy is fine, but if C and D are ever combined together in the same inheritance hierarchy for another class, that class will be rejected by C3 MRO algorithm.
+
+
+### Reference
+
+The History of Python: Method Rosulution Order
