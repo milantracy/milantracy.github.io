@@ -1,13 +1,95 @@
-= Java 8
-:hp-tags: Java, Java8
+= Java Annotations
+:hp-tags: Java
 
 
-With the Java 8 relaese, Java provided support for functional programming, new Javascript engine, new APTs for data time manipulation, new streaming API.
 
-There are lots of features added to Java 8, the most significant ones are mentioned below:
 
-* *Lambda expression* adds functional processing capability to Java
 
-* *Method references* references functions by their names instead of invoking them directly, we can also use function as parameter.
+*Annotations* are a form of metadata that provides data about a progarm that is not part of the program itself. Annotation have no direct effect on the operation of the code they annotete.
 
-*
+Annotations are mainly used for:
+
+1. Information for the compiler, it can be used by the compiler to *detect errors* or *suppress warnings*.
+2. *Compiler time and deployment processing*. Software tools can process annotation inoformation to generate code, XML files and  so forth.
+3. *Runtime process*, some annotations are available to be examined at runtime.
+
+### Basics
+The annotation tupe can be one of the types that are defined in the _java.lang._ or _java.lang.annotation_ package of the Java SE API. For example, _Override_ amd _SuppressWarning_ are predifined Java annotations.
+
+It is also possible to define your own annotation type.
+
+
+Annotations can be applied to declararions: declarations of classes, field, methods and other progarm elements, when used on a declaration, each annotation often appears on its own line.
+
+In Jva 8, annotations can also be applied to the use of types.
+
+
+### The format of an annotation
+The simplest form of an annotation looks like:
+
+ @Entity
+
+The @ indicatesto the compuler that what follows is an annotation, for example, _Override_
+```java
+void methodToBeOverride() {...}
+```
+
+The annotation can include elemetns which can ba named or unnamed, and there are values for those elements:
+```java
+@Author(
+	name = "Jing",
+    date = "1/12/2016"
+)
+class classToBeAnnotate() {...}
+```
+
+or
+
+```java
+@SuppressWarnings(value = "uncheck")
+void myMethod() {...}
+```
+
+If there is just *one element* named _value_, the name can be omitted as:
+```
+```java
+@SuppressWarining(check)
+void myMethod() {...}
+```
+If there is *no elements*, then the parenthsese can be omitted, as the annnotate @Override
+
+If is possible to use multiple annotations on the same declaration:
+```java
+@Author("Jing")
+@Ebook
+class MyClass{...}
+```
+
+If you have several annotation with same type, this is called _repeating annotations_, repeating annotate is allowed in Java 8.
+
+It is possible to define your own annotation type like @Author and @Ebook in the previous examples.
+
+
+### Predifined Annotation Types
+
+A set of annotation types are predefined in the Java SE API, some annotation types are used by the Java compiler, and some apply to other annotations.
+
+* Annotation Types used by the Java Language
+The predefined annotation tpes defined in _java.lang_ are @_Deprecated_, @_Override_, and @SuppressWarnings
+
+- @*Deprecate* annotation indicates that the marked element is deprecated and should no longer be used. The compiler generates a warning whenever a program uses a method, class or field with the @Deprecaetd annotation.
+
+- @*Override* annotation informs the compiler that the element is meant to override an element declared in a superclass, when it is not required to use this annotation when overriding a method, it helps tp prevent errors.
+
+If a method marked with @Override fails to correctly override a method in its superclass, the compiler generates a error.
+
+- @*SuppressWarnings* annotation tells the compiler to supress specific warnings that it would otherwise genrate. For example, a deprecated method is used, and the compiler usually generates a warning, if we use the @SuppressWarning, the annotation causes the warning to be suppressed.
+``` java
+@SuppressWarnings("deprecation")
+void deprecatedMethod(){
+	...
+}
+```
+
+
+Every *compiler warning* belongs to a category. There are mainly two categories: *deprecation* and *unchecked*.
