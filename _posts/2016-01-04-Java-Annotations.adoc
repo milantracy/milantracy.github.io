@@ -1,10 +1,6 @@
 = Java Annotations
 :hp-tags: Java
 
-
-
-
-
 *Annotations* are a form of metadata that provides data about a progarm that is not part of the program itself. Annotation have no direct effect on the operation of the code they annotete.
 
 Annotations are mainly used for:
@@ -77,7 +73,7 @@ A set of annotation types are predefined in the Java SE API, some annotation typ
 * Annotation Types used by the Java Language
 The predefined annotation tpes defined in _java.lang_ are @_Deprecated_, @_Override_, and @SuppressWarnings
 
-- @*Deprecate* annotation indicates that the marked element is deprecated and should no longer be used. The compiler generates a warning whenever a program uses a method, class or field with the @Deprecaetd annotation.
+- @*Deprecated* annotation indicates that the marked element is deprecated and should no longer be used. The compiler generates a warning whenever a program uses a method, class or field with the @Deprecaetd annotation.
 
 - @*Override* annotation informs the compiler that the element is meant to override an element declared in a superclass, when it is not required to use this annotation when overriding a method, it helps tp prevent errors.
 
@@ -92,4 +88,9 @@ void deprecatedMethod(){
 ```
 
 
+* Compiler warning
 Every *compiler warning* belongs to a category. There are mainly two categories: *deprecation* and *unchecked*.
+
+* The _unchecked_ warning can occur when interfaing with legacy code written before the advent of generics. To suppress multiple categories of warnings, use the following syntax:
+
+ @SuppressWarnings({"unchecked", "deprecation"})
