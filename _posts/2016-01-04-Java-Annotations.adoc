@@ -27,6 +27,7 @@ The simplest form of an annotation looks like:
 
 The @ indicatesto the compuler that what follows is an annotation, for example, _Override_
 ```java
+@Override
 void methodToBeOverride() {...}
 ```
 
