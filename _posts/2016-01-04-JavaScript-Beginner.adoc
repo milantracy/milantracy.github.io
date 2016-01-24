@@ -1,0 +1,5 @@
+= JavaScript Beginner
+:hp-tags: JavaScript
+
+### Values, Types, and Operators
+There are *basic* types of values in JavaScript: *numbers*, *strings*, *Booleans*, *objects*, *functions* and *undefined value*.
