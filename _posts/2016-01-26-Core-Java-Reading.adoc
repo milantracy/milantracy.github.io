@@ -6,4 +6,12 @@ If the _main_ method exits normally, the Java program has the exit code 0, indic
 For *comment*, /** and */ can be used to generate documentation automatically.
 
 
-Java is a _strongly typed language_. This means that every variable must have a declared type.
+Java is a _strongly typed language_. This means that every variable _must_ have a declared type.
+
+Under Java, the ranges of the integer types do not depend on the machine on which you run the Java code. It leads to the portability of programs.
+	
+Java does not have _unsigned_ version of integer type.
+
+Starting from Java 7, wriring numbers in binary is supported. With a prefic *0b* or *0B*, for example, 0b1001 is 9. In Java 7, you can also add underscore to number literals to denote one million, these underscores are for readability only.
+
+
