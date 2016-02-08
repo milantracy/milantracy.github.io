@@ -17,5 +17,4 @@ Calculations with integers that doen't overflow are guaranteed to always be prec
 
 There are three *special values* that are considered numbers don't behave like normal numbers.
 
-The first two are _Infinity_ and _-Infinity_, _Infinity - 1_ is still infinity. _NaN_ stands for "Not a Number", 
-
+The first two are _Infinity_ and _-Infinity_, _Infinity - 1_ is still infinity. _NaN_ stands for "Not a Number", even though it is a value of the number type. The result will be _NaN_ for any numeric operations that don't yield a precise, meaningful value.
