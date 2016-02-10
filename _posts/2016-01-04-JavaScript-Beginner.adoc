@@ -18,3 +18,27 @@ Calculations with integers that doen't overflow are guaranteed to always be prec
 There are three *special values* that are considered numbers don't behave like normal numbers.
 
 The first two are _Infinity_ and _-Infinity_, _Infinity - 1_ is still infinity. _NaN_ stands for "Not a Number", even though it is a value of the number type. The result will be _NaN_ for any numeric operations that don't yield a precise, meaningful value.
+
+_NaN_ is the only value in JS that is not equal to itself.
+
+
+* *String*
+
+Both _single quotes_ and _double quotes_ can be used to mark strings as long as the quotes at the start and the end of the string match.
+
+_Newlines_ (Enter) can't be put between quotes, the string has to stay on a single line.
+
+Strings can be compared in a way that strings are ordered is more or less alphabetc.
+
+1. uppercase letters are always less than lowercase ones, for example, 'Z' < 'a'
+
+2. non alphabetic characters are also included in the ordering.
+
+3. The actual comparison is based on the *_Unicode_* starndard.
+
+4. When comaring strings, JavaScript goes over them from left to right, comparing the numeric codes of the characters one by one.
+
+
+* *Logical Operators*
+
+JavaScript supports three logical operators
