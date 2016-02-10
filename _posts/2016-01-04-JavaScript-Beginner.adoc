@@ -15,11 +15,13 @@ For very bit or very small numbers, you ca also use scientific notation by addin
 Calculations with integers that doen't overflow are guaranteed to always be precise, unfortunately, calculation with fractional numbers are general not, many numbers lose some precision when only 64 bits are available to store them. The important thing is to be aware of it and treat fraction digital numbers as *approximateions* rather than precision values.
 
 
-There are three *special values* that are considered numbers don't behave like normal numbers.
+There are three *special values* that are considered *numbers* don't behave like normal numbers.
 
-The first two are _Infinity_ and _-Infinity_, _Infinity - 1_ is still infinity. _NaN_ stands for "Not a Number", even though it is a value of the number type. The result will be _NaN_ for any numeric operations that don't yield a precise, meaningful value.
+The first two are *_Infinity_* and *_-Infinity_*, _Infinity - 1_ is still infinity. *_NaN_* stands for "Not a Number", even though it is a value of the number type. The result will be _NaN_ for any *numeric operations* that don't yield a precise, meaningful value.
 
-_NaN_ is the only value in JS that is not equal to itself.
+Further arithmetic operations on NaN keep producing NaN.
+
+_NaN_ is the only value in JS that is not equal to itself. NaN == NaN  ==> False
 
 
 * *String*
@@ -41,4 +43,18 @@ Strings can be compared in a way that strings are ordered is more or less alphab
 
 * *Logical Operators*
 
-JavaScript supports three logical operators
+JavaScript supports three logical operators, _and_, _or_ and _not_. The operators are repectively &&, || and !. _Or_ has the lower precedence, then comes &&, then the comparsion operators, then the rest.
+
+* *Undefined Values*
+
+There are two special values, written *null* and *undefined*, they are used to denote the absence of meaningful value. They are themselves values, but they carry no information.
+
+* *Automatic Type Conversion*
+
+When an operator is applied to the wrong type of value, JavaScrupt will quitely convert the value to the type it wants, using a set of tyles that often aren't what you want or expect, which is called type coercion.
+
+When something that doesn't map to a number in an obvious way is converted to a number, the value _NaN_ is produced.
+
+The rules of converting strings and numbers to Boolean values state that 0, NaN and the empty string("") count as false while all the other values count as true. Because of this, expression liek 0 == false and  "" == false are also true.
+
+For precisee equal, use '===', it tests whether a value is precisely equal to the other. There is also '!==' which is not precisely equal.
