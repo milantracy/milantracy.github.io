@@ -115,3 +115,21 @@ In js, braces doesn't produce a new local environment, but in JavaScript, * func
 * *Functions as Values*
 
 Function variablles usually simply act as names for a specific piece of the progarm. Such a variable is defined once and never changed.
+
+A *function value* can do all things that other values can do, it is possible to store a function value in a new place, pass it as an argument to a function.
+
+A *variable* that holds a function is still just a regular variable and can be assigned a new value.
+
+
+* *Declaratiion Notation*
+
+The _function_ keyword can be used at the start of a statement, as in the following:
+```javascript
+function square(x) {
+	return x * x;
+}
+```
+
+This is a function declaration. The statement defines the variable _square_ and points it at the given function. 
+
+Function declarations are not part of the regular top to bottom flow of control, they are conceptually moved to the *top of their scope* and can be used by all the code in that scope.
