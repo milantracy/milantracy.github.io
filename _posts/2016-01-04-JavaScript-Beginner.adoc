@@ -95,6 +95,7 @@ console.log(square(2));
 A function is created by a expression that starts with keyword _function_, functions could have a set of _parameters_ defined in the following paretheses, after parameter list, the body of the functions contains the statements that are executed when the function is called. The body of the function should always be wrapped in braces.
 
 * *Parameters and Scopes*
+
 A function can have multiple parameters or no paramtere at all. The parameters behave like variables, but its inital value is given by function caller.
 
 An important property of functions is that the variables created inside of them including their parameters are lcoal to the function, which means, the variable and parameters in the function will be newly created every time the function is called and keep its own copy to avoid inteference.
@@ -109,3 +110,8 @@ In short, each local scope can also see the all the local scopes that contain it
 All variables from blocks around a function's definition are visible, meaning both those in function bodies that enclose it and those at the top level of the porgram.
 
 In js, braces doesn't produce a new local environment, but in JavaScript, * functions are the only things that create a new scope.*
+
+
+* *Functions as Values*
+
+Function variablles usually simply act as names for a specific piece of the progarm. Such a variable is defined once and never changed.
