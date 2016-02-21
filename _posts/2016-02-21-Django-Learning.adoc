@@ -1,0 +1,53 @@
+= Django Learning
+:hp-tags: djando, python
+
+### Prerequisite
+1. Python 3.5+
+2. pip
+3. djando
+
+### Basics
+
+##### Creating a project
+
+Inital setup including auto-generate code that establishes a Django project, a collections of settings for an instance of Django, database configuration, options and application-specific settings.
+
+ $ django-admin startproject [project name]
+
+It generates a directory for the project, serves as a container for your project, directory name can be changed.
+
+- *manage.py* is a commmand line utility that lets you interact with the project
+
+- Inner project directory is the actual python package for your project
+
+- \__init__.py is an empty file that tells python that this directory should be considered a python
+
+- *settings.py* defines settings/configuration for the project
+
+- *urls.py* is the URL declarations for the project, a table of contents of your django power site. 
+
+- *wsgi.py* is an entry point for wsgi compatiable web server to serve your project.
+
+
+##### The development server
+
+Verify the project works, run the following commands:
+
+ $ python manage.py runserver
+
+By default, the *runserver* command starts the development server at port *8000*, to change the server's port, pass it as a command-line argument.
+
+ $ python manage.py runserver 8080
+ 
+To change the server's IP, pass it along with the port.
+
+ $ python manage.py runserver 0.0.0.0:8080
+ 
+*Automatic reloading of runserver*
+
+ the development server automatically reloads python code for each request as needed, you don't need to restart the server for code changes to take effect. However, some actions like adding files don't trigger a restart, so you'll have to restart theserver in the cases.
+ 
+ 
+##### Creating the app
+
+*Project vs apps*
