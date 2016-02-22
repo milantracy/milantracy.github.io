@@ -51,3 +51,10 @@ To change the server's IP, pass it along with the port.
 ##### Creating the app
 
 *Project vs apps*
+ 
+ An app is a web application that does something, a web log system or a database of records. A project is a collection of configuration and apps for particular website, a project can contain multiplt app, An app can be in multiple projects.
+ 
+An app can live anywhere on you *python path*. Create a app ny command:
+
+ $ python manage.py startapp polls
+ 
