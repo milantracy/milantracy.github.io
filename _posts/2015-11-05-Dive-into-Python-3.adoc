@@ -1,3 +1,17 @@
 = Dive into Python 3
 :hp-tags: python, python3, learning
 
+
+*Function declaration*
+
+Python functions do not specify the datatype of their return value, they don't even specify whether they return a value.
+
+In fact, every Python function *returns a value*, if the function ever executes a return statement, it will return that value; otherwise, it will return *None*, the Python null value.
+
+In Python, *variables* are never explicitly typed, which is also dynamic typed, Python figures out what type a variable is and keeps track of the datatype internally.
+
+*Optional and Named Arguments*
+
+
+
+
