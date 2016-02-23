@@ -1,6 +1,3 @@
-= Google Big Table
-:hp-tags: Big Data, Google
+= Dive into Python 3
+:hp-tags: python, python3, learning
 
-*Bigtable* is a distributed storage system for managing *_structured_* data that is designed to scale to a very large size.
-
-Bigtable is designed to reliably scale to _petabytes_ of data and thousands of _commodity machines_.
