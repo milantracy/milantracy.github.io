@@ -10,9 +10,10 @@ export function GitHubIcon({ size = 20 }) {
 
 const LINKS = [
   { id: 'home', href: '/', label: 'Home' },
+  { id: 'log', href: '/log/', label: 'Logbook' },
 ]
 
-// Site-wide navigation. `current` is the id of the page being shown.
+// Site-wide navigation. `current` is 'home' | 'log'.
 export default function Banner({ current }) {
   return (
     <header className="banner">
