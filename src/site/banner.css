@@ -9,14 +9,31 @@
   border-bottom: 1px solid #e1e4e8;
 }
 
-.banner a { color: #444; text-decoration: none; }
-.banner a:hover { color: #0366d6; }
+.banner a {
+  color: #444;
+  text-decoration: none;
+}
+.banner a:hover {
+  color: #0366d6;
+}
 
-
-.banner nav { display: flex; align-items: center; gap: 1.25rem; font-size: 0.95rem; }
-.banner nav a { padding: 0.15rem 0; border-bottom: 2px solid transparent; }
-.banner nav a.on { color: #222; border-bottom-color: #222; }
-.banner .icon { display: inline-flex; }
+.banner nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.95rem;
+}
+.banner nav a {
+  padding: 0.15rem 0;
+  border-bottom: 2px solid transparent;
+}
+.banner nav a.on {
+  color: #222;
+  border-bottom-color: #222;
+}
+.banner .icon {
+  display: inline-flex;
+}
 
 .site-footer {
   margin-top: 3rem;

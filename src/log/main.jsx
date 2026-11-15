@@ -7,5 +7,5 @@ import './logbook.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Logbook />
-  </StrictMode>
+  </StrictMode>,
 )
