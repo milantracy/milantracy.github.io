@@ -1,0 +1,27 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 0 0.9rem;
+  margin-bottom: 2.25rem;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.banner a { color: #444; text-decoration: none; }
+.banner a:hover { color: #0366d6; }
+
+
+.banner nav { display: flex; align-items: center; gap: 1.25rem; font-size: 0.95rem; }
+.banner nav a { padding: 0.15rem 0; border-bottom: 2px solid transparent; }
+.banner nav a.on { color: #222; border-bottom-color: #222; }
+.banner .icon { display: inline-flex; }
+
+.site-footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e1e4e8;
+  font-size: 0.85rem;
+  color: #6a737d;
+}
