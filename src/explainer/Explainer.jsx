@@ -133,20 +133,18 @@ function Stepper({ scene, mode, counters }) {
   const [i, setI] = useState(0)
   const [playing, setPlaying] = useState(false)
   const step = steps[i]
+  const last = steps.length - 1
+  // Autoplay stops by itself on the last step.
+  const active = playing && i < last
 
   useEffect(() => {
-    if (!playing) return
-    if (i >= steps.length - 1) {
-      setPlaying(false)
-      return
-    }
+    if (!active) return
     const t = setTimeout(() => setI((n) => n + 1), 2400)
     return () => clearTimeout(t)
-  }, [playing, i, steps.length])
+  }, [active, i])
 
   const done = steps.slice(0, i + 1)
   const sum = (k) => done.reduce((a, s) => a + (s.count?.[k] || 0), 0)
-  const last = steps.length - 1
 
   return (
     <div className="explainer">
@@ -163,9 +161,10 @@ function Stepper({ scene, mode, counters }) {
         <button onClick={() => { setPlaying(false); setI((n) => Math.max(0, n - 1)) }}
           disabled={i === 0}>← Back</button>
         <button className="primary" onClick={() => {
+          if (active) return setPlaying(false)
           if (i === last) setI(0)
-          setPlaying((p) => !p)
-        }}>{playing ? 'Pause' : i === last ? 'Replay' : 'Play'}</button>
+          setPlaying(true)
+        }}>{active ? 'Pause' : i === last ? 'Replay' : 'Play'}</button>
         <button onClick={() => { setPlaying(false); setI((n) => Math.min(last, n + 1)) }}
           disabled={i === last}>Next →</button>
       </div>

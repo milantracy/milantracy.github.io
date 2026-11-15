@@ -20,4 +20,9 @@ export default defineConfig([
       },
     },
   },
+  {
+    // Build config runs in Node; Vite provides __dirname there.
+    files: ['*.config.js'],
+    languageOptions: { globals: globals.node },
+  },
 ])
