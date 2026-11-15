@@ -14,9 +14,9 @@ const dispatch = {
       Now it's ordinary Go code. <code>Switch</code> returns "this was a
       syscall", and the task goes <code>doSyscall</code> →{' '}
       <code>executeSyscall</code>, looks up syscall 39 in the Sentry's own
-      syscall table, and runs <code>Getpid</code>. That returns the PID from
-      the <b>Sentry's</b> process table, not the host's. This step is the same
-      on every platform.
+      syscall table, and runs <code>Getpid</code>. That returns the PID from the{' '}
+      <b>Sentry's</b> process table, not the host's. This step is the same on
+      every platform.
     </>
   ),
 }
@@ -35,17 +35,57 @@ const SYSTRAP_SCENE = {
   },
   zones: [
     { x: 10, y: 8, w: 620, h: 250, label: 'sandbox', kind: 'dashed' },
-    { x: 30, y: 38, w: 190, h: 200, label: 'stub process', kind: 'dashed', activeOn: ['app', 'handler'] },
-    { x: 10, y: 282, w: 620, h: 64, label: 'host Linux kernel', kind: 'band', activeOn: ['seccomp'] },
+    {
+      x: 30,
+      y: 38,
+      w: 190,
+      h: 200,
+      label: 'stub process',
+      kind: 'dashed',
+      activeOn: ['app', 'handler'],
+    },
+    {
+      x: 10,
+      y: 282,
+      w: 620,
+      h: 64,
+      label: 'host Linux kernel',
+      kind: 'band',
+      activeOn: ['seccomp'],
+    },
   ],
   dots: [
     { at: 'shm', label: 'shared memory' },
     { at: 'seccomp', label: 'seccomp' },
   ],
   boxes: [
-    { id: 'app', x: 50, y: 64, w: 140, h: 48, label: 'App code', sub: 'stub thread' },
-    { id: 'handler', x: 50, y: 166, w: 140, h: 48, label: 'sysmsg', sub: 'stub signal handler' },
-    { id: 'sentry', x: 455, y: 105, w: 150, h: 50, label: 'Sentry', sub: 'task goroutine' },
+    {
+      id: 'app',
+      x: 50,
+      y: 64,
+      w: 140,
+      h: 48,
+      label: 'App code',
+      sub: 'stub thread',
+    },
+    {
+      id: 'handler',
+      x: 50,
+      y: 166,
+      w: 140,
+      h: 48,
+      label: 'sysmsg',
+      sub: 'stub signal handler',
+    },
+    {
+      id: 'sentry',
+      x: 455,
+      y: 105,
+      w: 150,
+      h: 50,
+      label: 'Sentry',
+      sub: 'task goroutine',
+    },
   ],
 }
 
@@ -57,13 +97,12 @@ const SYSTRAP_STEPS = [
     title: <>App calls {CALL}</>,
     text: (
       <>
-        To the host, the app is an ordinary thread in a <b>stub process</b>{' '}
-        (one per app address space, created from the Sentry). When it runs the{' '}
+        To the host, the app is an ordinary thread in a <b>stub process</b> (one
+        per app address space, created from the Sentry). When it runs the{' '}
         <code>syscall</code> instruction, the host kernel first checks the
-        stub's seccomp filter. The filter returns{' '}
-        <code>SECCOMP_RET_TRAP</code>, so the host kernel <b>skips</b>{' '}
-        <code>getpid</code> and sends the thread a <code>SIGSYS</code> signal
-        instead.
+        stub's seccomp filter. The filter returns <code>SECCOMP_RET_TRAP</code>,
+        so the host kernel <b>skips</b> <code>getpid</code> and sends the thread
+        a <code>SIGSYS</code> signal instead.
       </>
     ),
   },
@@ -74,10 +113,10 @@ const SYSTRAP_STEPS = [
     text: (
       <>
         The signal interrupts the app on the <b>same host thread</b> and runs
-        the stub's handler, <code>__export_sighandler</code> in{' '}
-        <b>sysmsg</b>. It copies the app's registers (the syscall number, its
-        arguments, everything) into a <i>context</i> in memory the Sentry can
-        also read, and marks it <code>SYSCALL</code>.
+        the stub's handler, <code>__export_sighandler</code> in <b>sysmsg</b>.
+        It copies the app's registers (the syscall number, its arguments,
+        everything) into a <i>context</i> in memory the Sentry can also read,
+        and marks it <code>SYSCALL</code>.
       </>
     ),
   },
@@ -88,12 +127,12 @@ const SYSTRAP_STEPS = [
     title: 'Hand off to the Sentry',
     text: (
       <>
-        <code>switch_context</code> tells the Sentry there's work. If the
-        Sentry is already spinning on that context, that's enough; otherwise it
-        wakes it with <code>FUTEX_WAKE</code>. The Sentry's task goroutine was
-        waiting in <code>waitOnState</code> and picks it up. The stub thread
-        doesn't wait for the answer: it takes the next ready app thread from a
-        shared context queue.
+        <code>switch_context</code> tells the Sentry there's work. If the Sentry
+        is already spinning on that context, that's enough; otherwise it wakes
+        it with <code>FUTEX_WAKE</code>. The Sentry's task goroutine was waiting
+        in <code>waitOnState</code> and picks it up. The stub thread doesn't
+        wait for the answer: it takes the next ready app thread from a shared
+        context queue.
       </>
     ),
   },
@@ -105,10 +144,9 @@ const SYSTRAP_STEPS = [
     title: 'The answer goes back',
     text: (
       <>
-        The Sentry writes the PID into the app's saved <code>rax</code>{' '}
-        register in shared memory and puts the context back on the stub
-        process's context queue. Whichever stub thread picks it up next resumes
-        the app.
+        The Sentry writes the PID into the app's saved <code>rax</code> register
+        in shared memory and puts the context back on the stub process's context
+        queue. Whichever stub thread picks it up next resumes the app.
       </>
     ),
   },
@@ -160,17 +198,57 @@ const KVM_SCENE = {
   },
   zones: [
     { x: 10, y: 8, w: 620, h: 250, label: 'sandbox', kind: 'dashed' },
-    { x: 30, y: 38, w: 310, h: 205, label: 'guest mode (KVM VM)', kind: 'dashed', activeOn: ['app', 'sentry', 'sysenter'] },
-    { x: 10, y: 282, w: 620, h: 64, label: 'host Linux kernel', kind: 'band', activeOn: ['kvm'] },
+    {
+      x: 30,
+      y: 38,
+      w: 310,
+      h: 205,
+      label: 'guest mode (KVM VM)',
+      kind: 'dashed',
+      activeOn: ['app', 'sentry', 'sysenter'],
+    },
+    {
+      x: 10,
+      y: 282,
+      w: 620,
+      h: 64,
+      label: 'host Linux kernel',
+      kind: 'band',
+      activeOn: ['kvm'],
+    },
   ],
   dots: [
     { at: 'sysenter', label: 'sysenter' },
     { at: 'kvm', label: 'KVM' },
   ],
   boxes: [
-    { id: 'app', x: 55, y: 64, w: 150, h: 48, label: 'App code', sub: 'guest ring 3' },
-    { id: 'sentry', x: 55, y: 185, w: 150, h: 50, label: 'Sentry', sub: 'guest ring 0' },
-    { id: 'bluepill', x: 435, y: 185, w: 170, h: 50, label: 'Sentry host thread', sub: 'bluepill / KVM_RUN loop' },
+    {
+      id: 'app',
+      x: 55,
+      y: 64,
+      w: 150,
+      h: 48,
+      label: 'App code',
+      sub: 'guest ring 3',
+    },
+    {
+      id: 'sentry',
+      x: 55,
+      y: 185,
+      w: 150,
+      h: 50,
+      label: 'Sentry',
+      sub: 'guest ring 0',
+    },
+    {
+      id: 'bluepill',
+      x: 435,
+      y: 185,
+      w: 170,
+      h: 50,
+      label: 'Sentry host thread',
+      sub: 'bluepill / KVM_RUN loop',
+    },
   ],
 }
 
@@ -184,9 +262,9 @@ const KVM_STEPS = [
         With KVM, the Sentry runs <b>inside a lightweight virtual machine</b>,
         as that VM's kernel. To get in, a Sentry host thread calls{' '}
         <code>bluepill()</code>, which sets up a signal frame whose handler
-        loops on <code>ioctl(KVM_RUN)</code>. The thread then carries on
-        running the <b>same Go code</b>, now in guest ring 0 with kernel
-        privileges. A thread that's already inside skips this step.
+        loops on <code>ioctl(KVM_RUN)</code>. The thread then carries on running
+        the <b>same Go code</b>, now in guest ring 0 with kernel privileges. A
+        thread that's already inside skips this step.
       </>
     ),
   },
@@ -211,10 +289,10 @@ const KVM_STEPS = [
     text: (
       <>
         The <code>syscall</code> instruction does what it does on any Linux
-        machine: the CPU jumps to the kernel's entry point, which the Sentry
-        set to <code>sysenter</code> in the guest's <code>LSTAR</code>{' '}
-        register. The kernel here is the Sentry, so the call <b>never leaves
-        the VM</b>. No seccomp, no signal, no VM exit.
+        machine: the CPU jumps to the kernel's entry point, which the Sentry set
+        to <code>sysenter</code> in the guest's <code>LSTAR</code> register. The
+        kernel here is the Sentry, so the call <b>never leaves the VM</b>. No
+        seccomp, no signal, no VM exit.
       </>
     ),
   },
@@ -313,14 +391,16 @@ export default function GvisorSyscall() {
         </li>
         <li>
           <code>--platform=auto</code> prefers KVM, then systrap. It skips KVM
-          inside a VM (that would need nested virtualization) and for NVIDIA
-          GPU workloads.
+          inside a VM (that would need nested virtualization) and for NVIDIA GPU
+          workloads.
         </li>
       </ul>
 
       <p className="sources">
         Checked against gVisor at{' '}
-        <a href={`https://github.com/google/gvisor/tree/${COMMIT}`}>{COMMIT.slice(0, 7)}</a>{' '}
+        <a href={`https://github.com/google/gvisor/tree/${COMMIT}`}>
+          {COMMIT.slice(0, 7)}
+        </a>{' '}
         (Nov 2026)
       </p>
     </ExplainerPage>

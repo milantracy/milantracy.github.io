@@ -9,7 +9,11 @@ import { marked } from 'marked'
 // link: /gvisor-syscall/    (optional: the note points to a page)
 // ---
 // Markdown body…
-const files = import.meta.glob('/notes/*.md', { query: '?raw', import: 'default', eager: true })
+const files = import.meta.glob('/notes/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+})
 
 export const tagSlug = (tag) => tag.trim().toLowerCase().replace(/\s+/g, '-')
 
@@ -22,7 +26,11 @@ function parseFrontmatter(raw, path) {
     if (!kv) continue
     let value = kv[2].trim()
     if (value.startsWith('[') && value.endsWith(']')) {
-      value = value.slice(1, -1).split(',').map((s) => s.trim()).filter(Boolean)
+      value = value
+        .slice(1, -1)
+        .split(',')
+        .map((s) => s.trim())
+        .filter(Boolean)
     }
     meta[kv[1]] = value
   }
@@ -35,7 +43,11 @@ function parseFrontmatter(raw, path) {
 export const notes = Object.entries(files)
   .map(([path, raw]) => {
     const { meta, body } = parseFrontmatter(raw, path)
-    const tags = Array.isArray(meta.tags) ? meta.tags : meta.tags ? [meta.tags] : []
+    const tags = Array.isArray(meta.tags)
+      ? meta.tags
+      : meta.tags
+        ? [meta.tags]
+        : []
     return {
       slug: path.split('/').pop().replace(/\.md$/, ''),
       title: meta.title,
@@ -45,7 +57,9 @@ export const notes = Object.entries(files)
       html: marked.parse(body),
     }
   })
-  .sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title))
+  .sort(
+    (a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title),
+  )
 
 export const allTags = (() => {
   const counts = new Map()
@@ -55,5 +69,7 @@ export const allTags = (() => {
       counts.set(t.slug, { ...t, count: (prev?.count || 0) + 1 })
     }
   }
-  return [...counts.values()].sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
+  return [...counts.values()].sort(
+    (a, b) => b.count - a.count || a.name.localeCompare(b.name),
+  )
 })()

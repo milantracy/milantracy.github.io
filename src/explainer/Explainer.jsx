@@ -21,7 +21,8 @@ const DOT_GAP = 7 // same, for a labelled dot
 
 // How far (0..1) along p→q the segment leaves rect r, if p is inside r.
 function exitT([px, py], [qx, qy], r) {
-  const dx = qx - px, dy = qy - py
+  const dx = qx - px,
+    dy = qy - py
   let t = Infinity
   if (dx > 0) t = Math.min(t, (r.x + r.w - px) / dx)
   if (dx < 0) t = Math.min(t, (r.x - px) / dx)
@@ -36,12 +37,20 @@ function exitT([px, py], [qx, qy], r) {
 // along the untrimmed centre-to-centre path, used to time the animation.
 function trailSegments(scene, keys) {
   const dotAt = new Set((scene.dots || []).map((d) => d.at))
-  const boxAt = ([x, y]) => scene.boxes.find((b) => x > b.x && x < b.x + b.w && y > b.y && y < b.y + b.h)
+  const boxAt = ([x, y]) =>
+    scene.boxes.find(
+      (b) => x > b.x && x < b.x + b.w && y > b.y && y < b.y + b.h,
+    )
   // t along p→q (from p's end) at which to start drawing.
   const trim = (key, p, q) => {
     const b = boxAt(p)
     if (b) {
-      const g = { x: b.x - BOX_GAP, y: b.y - BOX_GAP, w: b.w + 2 * BOX_GAP, h: b.h + 2 * BOX_GAP }
+      const g = {
+        x: b.x - BOX_GAP,
+        y: b.y - BOX_GAP,
+        w: b.w + 2 * BOX_GAP,
+        h: b.h + 2 * BOX_GAP,
+      }
       return exitT(p, q, g)
     }
     if (dotAt.has(key)) return DOT_GAP / Math.hypot(q[0] - p[0], q[1] - p[1])
@@ -51,12 +60,18 @@ function trailSegments(scene, keys) {
   const segs = []
   let walked = 0
   for (let i = 0; i < keys.length - 1; i++) {
-    const p = scene.points[keys[i]], q = scene.points[keys[i + 1]]
+    const p = scene.points[keys[i]],
+      q = scene.points[keys[i + 1]]
     const len = Math.hypot(q[0] - p[0], q[1] - p[1])
     const t0 = trim(keys[i], p, q)
     const t1 = 1 - trim(keys[i + 1], q, p)
     if (t1 > t0) {
-      segs.push({ a: lerp(p, q, t0), b: lerp(p, q, t1), from: walked + t0 * len, to: walked + t1 * len })
+      segs.push({
+        a: lerp(p, q, t0),
+        b: lerp(p, q, t1),
+        from: walked + t0 * len,
+        to: walked + t1 * len,
+      })
     }
     walked += len
   }
@@ -64,7 +79,8 @@ function trailSegments(scene, keys) {
 }
 
 const SPEED = 320 // diagram px per second
-const MIN_DUR = 0.7, MAX_DUR = 1.8 // seconds for a whole step's path
+const MIN_DUR = 0.7,
+  MAX_DUR = 1.8 // seconds for a whole step's path
 
 function Diagram({ scene, step, mode }) {
   const { segs, total } = trailSegments(scene, step.path)
@@ -76,32 +92,55 @@ function Diagram({ scene, step, mode }) {
   const idle = new Set(mode.idle || [])
   const subs = mode.subs || {}
   return (
-    <svg className="diagram" viewBox={`0 0 ${scene.width} ${scene.height}`} role="img"
-      aria-label={`Diagram: ${step.title}`}>
+    <svg
+      className="diagram"
+      viewBox={`0 0 ${scene.width} ${scene.height}`}
+      role="img"
+      aria-label={`Diagram: ${step.title}`}
+    >
       {scene.zones.map((z) => (
         <g key={z.label}>
-          <rect x={z.x} y={z.y} width={z.w} height={z.h} rx="10"
-            className={`zone ${z.kind} ${z.activeOn?.includes(step.actor) ? 'active' : ''}`} />
-          <text x={z.x + 10} y={z.y + 18} className="zone-label">{z.label}</text>
+          <rect
+            x={z.x}
+            y={z.y}
+            width={z.w}
+            height={z.h}
+            rx="10"
+            className={`zone ${z.kind} ${z.activeOn?.includes(step.actor) ? 'active' : ''}`}
+          />
+          <text x={z.x + 10} y={z.y + 18} className="zone-label">
+            {z.label}
+          </text>
         </g>
       ))}
 
       {(scene.dots || []).map((dot) => {
         const [x, y] = scene.points[dot.at]
         return (
-          <g key={dot.at} className={step.actor === dot.at ? 'dot active' : 'dot'}>
+          <g
+            key={dot.at}
+            className={step.actor === dot.at ? 'dot active' : 'dot'}
+          >
             <circle cx={x} cy={y} r="4" />
-            <text x={x} y={y + 18}>{dot.label}</text>
+            <text x={x} y={y + 18}>
+              {dot.label}
+            </text>
           </g>
         )
       })}
 
       {scene.boxes.map((b) => (
-        <g key={b.id}
-          className={`box ${step.actor === b.id ? 'active' : ''} ${idle.has(b.id) ? 'idle' : ''}`}>
+        <g
+          key={b.id}
+          className={`box ${step.actor === b.id ? 'active' : ''} ${idle.has(b.id) ? 'idle' : ''}`}
+        >
           <rect x={b.x} y={b.y} width={b.w} height={b.h} rx="8" />
-          <text x={b.x + b.w / 2} y={b.y + b.h / 2 - 4} className="box-label">{b.label}</text>
-          <text x={b.x + b.w / 2} y={b.y + b.h / 2 + 13} className="box-sub">{subs[b.id] ?? b.sub}</text>
+          <text x={b.x + b.w / 2} y={b.y + b.h / 2 - 4} className="box-label">
+            {b.label}
+          </text>
+          <text x={b.x + b.w / 2} y={b.y + b.h / 2 + 13} className="box-sub">
+            {subs[b.id] ?? b.sub}
+          </text>
         </g>
       ))}
 
@@ -109,20 +148,43 @@ function Diagram({ scene, step, mode }) {
           step with the packet riding along it; the arrowhead appears when the
           last segment finishes. */}
       {segs.map((s, i) => {
-        const timing = { animationDelay: `${sec(s.from)}s`, animationDuration: `${sec(s.to) - sec(s.from)}s` }
+        const timing = {
+          animationDelay: `${sec(s.from)}s`,
+          animationDuration: `${sec(s.to) - sec(s.from)}s`,
+        }
         return (
           <g key={`${stepKey}#${i}`}>
-            <line x1={s.a[0]} y1={s.a[1]} x2={s.b[0]} y2={s.b[1]} pathLength="1"
-              className={`trail ${kind}`} style={timing} />
-            <circle r="5" className={`packet ${kind}`}
-              style={{ ...timing, '--ax': `${s.a[0]}px`, '--ay': `${s.a[1]}px`, '--bx': `${s.b[0]}px`, '--by': `${s.b[1]}px` }} />
+            <line
+              x1={s.a[0]}
+              y1={s.a[1]}
+              x2={s.b[0]}
+              y2={s.b[1]}
+              pathLength="1"
+              className={`trail ${kind}`}
+              style={timing}
+            />
+            <circle
+              r="5"
+              className={`packet ${kind}`}
+              style={{
+                ...timing,
+                '--ax': `${s.a[0]}px`,
+                '--ay': `${s.a[1]}px`,
+                '--bx': `${s.b[0]}px`,
+                '--by': `${s.b[1]}px`,
+              }}
+            />
           </g>
         )
       })}
       {last && (
-        <path key={`${stepKey}#head`} d="M-8,-4 L0,0 L-8,4" className={`arrowhead ${kind}`}
+        <path
+          key={`${stepKey}#head`}
+          d="M-8,-4 L0,0 L-8,4"
+          className={`arrowhead ${kind}`}
           style={{ animationDelay: `${sec(last.to)}s` }}
-          transform={`translate(${last.b[0]},${last.b[1]}) rotate(${Math.atan2(last.b[1] - last.a[1], last.b[0] - last.a[0]) * 180 / Math.PI})`} />
+          transform={`translate(${last.b[0]},${last.b[1]}) rotate(${(Math.atan2(last.b[1] - last.a[1], last.b[0] - last.a[0]) * 180) / Math.PI})`}
+        />
       )}
     </svg>
   )
@@ -152,27 +214,54 @@ function Stepper({ scene, mode, counters }) {
       <Diagram scene={scene} step={step} mode={mode} />
 
       <div className="caption" aria-live="polite">
-        <div className="step-num">Step {i + 1} / {steps.length}</div>
+        <div className="step-num">
+          Step {i + 1} / {steps.length}
+        </div>
         <h3>{step.title}</h3>
         <p>{step.text}</p>
       </div>
 
       <div className="controls">
-        <button onClick={() => { setPlaying(false); setI((n) => Math.max(0, n - 1)) }}
-          disabled={i === 0}>← Back</button>
-        <button className="primary" onClick={() => {
-          if (active) return setPlaying(false)
-          if (i === last) setI(0)
-          setPlaying(true)
-        }}>{active ? 'Pause' : i === last ? 'Replay' : 'Play'}</button>
-        <button onClick={() => { setPlaying(false); setI((n) => Math.min(last, n + 1)) }}
-          disabled={i === last}>Next →</button>
+        <button
+          onClick={() => {
+            setPlaying(false)
+            setI((n) => Math.max(0, n - 1))
+          }}
+          disabled={i === 0}
+        >
+          ← Back
+        </button>
+        <button
+          className="primary"
+          onClick={() => {
+            if (active) return setPlaying(false)
+            if (i === last) setI(0)
+            setPlaying(true)
+          }}
+        >
+          {active ? 'Pause' : i === last ? 'Replay' : 'Play'}
+        </button>
+        <button
+          onClick={() => {
+            setPlaying(false)
+            setI((n) => Math.min(last, n + 1))
+          }}
+          disabled={i === last}
+        >
+          Next →
+        </button>
       </div>
 
       {counters?.length > 0 && (
-        <dl className="counters" style={{ gridTemplateColumns: `repeat(${counters.length}, 1fr)` }}>
+        <dl
+          className="counters"
+          style={{ gridTemplateColumns: `repeat(${counters.length}, 1fr)` }}
+        >
           {counters.map((c) => (
-            <div key={c.key}><dt>{c.label}</dt><dd>{sum(c.key)}</dd></div>
+            <div key={c.key}>
+              <dt>{c.label}</dt>
+              <dd>{sum(c.key)}</dd>
+            </div>
           ))}
         </dl>
       )}
@@ -189,15 +278,24 @@ export default function Explainer({ scene, modes, counters, initial }) {
       {keys.length > 1 && (
         <div className="tabs" role="tablist">
           {keys.map((k) => (
-            <button key={k} role="tab" aria-selected={mode === k}
-              className={mode === k ? 'selected' : ''} onClick={() => setMode(k)}>
+            <button
+              key={k}
+              role="tab"
+              aria-selected={mode === k}
+              className={mode === k ? 'selected' : ''}
+              onClick={() => setMode(k)}
+            >
               {modes[k].label}
             </button>
           ))}
         </div>
       )}
-      <Stepper key={mode} scene={typeof scene === 'function' ? scene(mode) : scene}
-        mode={modes[mode]} counters={counters} />
+      <Stepper
+        key={mode}
+        scene={typeof scene === 'function' ? scene(mode) : scene}
+        mode={modes[mode]}
+        counters={counters}
+      />
     </>
   )
 }

@@ -1,24 +1,88 @@
-.logbook { --muted: #667; --line: #e1e4e8; --chip: #f1f3f5; }
-.logbook .intro { color: var(--muted); margin-top: -0.5rem; }
-
-.tag-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1.25rem 0 1.5rem; }
-.tag {
-  display: inline-block; padding: 0.15rem 0.6rem; border-radius: 999px;
-  background: var(--chip); color: #333; text-decoration: none; font-size: 0.85rem;
+.logbook {
+  --muted: #667;
+  --line: #e1e4e8;
+  --chip: #f1f3f5;
 }
-.tag:hover { background: #e3e7eb; }
-.tag.on { background: #222; color: #fff; }
-.tag .count { opacity: 0.6; font-size: 0.8em; }
-.tag.small { font-size: 0.78rem; padding: 0.05rem 0.5rem; }
+.logbook .intro {
+  color: var(--muted);
+  margin-top: -0.5rem;
+}
 
-.note { border-top: 1px solid var(--line); padding: 1.25rem 0 1rem; }
-.note header time { font-size: 0.8rem; color: var(--muted); }
-.note h2 { font-size: 1.2rem; margin: 0.15rem 0 0.4rem; }
-.note h2 a { color: inherit; text-decoration: none; }
-.note h2 a:hover { color: #0366d6; }
-.note-body p { margin: 0.4rem 0; }
-.note-body code { font-size: 0.9em; background: var(--chip); padding: 0 0.25em; border-radius: 3px; }
-.note-body blockquote { margin: 0.5rem 0; padding-left: 0.9rem; border-left: 3px solid var(--line); color: #444; }
-.note-link { margin: 0.4rem 0; font-size: 0.95rem; }
-.note footer { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.5rem; }
-.empty { color: var(--muted); }
+.tag-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.25rem 0 1.5rem;
+}
+.tag {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--chip);
+  color: #333;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+.tag:hover {
+  background: #e3e7eb;
+}
+.tag.on {
+  background: #222;
+  color: #fff;
+}
+.tag .count {
+  opacity: 0.6;
+  font-size: 0.8em;
+}
+.tag.small {
+  font-size: 0.78rem;
+  padding: 0.05rem 0.5rem;
+}
+
+.note {
+  border-top: 1px solid var(--line);
+  padding: 1.25rem 0 1rem;
+}
+.note header time {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.note h2 {
+  font-size: 1.2rem;
+  margin: 0.15rem 0 0.4rem;
+}
+.note h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+.note h2 a:hover {
+  color: #0366d6;
+}
+.note-body p {
+  margin: 0.4rem 0;
+}
+.note-body code {
+  font-size: 0.9em;
+  background: var(--chip);
+  padding: 0 0.25em;
+  border-radius: 3px;
+}
+.note-body blockquote {
+  margin: 0.5rem 0;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--line);
+  color: #444;
+}
+.note-link {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+}
+.note footer {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.empty {
+  color: var(--muted);
+}

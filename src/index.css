@@ -8,4 +8,6 @@ body {
   background: #fff;
   color-scheme: light;
 }
-a { color: #0366d6; }
+a {
+  color: #0366d6;
+}

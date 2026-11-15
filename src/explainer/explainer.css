@@ -8,92 +8,291 @@
   --alt: #2f9e44;
 }
 
-.explainer-page h1 { line-height: 1.25; margin-top: 0.25rem; }
-.explainer-page .trail { font-size: 0.85rem; color: var(--muted); }
-.explainer-page .trail a { color: var(--muted); }
-.explainer-page .trail a:hover { color: var(--accent); }
-.explainer-page code { font-size: 0.9em; background: var(--panel); padding: 0 0.25em; border-radius: 3px; }
-.explainer-page h1 code { background: none; padding: 0; }
-
-.tabs { display: flex; gap: 0.5rem; margin: 1.5rem 0 0.75rem; flex-wrap: wrap; }
-.tabs button {
-  font: inherit; font-size: 0.9rem; padding: 0.4rem 0.8rem; cursor: pointer;
-  border: 1px solid var(--line); background: #fff; border-radius: 999px; color: var(--ink);
+.explainer-page h1 {
+  line-height: 1.25;
+  margin-top: 0.25rem;
 }
-.tabs button.selected { background: var(--ink); color: #fff; border-color: var(--ink); }
+.explainer-page .trail {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.explainer-page .trail a {
+  color: var(--muted);
+}
+.explainer-page .trail a:hover {
+  color: var(--accent);
+}
+.explainer-page code {
+  font-size: 0.9em;
+  background: var(--panel);
+  padding: 0 0.25em;
+  border-radius: 3px;
+}
+.explainer-page h1 code {
+  background: none;
+  padding: 0;
+}
 
-.blurb { font-size: 0.95rem; color: #333; }
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0.75rem;
+  flex-wrap: wrap;
+}
+.tabs button {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  color: var(--ink);
+}
+.tabs button.selected {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
 
-.diagram { width: 100%; height: auto; display: block; margin: 0.5rem 0; }
-.diagram text { font-family: system-ui, sans-serif; }
-.zone { transition: fill 0.3s, stroke 0.3s; }
-.zone.dashed { fill: none; stroke: var(--muted); stroke-dasharray: 5 4; }
-.zone.band { fill: var(--panel); stroke: var(--line); }
-.zone.band.active { fill: #fff4e6; stroke: var(--rpc); }
-.zone.dashed.active { stroke: var(--accent); stroke-width: 2; }
-.zone-label { font-size: 11px; fill: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.dot circle { fill: var(--muted); }
-.dot.active circle { fill: var(--rpc); }
-.dot text { font-size: 11px; fill: var(--muted); text-anchor: middle; }
-.dot.active text { fill: var(--rpc); font-weight: 600; }
+.blurb {
+  font-size: 0.95rem;
+  color: #333;
+}
 
-.box rect { fill: #fff; stroke: var(--line); stroke-width: 1.5; transition: all 0.3s; }
-.box.active rect { stroke: var(--accent); stroke-width: 2.5; fill: #eef5ff; }
-.box.idle { opacity: 0.4; }
-.box-label { font-size: 14px; font-weight: 600; text-anchor: middle; fill: var(--ink); }
-.box-sub { font-size: 11px; text-anchor: middle; fill: var(--muted); }
+.diagram {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.5rem 0;
+}
+.diagram text {
+  font-family: system-ui, sans-serif;
+}
+.zone {
+  transition:
+    fill 0.3s,
+    stroke 0.3s;
+}
+.zone.dashed {
+  fill: none;
+  stroke: var(--muted);
+  stroke-dasharray: 5 4;
+}
+.zone.band {
+  fill: var(--panel);
+  stroke: var(--line);
+}
+.zone.band.active {
+  fill: #fff4e6;
+  stroke: var(--rpc);
+}
+.zone.dashed.active {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+.zone-label {
+  font-size: 11px;
+  fill: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.dot circle {
+  fill: var(--muted);
+}
+.dot.active circle {
+  fill: var(--rpc);
+}
+.dot text {
+  font-size: 11px;
+  fill: var(--muted);
+  text-anchor: middle;
+}
+.dot.active text {
+  fill: var(--rpc);
+  font-weight: 600;
+}
+
+.box rect {
+  fill: #fff;
+  stroke: var(--line);
+  stroke-width: 1.5;
+  transition: all 0.3s;
+}
+.box.active rect {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  fill: #eef5ff;
+}
+.box.idle {
+  opacity: 0.4;
+}
+.box-label {
+  font-size: 14px;
+  font-weight: 600;
+  text-anchor: middle;
+  fill: var(--ink);
+}
+.box-sub {
+  font-size: 11px;
+  text-anchor: middle;
+  fill: var(--muted);
+}
 
 /* The current hop. Each segment's delay and duration are set inline so the
    segments draw one after another, with the packet riding the one being
    drawn; the arrowhead fades in when the last segment is done. */
 .diagram .trail {
-  fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round;
-  stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw linear forwards;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw linear forwards;
 }
-.diagram .trail.rpc { stroke: var(--rpc); }
-.diagram .trail.alt { stroke: var(--alt); }
-@keyframes draw { to { stroke-dashoffset: 0; } }
+.diagram .trail.rpc {
+  stroke: var(--rpc);
+}
+.diagram .trail.alt {
+  stroke: var(--alt);
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 
 .diagram .arrowhead {
-  fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   animation: appear 0.15s ease-out both;
 }
-.diagram .arrowhead.rpc { stroke: var(--rpc); }
-.diagram .arrowhead.alt { stroke: var(--alt); }
-@keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+.diagram .arrowhead.rpc {
+  stroke: var(--rpc);
+}
+.diagram .arrowhead.alt {
+  stroke: var(--alt);
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .diagram .packet {
-  fill: var(--accent); stroke: #fff; stroke-width: 1.5;
-  opacity: 0; animation: hop linear;
+  fill: var(--accent);
+  stroke: #fff;
+  stroke-width: 1.5;
+  opacity: 0;
+  animation: hop linear;
 }
-.diagram .packet.rpc { fill: var(--rpc); }
-.diagram .packet.alt { fill: var(--alt); }
+.diagram .packet.rpc {
+  fill: var(--rpc);
+}
+.diagram .packet.alt {
+  fill: var(--alt);
+}
 @keyframes hop {
-  from { opacity: 1; transform: translate(var(--ax), var(--ay)); }
-  to { opacity: 1; transform: translate(var(--bx), var(--by)); }
+  from {
+    opacity: 1;
+    transform: translate(var(--ax), var(--ay));
+  }
+  to {
+    opacity: 1;
+    transform: translate(var(--bx), var(--by));
+  }
 }
 
-.caption { background: var(--panel); border-radius: 8px; padding: 0.75rem 1rem; min-height: 8.5rem; }
-.caption h3 { margin: 0.1rem 0 0.3rem; font-size: 1.05rem; }
-.caption p { margin: 0; font-size: 0.95rem; }
-.step-num { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.caption {
+  background: var(--panel);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  min-height: 8.5rem;
+}
+.caption h3 {
+  margin: 0.1rem 0 0.3rem;
+  font-size: 1.05rem;
+}
+.caption p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.step-num {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
 
-.controls { display: flex; gap: 0.5rem; justify-content: center; margin: 0.75rem 0; }
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 0.75rem 0;
+}
 .controls button {
-  font: inherit; font-size: 0.9rem; padding: 0.4rem 0.9rem; cursor: pointer;
-  border: 1px solid var(--line); background: #fff; border-radius: 6px; color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 6px;
+  color: var(--ink);
 }
-.controls button.primary { background: var(--accent); border-color: var(--accent); color: #fff; min-width: 5.5rem; }
-.controls button:disabled { opacity: 0.4; cursor: default; }
+.controls button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  min-width: 5.5rem;
+}
+.controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
 
-.counters { display: grid; gap: 0.5rem; margin: 0 0 2rem; }
-.counters div { border: 1px solid var(--line); border-radius: 8px; padding: 0.4rem 0.6rem; text-align: center; }
-.counters dt { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
-.counters dd { margin: 0; font-size: 1.4rem; font-weight: 600; }
+.counters {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+}
+.counters div {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  text-align: center;
+}
+.counters dt {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.counters dd {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
 
-.sources { font-size: 0.8rem; color: var(--muted); }
+.sources {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .diagram .trail { animation: none; stroke-dashoffset: 0; }
-  .diagram .arrowhead, .diagram .packet { animation: none; }
+  .diagram .trail {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .diagram .arrowhead,
+  .diagram .packet {
+    animation: none;
+  }
 }
